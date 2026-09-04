@@ -18,161 +18,151 @@
 <title>Bugün Ne Pişsin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400..700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Karla:ital,wght@0,400..700;1,400&display=swap">
 <style>
 :root{
-  --ground:#EEF1F5;
+  --ground:#F1F2EF;
   --surface:#FFFFFF;
-  --surface-2:#F7F9FB;
-  --ink:#131E2B;
-  --ink-2:#4C6076;
-  --ink-3:#7A8CA0;
-  --line:#D5DEE7;
-  --line-soft:#E4EAF0;
+  --surface-2:#F7F8F5;
+  --ink:#1A2024;
+  --ink-2:#586267;
+  --ink-3:#88908F;
+  --line:#DFE1DB;
+  --line-soft:#EBEDE7;
   --kobalt:#1B4E9B;
-  --kobalt-soft:#E3EBF7;
-  --turkuaz:#17838F;
-  --turkuaz-soft:#DDF0F1;
-  --bol:#AE372B;
-  --bol-soft:#F7E3E0;
-  --yesil:#2A7355;
-  --yesil-soft:#DFEEE7;
-  --amber:#8A6408;
-  --amber-soft:#F7EBCE;
-  --shadow:0 1px 2px rgba(19,30,43,.06), 0 8px 24px -12px rgba(19,30,43,.18);
-  --shadow-lift:0 2px 6px rgba(19,30,43,.08), 0 24px 48px -20px rgba(19,30,43,.32);
-  --r:10px;
-  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
-  --body:"Public Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --kobalt-derin:#173F7D;
+  --kobalt-soft:#E5EBF5;
+  --turkuaz:#16808C;
+  --turkuaz-soft:#DDEDEE;
+  --yesil:#2C6E4E;
+  --yesil-soft:#E0EDE5;
+  --amber:#8A6206;
+  --amber-soft:#F5EAD3;
+  --bol:#A93B2C;
+  --bol-soft:#F6E2DE;
+  --uzeri:#FFFFFF;
+  --golge:0 1px 2px rgba(26,32,36,.05), 0 10px 26px -14px rgba(26,32,36,.22);
+  --golge-kalk:0 2px 8px rgba(26,32,36,.10), 0 28px 56px -22px rgba(26,32,36,.38);
+  --display:"Gabarito","Trebuchet MS",system-ui,sans-serif;
+  --body:"Karla",-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --ground:#0D151E;
-    --surface:#141F2B;
-    --surface-2:#1A2734;
-    --ink:#E5ECF3;
-    --ink-2:#A0B2C4;
-    --ink-3:#74899E;
-    --line:#28394A;
-    --line-soft:#1F2E3D;
-    --kobalt:#79A8EC;
-    --kobalt-soft:#1A2B44;
-    --turkuaz:#41BECB;
-    --turkuaz-soft:#123138;
-    --bol:#E5806E;
-    --bol-soft:#39201C;
-    --yesil:#5DBF95;
-    --yesil-soft:#14301F;
-    --amber:#D9AE4C;
-    --amber-soft:#33280F;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
-    --shadow-lift:0 2px 6px rgba(0,0,0,.5), 0 24px 48px -20px rgba(0,0,0,.8);
+    --ground:#121618;
+    --surface:#1A2023;
+    --surface-2:#212829;
+    --ink:#E9EDE9;
+    --ink-2:#A7B0AF;
+    --ink-3:#7B8584;
+    --line:#2E3639;
+    --line-soft:#242B2E;
+    --kobalt:#7BA9EC;
+    --kobalt-derin:#1E4478;
+    --kobalt-soft:#1B2A3F;
+    --turkuaz:#48BDC6;
+    --turkuaz-soft:#123033;
+    --yesil:#63BE93;
+    --yesil-soft:#152E22;
+    --amber:#D6AA51;
+    --amber-soft:#302713;
+    --bol:#E28472;
+    --bol-soft:#37201C;
+    --golge:0 1px 2px rgba(0,0,0,.45), 0 10px 26px -14px rgba(0,0,0,.7);
+    --golge-kalk:0 2px 8px rgba(0,0,0,.55), 0 28px 56px -22px rgba(0,0,0,.85);
   }
 }
 :root[data-theme="dark"]{
-  --ground:#0D151E;
-  --surface:#141F2B;
-  --surface-2:#1A2734;
-  --ink:#E5ECF3;
-  --ink-2:#A0B2C4;
-  --ink-3:#74899E;
-  --line:#28394A;
-  --line-soft:#1F2E3D;
-  --kobalt:#79A8EC;
-  --kobalt-soft:#1A2B44;
-  --turkuaz:#41BECB;
-  --turkuaz-soft:#123138;
-  --bol:#E5806E;
-  --bol-soft:#39201C;
-  --yesil:#5DBF95;
-  --yesil-soft:#14301F;
-  --amber:#D9AE4C;
-  --amber-soft:#33280F;
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
-  --shadow-lift:0 2px 6px rgba(0,0,0,.5), 0 24px 48px -20px rgba(0,0,0,.8);
+  --ground:#121618;
+  --surface:#1A2023;
+  --surface-2:#212829;
+  --ink:#E9EDE9;
+  --ink-2:#A7B0AF;
+  --ink-3:#7B8584;
+  --line:#2E3639;
+  --line-soft:#242B2E;
+  --kobalt:#7BA9EC;
+  --kobalt-derin:#1E4478;
+  --kobalt-soft:#1B2A3F;
+  --turkuaz:#48BDC6;
+  --turkuaz-soft:#123033;
+  --yesil:#63BE93;
+  --yesil-soft:#152E22;
+  --amber:#D6AA51;
+  --amber-soft:#302713;
+  --bol:#E28472;
+  --bol-soft:#37201C;
+  --golge:0 1px 2px rgba(0,0,0,.45), 0 10px 26px -14px rgba(0,0,0,.7);
+  --golge-kalk:0 2px 8px rgba(0,0,0,.55), 0 28px 56px -22px rgba(0,0,0,.85);
 }
 
 *{box-sizing:border-box}
 body{
-  margin:0;
-  background:var(--ground);
-  color:var(--ink);
-  font-family:var(--body);
-  font-size:15px;
-  line-height:1.55;
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--body);font-size:15.5px;line-height:1.55;
   -webkit-font-smoothing:antialiased;
 }
-h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em;font-weight:700}
 button,input{font-family:inherit;font-size:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--kobalt);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:2px solid var(--kobalt);outline-offset:2px;border-radius:6px}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
-.wrap{max-width:940px;margin:0 auto;padding:0 18px 72px}
+.wrap{max-width:860px;margin:0 auto;padding:0 18px 72px}
+.eyebrow{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px}
 
-/* ---------- header ---------- */
-.top{
-  background:var(--surface);
-  border-bottom:1px solid var(--line);
-  position:sticky;top:0;z-index:30;
-}
-.top-in{
-  max-width:940px;margin:0 auto;padding:12px 18px;
-  display:flex;align-items:center;gap:12px;
-}
-.mark{flex:none;width:34px;height:34px;display:block}
-.brand{display:flex;flex-direction:column;gap:1px;margin-right:auto;min-width:0}
-.brand h1{font-size:19px;font-weight:700;line-height:1.1}
-.brand .sub{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink-3);
-}
+/* ---------- başlık ---------- */
+.top{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+.top-in{max-width:860px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;gap:11px}
+.mark{flex:none;width:32px;height:32px;display:block}
+.brand{margin-right:auto;min-width:0}
+.brand h1{font-size:18.5px;font-weight:800;line-height:1.15}
 .icon-btn{
   flex:none;width:34px;height:34px;display:grid;place-items:center;
-  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);
+  background:var(--surface-2);border:1px solid var(--line);border-radius:9px;
   cursor:pointer;color:var(--ink-2);
 }
 .icon-btn:hover{border-color:var(--kobalt);color:var(--kobalt)}
 
-/* ---------- panels ---------- */
-.panel{
-  background:var(--surface);border:1px solid var(--line);border-radius:14px;
-  box-shadow:var(--shadow);
+/* ---------- kiler: katlanır ---------- */
+.kiler{margin-top:16px;overflow:hidden}
+.kiler-bar{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+  background:none;border:none;padding:13px 15px;cursor:pointer;
 }
-.eyebrow{
-  font-family:var(--mono);font-size:10.5px;font-weight:500;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+.kiler-bar .sepet{flex:none;width:20px;height:20px;color:var(--turkuaz)}
+.kiler-bar .ozet{flex:1;min-width:0}
+.kiler-bar .ozet b{display:block;font-family:var(--display);font-size:15px;font-weight:700}
+.kiler-bar .ozet span{
+  display:block;font-size:12.5px;color:var(--ink-3);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-
-/* ---------- pantry ---------- */
-.kiler{margin-top:20px;padding:18px}
-.kiler-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.kiler-head h2{font-size:16px;font-weight:700}
-.kiler-head .n{
-  font-family:var(--mono);font-size:12px;color:var(--kobalt);
-  background:var(--kobalt-soft);padding:1px 7px;border-radius:20px;font-variant-numeric:tabular-nums;
+.kiler-bar .ok{
+  flex:none;font-family:var(--mono);font-size:11px;color:var(--kobalt);
+  background:var(--kobalt-soft);padding:5px 11px;border-radius:20px;font-weight:600;
 }
-.kiler-head .clear{
-  margin-left:auto;background:none;border:none;cursor:pointer;
-  font-size:12.5px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px;padding:0;
-}
-.kiler-head .clear:hover{color:var(--bol)}
+.kiler[data-acik="1"] .kiler-bar{border-bottom:1px solid var(--line-soft)}
+.kiler-ic{padding:15px}
+.kiler-ic[hidden]{display:none}
 
 .searchbox{position:relative}
 .searchbox input{
-  width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:var(--r);
+  width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;
   background:var(--surface-2);
 }
 .searchbox input:focus{outline:none;border-color:var(--kobalt);background:var(--surface)}
 .searchbox input::placeholder{color:var(--ink-3)}
 .suggest{
   position:absolute;top:calc(100% + 5px);left:0;right:0;z-index:20;
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
-  box-shadow:var(--shadow-lift);max-height:250px;overflow-y:auto;padding:4px;
+  background:var(--surface);border:1px solid var(--line);border-radius:9px;
+  box-shadow:var(--golge-kalk);max-height:250px;overflow-y:auto;padding:4px;
 }
 .suggest button{
   display:flex;width:100%;align-items:center;gap:8px;text-align:left;
-  background:none;border:none;padding:7px 9px;border-radius:6px;cursor:pointer;
+  background:none;border:none;padding:8px 9px;border-radius:6px;cursor:pointer;
 }
 .suggest button:hover,.suggest button[aria-selected="true"]{background:var(--kobalt-soft);color:var(--kobalt)}
 .suggest .kat{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em}
@@ -181,222 +171,231 @@ button,input{font-family:inherit;font-size:inherit;color:inherit}
 .tray:empty{display:none}
 .chip{
   display:inline-flex;align-items:center;gap:6px;
-  background:var(--kobalt-soft);color:var(--kobalt);
-  border:1px solid transparent;border-radius:20px;padding:4px 6px 4px 12px;
-  font-size:13.5px;font-weight:600;
+  background:var(--turkuaz-soft);color:var(--turkuaz);
+  border-radius:20px;padding:4px 6px 4px 12px;font-size:13.5px;font-weight:700;
 }
 .chip button{
-  background:none;border:none;cursor:pointer;color:inherit;opacity:.55;
-  width:18px;height:18px;display:grid;place-items:center;border-radius:50%;padding:0;line-height:1;
+  background:none;border:none;cursor:pointer;color:inherit;opacity:.5;
+  width:19px;height:19px;display:grid;place-items:center;border-radius:50%;padding:0;line-height:1;
 }
-.chip button:hover{opacity:1;background:rgba(174,55,43,.16);color:var(--bol)}
+.chip button:hover{opacity:1;background:var(--bol-soft);color:var(--bol)}
 
-.picks{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:14px}
-.picks .eyebrow{display:block;margin-bottom:9px}
-.pickrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.picks{margin-top:15px;border-top:1px solid var(--line-soft);padding-top:14px}
+.picks > .eyebrow{display:block;margin-bottom:10px}
+.pickrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .pickrow .lbl{
-  font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink-3);width:100%;margin-bottom:1px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);width:100%;margin-bottom:2px;
 }
 .pick{
   background:var(--surface-2);border:1px solid var(--line);border-radius:20px;
-  padding:4px 11px;font-size:13px;cursor:pointer;color:var(--ink-2);
+  padding:5px 12px;font-size:13.5px;cursor:pointer;color:var(--ink-2);
   transition:border-color .12s,color .12s;
 }
-.pick:hover{border-color:var(--kobalt);color:var(--kobalt)}
-.pick[data-on="1"]{background:var(--kobalt);border-color:var(--kobalt);color:#fff;font-weight:600}
+.pick:hover{border-color:var(--turkuaz);color:var(--turkuaz)}
+.pick[data-on="1"]{background:var(--turkuaz);border-color:var(--turkuaz);color:var(--uzeri);font-weight:700}
 
-.basics{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line-soft)}
-.sw{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);cursor:pointer}
-.sw input{appearance:none;width:34px;height:19px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;flex:none;margin:0;transition:background .15s}
-.sw input::after{content:"";position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;background:var(--surface);transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
-.sw input:checked{background:var(--turkuaz)}
-.sw input:checked::after{transform:translateX(15px)}
+.basics{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px;padding-top:13px;border-top:1px solid var(--line-soft)}
+.sw{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);cursor:pointer}
+.sw input,.onlydo input{
+  appearance:none;width:36px;height:20px;border-radius:20px;background:var(--line);
+  position:relative;cursor:pointer;flex:none;margin:0;transition:background .15s;
+}
+.sw input::after,.onlydo input::after{
+  content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;
+  background:var(--surface);transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.3);
+}
+.sw input:checked,.onlydo input:checked{background:var(--turkuaz)}
+.sw input:checked::after,.onlydo input:checked::after{transform:translateX(16px)}
+.kiler-ic .clear{
+  background:none;border:none;cursor:pointer;padding:0;margin-top:14px;
+  font-size:12.5px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px;
+}
+.kiler-ic .clear:hover{color:var(--bol)}
 </style>
 <style>
-/* ---------- mode / filter bar ---------- */
-.modebar{margin-top:22px;display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
-.modes{display:flex;gap:6px;flex-wrap:wrap}
+/* ---------- günün önerisi: sayfanın tek cesur hamlesi ---------- */
+.hero{
+  position:relative;overflow:hidden;margin-top:16px;border-radius:16px;
+  background:var(--kobalt-derin);color:#fff;box-shadow:var(--golge);
+  min-height:180px;display:flex;
+}
+.hero-in{position:relative;z-index:2;padding:20px 22px 20px;display:flex;flex-direction:column;gap:3px;flex:1}
+.hero .eyebrow{color:rgba(255,255,255,.62)}
+.hero h2{
+  font-size:clamp(28px,7vw,40px);font-weight:800;line-height:1.05;
+  margin-top:7px;letter-spacing:-.02em;color:#fff;
+}
+.hero-meta{
+  font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.7);
+  margin-top:9px;display:flex;flex-wrap:wrap;gap:4px 14px;font-variant-numeric:tabular-nums;
+}
+.hero-durum{margin:11px 0 0;font-size:15px;color:rgba(255,255,255,.92);max-width:42ch}
+.hero-durum b{color:#fff;font-weight:700}
+.hero-btn{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto;padding-top:18px}
+.hero-btn button{
+  border:none;border-radius:9px;cursor:pointer;font-weight:700;font-size:14.5px;
+  padding:11px 18px;font-family:var(--display);
+}
+.hero-btn .birincil{background:#fff;color:var(--kobalt-derin)}
+.hero-btn .birincil:hover{background:rgba(255,255,255,.88)}
+.hero-btn .ikincil{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.hero-btn .ikincil:hover{background:rgba(255,255,255,.24)}
+.hero .desen{
+  position:absolute;right:-46px;top:50%;transform:translateY(-50%);
+  width:236px;height:236px;opacity:.12;z-index:1;pointer-events:none;
+}
+.hero.bos{background:var(--surface);color:var(--ink);border:1px solid var(--line);min-height:0}
+.hero.bos h2{color:var(--ink);font-size:20px;margin-top:5px}
+.hero.bos .eyebrow{color:var(--ink-3)}
+.hero.bos .hero-durum{color:var(--ink-2)}
+.hero.bos .desen{display:none}
+
+/* ---------- zorluk modları ---------- */
+.modebar{margin-top:22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.modes{display:flex;gap:7px;flex-wrap:wrap}
 .mode{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;
   padding:8px 13px;cursor:pointer;display:flex;align-items:center;gap:9px;
-  transition:border-color .12s,box-shadow .12s;
+  transition:border-color .12s,background .12s;
 }
 .mode:hover{border-color:var(--ink-3)}
-.mode .nm{font-weight:600;font-size:14px}
+.mode .nm{font-family:var(--display);font-weight:700;font-size:14.5px}
 .mode .ct{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
-.mode[aria-pressed="true"]{border-color:var(--kobalt);box-shadow:inset 0 0 0 1px var(--kobalt);background:var(--kobalt-soft)}
-.mode[aria-pressed="true"] .nm{color:var(--kobalt)}
-.mode[aria-pressed="true"] .ct{color:var(--kobalt);opacity:.75}
+.mode[aria-pressed="true"]{border-color:var(--kobalt);background:var(--kobalt-soft)}
+.mode[aria-pressed="true"] .nm,.mode[aria-pressed="true"] .ct{color:var(--kobalt)}
 
-/* difficulty meter: 3 bars, filled = level */
-.meter{display:flex;align-items:flex-end;gap:2px;height:13px;flex:none}
+/* zorluk ölçeği: dolu çubuk sayısı seviyeyi gösterir */
+.meter{display:flex;align-items:flex-end;gap:2px;height:12px;flex:none}
 .meter i{display:block;width:3px;background:var(--line);border-radius:1px}
 .meter i:nth-child(1){height:5px}
-.meter i:nth-child(2){height:9px}
-.meter i:nth-child(3){height:13px}
+.meter i:nth-child(2){height:8.5px}
+.meter i:nth-child(3){height:12px}
 .meter[data-lv="1"] i:nth-child(-n+1){background:var(--yesil)}
 .meter[data-lv="2"] i:nth-child(-n+2){background:var(--amber)}
 .meter[data-lv="3"] i:nth-child(-n+3){background:var(--bol)}
+.hero .meter i{background:rgba(255,255,255,.3)}
+.hero .meter[data-lv="1"] i:nth-child(-n+1),
+.hero .meter[data-lv="2"] i:nth-child(-n+2),
+.hero .meter[data-lv="3"] i:nth-child(-n+3){background:rgba(255,255,255,.9)}
 
-.onlydo{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);cursor:pointer;padding-bottom:8px}
-.onlydo input{appearance:none;width:34px;height:19px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;flex:none;margin:0;transition:background .15s}
-.onlydo input::after{content:"";position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;background:var(--surface);transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
-.onlydo input:checked{background:var(--yesil)}
-.onlydo input:checked::after{transform:translateX(15px)}
-
-.tally{
-  margin-top:14px;font-size:13px;color:var(--ink-2);
-  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-}
+.onlydo{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);cursor:pointer}
+.tally{margin-top:15px;font-size:13.5px;color:var(--ink-2)}
 .tally b{font-family:var(--mono);color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 
-/* ---------- results ---------- */
-.results{margin-top:10px;display:flex;flex-direction:column;gap:8px}
-.group-lbl{
-  display:flex;align-items:center;gap:10px;margin:16px 0 2px;
-}
-.group-lbl .eyebrow{flex:none}
+/* ---------- tarif listesi ---------- */
+.results{margin-top:6px;display:flex;flex-direction:column;gap:7px}
+.group-lbl{display:flex;align-items:center;gap:11px;margin:20px 0 3px}
 .group-lbl .rule{flex:1;height:1px;background:var(--line)}
 
 .card{
-  display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center;
-  width:100%;text-align:left;cursor:pointer;
-  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);border-radius:11px;
   padding:13px 15px;transition:border-color .12s,transform .12s,box-shadow .12s;
 }
-.card:hover{border-color:var(--kobalt);transform:translateY(-1px);box-shadow:var(--shadow)}
-.card-main{min-width:0}
-.card-t{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.card-t h3{font-size:16.5px;font-weight:700}
-.card-meta{
-  font-family:var(--mono);font-size:11.5px;color:var(--ink-3);
-  margin-top:3px;display:flex;flex-wrap:wrap;gap:4px 10px;font-variant-numeric:tabular-nums;
+.card:hover{border-color:var(--kobalt);transform:translateY(-1px);box-shadow:var(--golge)}
+.card .sol{flex:1;min-width:0}
+.card .ad{font-family:var(--display);font-size:16.5px;font-weight:700;line-height:1.25}
+.card .satir{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card .meta{
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:4px;
+  display:flex;flex-wrap:wrap;gap:3px 12px;font-variant-numeric:tabular-nums;
 }
-.card-miss{
-  grid-column:1/-1;font-size:13px;color:var(--ink-2);margin-top:3px;
-  padding-top:8px;border-top:1px dashed var(--line-soft);
-}
-.card-miss b{color:var(--bol);font-weight:600}
-.card-side{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none}
+.card .eksik{font-size:13px;color:var(--ink-2);margin-top:6px}
+.card .eksik b{color:var(--bol);font-weight:700}
+.card .sag{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 
-.pill{
-  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.03em;
-  padding:3px 9px;border-radius:20px;white-space:nowrap;
-}
+/* hazır tarifler kobalt bir kenarla öne çıkar; kalanlar sessiz durur */
+.card.hazir{border-left:3px solid var(--kobalt);padding-left:13px}
+.card.uzak{background:var(--surface-2)}
+.card.uzak .ad{font-weight:600;color:var(--ink-2)}
+
+.pill{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.04em;padding:3px 9px;border-radius:20px;white-space:nowrap}
 .pill.ok{background:var(--yesil-soft);color:var(--yesil)}
 .pill.near{background:var(--amber-soft);color:var(--amber)}
 .pill.far{background:var(--bol-soft);color:var(--bol)}
 .pill.tag{background:var(--turkuaz-soft);color:var(--turkuaz)}
 
-.bar{width:62px;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
-.bar i{display:block;height:100%;border-radius:2px}
-.bar[data-s="ok"] i{background:var(--yesil)}
-.bar[data-s="near"] i{background:var(--amber)}
-.bar[data-s="far"] i{background:var(--bol)}
-
-.empty{
-  margin-top:14px;padding:34px 22px;text-align:center;
-  border:1px dashed var(--line);border-radius:14px;background:var(--surface);
-}
+.empty{margin-top:14px;padding:34px 22px;text-align:center;border:1px dashed var(--line);border-radius:14px;background:var(--surface)}
 .empty h3{font-size:17px;margin-bottom:6px}
 .empty p{margin:0;color:var(--ink-2);font-size:14px;max-width:44ch;margin-inline:auto}
 
-/* ---------- recipe sheet ---------- */
+/* ---------- tarif kağıdı ---------- */
 .scrim{
-  position:fixed;inset:0;z-index:50;background:rgba(13,21,30,.5);
+  position:fixed;inset:0;z-index:50;background:rgba(18,22,24,.55);
   backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;
   padding:24px 16px;overflow-y:auto;
 }
 .scrim[hidden]{display:none!important}
 .sheet{
-  width:100%;max-width:640px;background:var(--surface);
-  border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lift);
-  overflow:hidden;
+  width:100%;max-width:620px;background:var(--surface);
+  border:1px solid var(--line);border-radius:16px;box-shadow:var(--golge-kalk);overflow:hidden;
 }
 .sheet-hd{padding:20px 22px 16px;border-bottom:1px solid var(--line);position:relative}
-.sheet-hd h2{font-size:24px;font-weight:800;padding-right:40px;line-height:1.15}
-.sheet-hd .row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:9px}
+.sheet-hd h2{font-size:26px;font-weight:800;padding-right:42px;line-height:1.12}
+.sheet-hd .row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:10px}
+.sheet-meta{font-family:var(--mono);font-size:12px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 12px;font-variant-numeric:tabular-nums}
 .sheet-hd .close{
-  position:absolute;top:16px;right:16px;width:30px;height:30px;
-  border:1px solid var(--line);background:var(--surface-2);border-radius:8px;
-  cursor:pointer;color:var(--ink-2);display:grid;place-items:center;line-height:1;font-size:16px;
+  position:absolute;top:16px;right:16px;width:31px;height:31px;
+  border:1px solid var(--line);background:var(--surface-2);border-radius:9px;
+  cursor:pointer;color:var(--ink-2);display:grid;place-items:center;line-height:1;font-size:17px;
 }
 .sheet-hd .close:hover{border-color:var(--bol);color:var(--bol)}
-.sheet-bd{padding:18px 22px 24px;display:flex;flex-direction:column;gap:22px}
-.sheet-bd section > .eyebrow{display:block;margin-bottom:9px}
+.sheet-bd{padding:20px 22px 26px;display:flex;flex-direction:column;gap:24px}
+.sheet-bd section > .eyebrow{display:block;margin-bottom:10px}
 
-.mlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:2px 18px}
-.mlist li{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
-.mlist .tick{flex:none;width:16px;height:16px;display:grid;place-items:center;border-radius:50%;font-size:10px;font-weight:700;line-height:1}
+.mlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:0 20px}
+.mlist li{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px}
+.mlist .tick{flex:none;width:17px;height:17px;display:grid;place-items:center;border-radius:50%;font-size:10px;font-weight:700;line-height:1}
 .mlist .var .tick{background:var(--yesil-soft);color:var(--yesil)}
 .mlist .yok .tick{background:var(--bol-soft);color:var(--bol)}
-.mlist .yok{color:var(--bol);font-weight:600}
+.mlist .yok{color:var(--bol);font-weight:700}
 .mlist .ops .tick{background:var(--line-soft);color:var(--ink-3)}
 .mlist .ops{color:var(--ink-3)}
 
-.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column;gap:11px}
-.steps li{counter-increment:s;display:grid;grid-template-columns:26px 1fr;gap:11px;align-items:start;font-size:14.5px}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column;gap:13px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:27px 1fr;gap:12px;align-items:start;font-size:15px}
 .steps li::before{
   content:counter(s,decimal-leading-zero);
   font-family:var(--mono);font-size:11px;font-weight:600;color:var(--kobalt);
-  background:var(--kobalt-soft);border-radius:6px;text-align:center;padding:3px 0;line-height:1.5;
+  background:var(--kobalt-soft);border-radius:7px;text-align:center;padding:4px 0;line-height:1.4;
 }
 .tip{
   background:var(--turkuaz-soft);border-left:3px solid var(--turkuaz);
-  padding:11px 14px;border-radius:0 8px 8px 0;font-size:14px;color:var(--ink);
+  padding:12px 15px;border-radius:0 9px 9px 0;font-size:14.5px;
 }
-.tip .eyebrow{color:var(--turkuaz);display:block;margin-bottom:3px}
+.tip .eyebrow{color:var(--turkuaz);display:block;margin-bottom:4px}
 
-.foot{
-  margin-top:44px;padding-top:16px;border-top:1px solid var(--line);
-  font-size:12.5px;color:var(--ink-3);display:flex;gap:6px;flex-wrap:wrap;
-}
-
-@media (max-width:620px){
-  .top-in{padding:10px 14px}
-  .wrap{padding:0 14px 60px}
-  .brand h1{font-size:17px}
-  .card{grid-template-columns:1fr;gap:8px}
-  .card-side{flex-direction:row;align-items:center;gap:9px}
-  .sheet-hd h2{font-size:21px}
-  .onlydo{margin-left:0;padding-bottom:0;width:100%}
-}
+.foot{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3);display:flex;gap:6px;flex-wrap:wrap}
 </style>
 <style>
 /* ---------- telefon uygulaması davranışları ---------- */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
-button,.chip,.pill,.eyebrow,.card-meta{-webkit-user-select:none;user-select:none}
-.steps,.mlist,.tip,.sheet-hd h2{-webkit-user-select:text;user-select:text}
+button,.chip,.pill,.eyebrow,.meta{-webkit-user-select:none;user-select:none}
+.steps,.mlist,.tip,.sheet-hd h2,.hero h2{-webkit-user-select:text;user-select:text}
 
-/* çentik ve ev göstergesi boşlukları */
 .top-in{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right));
-        padding-top:calc(12px + env(safe-area-inset-top))}
-.top{padding-top:0}
+        padding-top:calc(11px + env(safe-area-inset-top))}
 .wrap{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right));
       padding-bottom:calc(72px + env(safe-area-inset-bottom))}
 
 /* ana ekrana ekleme şeridi */
-.kur{
-  display:flex;align-items:center;gap:12px;margin-top:16px;padding:13px 15px;
-  background:var(--kobalt);color:#fff;border-radius:12px;box-shadow:var(--shadow);
-}
+.kur{display:flex;align-items:center;gap:12px;margin-top:16px;padding:13px 15px;
+     background:var(--turkuaz);color:#fff;border-radius:12px;box-shadow:var(--golge)}
 .kur[hidden]{display:none!important}
 .kur .yazi{flex:1;min-width:0;font-size:13.5px;line-height:1.45}
 .kur .yazi b{display:block;font-family:var(--display);font-size:15px;font-weight:700;margin-bottom:1px}
-.kur button{
-  flex:none;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13.5px;
-  padding:8px 14px;background:#fff;color:var(--kobalt);
-}
-.kur .kapa{background:transparent;color:#fff;opacity:.7;padding:8px 4px;font-size:18px;line-height:1}
+.kur button{flex:none;border:none;border-radius:9px;cursor:pointer;font-weight:700;font-size:13.5px;
+            padding:9px 15px;background:#fff;color:var(--turkuaz)}
+.kur .kapa{background:transparent;color:#fff;opacity:.75;padding:9px 4px;font-size:18px;line-height:1}
 .kur .kapa:hover{opacity:1}
 
 /* panel tutamağı yalnızca telefonda görünür */
 .tut{display:none}
 
-/* alttan açılan tarif paneli — telefon */
-@media (max-width:620px){
+@media (max-width:640px){
+  /* tarif kağıdı alttan açılan panel olur */
   .scrim{align-items:flex-end;padding:0;overflow:hidden}
   .sheet{
     max-width:none;border-radius:20px 20px 0 0;border-bottom:none;
@@ -404,31 +403,31 @@ button,.chip,.pill,.eyebrow,.card-meta{-webkit-user-select:none;user-select:none
     animation:kalk .28s cubic-bezier(.32,.72,0,1);
   }
   .sheet-hd{flex:none;padding-top:14px}
-  .sheet-bd{
-    overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
-    padding-bottom:calc(28px + env(safe-area-inset-bottom));
-  }
-  .tut{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);
-       margin:0 auto 12px;flex:none}
+  .sheet-hd h2{font-size:23px}
+  .sheet-bd{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+            padding-bottom:calc(30px + env(safe-area-inset-bottom))}
+  .tut{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 12px;flex:none}
   .mlist{grid-template-columns:1fr}
 
-  /* parmakla rahat dokunulacak boyutlar */
+  /* parmakla rahat kullanım */
   .searchbox input{font-size:16px;padding:13px}
   .chip{font-size:14px;padding:7px 8px 7px 14px}
-  .chip button{width:22px;height:22px}
+  .chip button{width:23px;height:23px}
   .pick{padding:9px 14px;font-size:14px;min-height:40px}
-  .mode{padding:10px 14px;flex:1;justify-content:center;min-height:46px}
-  .kur button{min-height:42px}
-  .card{min-height:66px}
+  .mode{padding:11px 14px;flex:1;justify-content:center;min-height:46px}
   .modes{width:100%}
-  .card{padding:15px}
+  .onlydo{margin-left:0;width:100%;padding-top:2px}
+  .card{padding:14px;min-height:66px}
   .icon-btn{width:38px;height:38px}
+  .kiler-bar{padding:14px 15px}
+  .hero-in{padding:18px 18px}
+  .hero-btn button{flex:1;padding:12px 14px}
+  .hero .desen{right:-52px;width:186px;height:186px;opacity:.09}
 }
 @keyframes kalk{from{transform:translateY(100%)}to{transform:translateY(0)}}
 
-/* ana ekrandan açıldığında tarayıcı çubuğu yok, üst boşluğu biraz aç */
 @media (display-mode:standalone){
-  .top-in{padding-top:calc(14px + env(safe-area-inset-top))}
+  .top-in{padding-top:calc(13px + env(safe-area-inset-top))}
 }
 </style>
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -437,19 +436,17 @@ button,.chip,.pill,.eyebrow,.card-meta{-webkit-user-select:none;user-select:none
 <header class="top">
   <div class="top-in">
     <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
-      <circle cx="20" cy="20" r="19" fill="var(--kobalt-soft)"></circle>
-      <g fill="none" stroke="var(--kobalt)" stroke-width="1.4">
-        <ellipse cx="20" cy="20" rx="4.2" ry="13" transform="rotate(0 20 20)"></ellipse>
-        <ellipse cx="20" cy="20" rx="4.2" ry="13" transform="rotate(45 20 20)"></ellipse>
-        <ellipse cx="20" cy="20" rx="4.2" ry="13" transform="rotate(90 20 20)"></ellipse>
-        <ellipse cx="20" cy="20" rx="4.2" ry="13" transform="rotate(135 20 20)"></ellipse>
+      <circle cx="20" cy="20" r="19" fill="var(--kobalt)"></circle>
+      <circle cx="20" cy="20" r="14" fill="var(--surface)"></circle>
+      <circle cx="20" cy="20" r="11.5" fill="none" stroke="var(--turkuaz)" stroke-width="1.1" opacity=".65"></circle>
+      <g fill="var(--kobalt)">
+        <ellipse cx="20" cy="20" rx="2.6" ry="7.4" transform="rotate(0 20 20)"></ellipse>
+        <ellipse cx="20" cy="20" rx="2.6" ry="7.4" transform="rotate(60 20 20)"></ellipse>
+        <ellipse cx="20" cy="20" rx="2.6" ry="7.4" transform="rotate(120 20 20)"></ellipse>
       </g>
-      <circle cx="20" cy="20" r="3.6" fill="var(--turkuaz)"></circle>
+      <circle cx="20" cy="20" r="3.4" fill="var(--turkuaz)"></circle>
     </svg>
-    <div class="brand">
-      <h1>Bugün Ne Pişsin</h1>
-      <span class="sub">Evdekilerle yemek bulucu</span>
-    </div>
+    <div class="brand"><h1>Bugün Ne Pişsin</h1></div>
     <button class="icon-btn" id="temaBtn" type="button" title="Açık / koyu tema" aria-label="Açık veya koyu temaya geç">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
@@ -466,32 +463,44 @@ button,.chip,.pill,.eyebrow,.card-meta{-webkit-user-select:none;user-select:none
     <button type="button" class="kapa" id="kurKapa" aria-label="Kapat">&times;</button>
   </div>
 
-  <section class="panel kiler" aria-labelledby="kilerBaslik">
-    <div class="kiler-head">
-      <h2 id="kilerBaslik">Elimde neler var</h2>
-      <span class="n" id="kilerSayi">0 malzeme</span>
-      <button class="clear" id="temizle" type="button">hepsini temizle</button>
-    </div>
+  <section class="hero" id="hero" aria-live="polite"></section>
 
-    <div class="searchbox">
-      <input id="ara" type="text" autocomplete="off" spellcheck="false"
-             placeholder="Malzeme yaz ve Enter'a bas — örn. patlıcan, kıyma, yoğurt"
-             aria-label="Malzeme ekle" role="combobox" aria-expanded="false" aria-controls="oneri">
-      <div class="suggest" id="oneri" role="listbox" hidden></div>
-    </div>
+  <section class="panel kiler" id="kiler" data-acik="0">
+    <button class="kiler-bar" type="button" id="kilerAc" aria-expanded="false" aria-controls="kilerIc">
+      <svg class="sepet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 8h18l-1.6 10.2a2 2 0 0 1-2 1.8H6.6a2 2 0 0 1-2-1.8z"></path>
+        <path d="M8.5 8 12 3l3.5 5"></path>
+      </svg>
+      <span class="ozet">
+        <b id="kilerSayi">Kiler</b>
+        <span id="kilerOrnek"></span>
+      </span>
+      <span class="ok" id="kilerOk">Düzenle</span>
+    </button>
 
-    <div class="tray" id="tepsi"></div>
+    <div class="kiler-ic" id="kilerIc" hidden>
+      <div class="searchbox">
+        <input id="ara" type="text" autocomplete="off" spellcheck="false"
+               placeholder="Malzeme yaz ve Enter'a bas — örn. patlıcan, kıyma"
+               aria-label="Malzeme ekle" role="combobox" aria-expanded="false" aria-controls="oneri">
+        <div class="suggest" id="oneri" role="listbox" hidden></div>
+      </div>
 
-    <div class="picks">
-      <span class="eyebrow">Sık kullanılanlar — dokunup ekle</span>
-      <div id="hizli"></div>
-    </div>
+      <div class="tray" id="tepsi"></div>
 
-    <div class="basics">
-      <label class="sw"><input type="checkbox" id="swTemel" checked>
-        <span>Tuz, yağ, su, un evde var say</span></label>
-      <label class="sw"><input type="checkbox" id="swBaharat" checked>
-        <span>Baharatlar evde var say</span></label>
+      <div class="picks">
+        <span class="eyebrow">Sık kullanılanlar — dokunup ekle</span>
+        <div id="hizli"></div>
+      </div>
+
+      <div class="basics">
+        <label class="sw"><input type="checkbox" id="swTemel" checked>
+          <span>Tuz, yağ, su, un evde var say</span></label>
+        <label class="sw"><input type="checkbox" id="swBaharat" checked>
+          <span>Baharatlar evde var say</span></label>
+      </div>
+
+      <button class="clear" type="button" id="temizle">Kileri tamamen boşalt</button>
     </div>
   </section>
 
@@ -508,7 +517,7 @@ button,.chip,.pill,.eyebrow,.card-meta{-webkit-user-select:none;user-select:none
   <footer class="foot">
     <span id="dbSayi"></span>
     <span>·</span>
-    <span>Kiler tarayıcıda saklanır, hiçbir yere gönderilmez.</span>
+    <span>Kiler telefonunda saklanır, hiçbir yere gönderilmez.</span>
   </footer>
 </main>
 
@@ -1224,7 +1233,8 @@ const D = {
   temel:   oku("temel", true),
   baharat: oku("baharat", true),
   mod:     oku("mod", "hepsi"),
-  tam:     oku("tam", false)
+  tam:     oku("tam", false),
+  acik:    oku("acik", false)
 };
 if (!Array.isArray(D.kiler)) D.kiler = BASLANGIC.slice();
 
@@ -1234,7 +1244,9 @@ const el = {
   sayi:$("#kilerSayi"), temizle:$("#temizle"), modlar:$("#modlar"),
   ozet:$("#ozet"), liste:$("#liste"), perde:$("#perde"), kagit:$("#kagit"),
   swTemel:$("#swTemel"), swBaharat:$("#swBaharat"), swTam:$("#swTam"),
-  dbSayi:$("#dbSayi"), temaBtn:$("#temaBtn"),
+  dbSayi:$("#dbSayi"), temaBtn:$("#temaBtn"), hero:$("#hero"),
+  kiler:$("#kiler"), kilerAc:$("#kilerAc"), kilerIc:$("#kilerIc"),
+  kilerOrnek:$("#kilerOrnek"), kilerOk:$("#kilerOk"),
   kurSerit:$("#kurSerit"), kurBtn:$("#kurBtn"), kurKapa:$("#kurKapa"), kurMetin:$("#kurMetin")
 };
 
@@ -1290,7 +1302,13 @@ function cikar(ad){
 }
 
 function cizTepsi(){
-  el.sayi.textContent = D.kiler.length + " malzeme";
+  const sirali = D.kiler.slice().sort((a,b) => a.localeCompare(b,"tr"));
+  el.sayi.textContent = D.kiler.length
+    ? "Kilerinde " + D.kiler.length + " malzeme var"
+    : "Kilerin boş";
+  el.kilerOrnek.textContent = D.kiler.length
+    ? sirali.slice(0, 6).join(", ") + (D.kiler.length > 6 ? " ve " + (D.kiler.length - 6) + " tane daha" : "")
+    : "Ne pişirebileceğini görmek için birkaç malzeme ekle";
   el.tepsi.innerHTML = D.kiler
     .slice()
     .sort((a,b) => a.localeCompare(b,"tr"))
@@ -1372,34 +1390,104 @@ function cizModlar(sonuclar){
 /* ---------------- sonuç listesi ---------------- */
 function kartHTML(s){
   const t = s.t;
-  const yuzde = Math.round(s.oran * 100);
   const rozet = s.durum === "ok"
     ? '<span class="pill ok">Malzemen tam</span>'
     : '<span class="pill ' + s.durum + '">' + s.eksik.length + ' eksik</span>';
+  const sinif = s.durum === "ok" ? "hazir" : (s.durum === "near" ? "yakin" : "uzak");
   const eksikSatir = s.eksik.length
-    ? '<div class="card-miss">Eksik: <b>' + s.eksik.map(esc).join("</b>, <b>") + '</b></div>'
+    ? '<span class="eksik">Eksik: <b>' + s.eksik.map(esc).join("</b>, <b>") + '</b></span>'
     : '';
-  return '<button type="button" class="card" data-tarif="' + esc(t.i) + '">' +
-    '<span class="card-main">' +
-      '<span class="card-t">' +
+  return '<button type="button" class="card ' + sinif + '" data-tarif="' + esc(t.i) + '">' +
+    '<span class="sol">' +
+      '<span class="satir">' +
         '<span class="meter" data-lv="' + t.zor + '" aria-hidden="true"><i></i><i></i><i></i></span>' +
-        '<h3>' + esc(t.ad) + '</h3>' +
+        '<span class="ad">' + esc(t.ad) + '</span>' +
         '<span class="pill tag">' + esc(t.kat) + '</span>' +
       '</span>' +
-      '<span class="card-meta"><span>' + ZOR_AD[t.zor] + '</span><span>' + t.dk +
-      ' dakika</span><span>' + t.kisi + ' kişilik</span><span>' + t.mlz.length +
-      ' malzeme</span></span>' +
+      '<span class="meta"><span>' + ZOR_AD[t.zor] + '</span><span>' + t.dk +
+      ' dakika</span><span>' + t.kisi + ' kişilik</span></span>' + eksikSatir +
     '</span>' +
-    '<span class="card-side">' + rozet +
-      (s.durum === "ok" ? '' :
-        '<span class="bar" data-s="' + s.durum + '" role="img" aria-label="Malzemelerin yüzde ' +
-        yuzde + '\'i elinde"><i style="width:' + yuzde + '%"></i></span>') +
-    '</span>' + eksikSatir + '</button>';
+    '<span class="sag">' + rozet + '</span></button>';
+}
+
+/* ---------------- günün önerisi ---------------- */
+let heroSecim = null;
+
+/* Önce eksiksiz yapılabilenler; hiç yoksa az eksikle yapılabilenler. */
+function heroHavuzu(sonuclar){
+  let h = sonuclar;
+  if (D.mod !== "hepsi") h = h.filter(s => s.t.zor === Number(D.mod));
+  const tam = h.filter(s => s.durum === "ok");
+  if (tam.length) return tam;
+  return h.filter(s => s.durum === "near");
+}
+
+const ROZET_SVG =
+  '<svg class="desen" viewBox="0 0 200 200" aria-hidden="true">' +
+    '<circle cx="100" cy="100" r="92" fill="none" stroke="#fff" stroke-width="3"></circle>' +
+    '<circle cx="100" cy="100" r="74" fill="none" stroke="#fff" stroke-width="2"></circle>' +
+    '<g fill="#fff">' +
+      '<ellipse cx="100" cy="100" rx="19" ry="58" transform="rotate(0 100 100)"></ellipse>' +
+      '<ellipse cx="100" cy="100" rx="19" ry="58" transform="rotate(60 100 100)"></ellipse>' +
+      '<ellipse cx="100" cy="100" rx="19" ry="58" transform="rotate(120 100 100)"></ellipse>' +
+    '</g>' +
+    '<circle cx="100" cy="100" r="21" fill="var(--kobalt-derin)"></circle>' +
+  '</svg>';
+
+function cizHero(sonuclar){
+  const havuz = heroHavuzu(sonuclar);
+
+  if (!havuz.length){
+    el.hero.className = "hero bos";
+    el.hero.innerHTML =
+      '<div class="hero-in">' +
+        '<span class="eyebrow">Bugünün önerisi</span>' +
+        '<h2>Buradan bir şey öneremiyorum</h2>' +
+        '<p class="hero-durum">' + (D.kiler.length
+          ? "Bu zorluk seviyesinde en fazla iki malzemeyle yapabileceğin bir tarif çıkmadı. Başka bir moda geç ya da kilerine birkaç malzeme ekle."
+          : "Önce kilerine elindeki malzemeleri ekle, sonra sana ne pişirebileceğini söyleyeyim.") +
+        '</p>' +
+      '</div>';
+    return;
+  }
+
+  let s = havuz.find(x => x.t.i === heroSecim);
+  if (!s){
+    s = havuz[Math.floor(Math.random() * havuz.length)];
+    heroSecim = s.t.i;
+  }
+
+  const durum = s.eksik.length === 0
+    ? "Bütün malzemesi evde, hemen başlayabilirsin."
+    : (s.eksik.length === 1
+        ? "Sadece <b>" + esc(s.eksik[0]) + "</b> eksik."
+        : "<b>" + s.eksik.map(esc).join("</b> ve <b>") + "</b> eksik.");
+
+  el.hero.className = "hero";
+  el.hero.innerHTML =
+    ROZET_SVG +
+    '<div class="hero-in">' +
+      '<span class="eyebrow">Bugünün önerisi</span>' +
+      '<h2>' + esc(s.t.ad) + '</h2>' +
+      '<div class="hero-meta">' +
+        '<span class="meter" data-lv="' + s.t.zor + '" aria-hidden="true"><i></i><i></i><i></i></span>' +
+        '<span>' + ZOR_AD[s.t.zor] + '</span><span>' + s.t.dk + ' dakika</span>' +
+        '<span>' + s.t.kisi + ' kişilik</span><span>' + esc(s.t.kat) + '</span>' +
+      '</div>' +
+      '<p class="hero-durum">' + durum + '</p>' +
+      '<div class="hero-btn">' +
+        '<button type="button" class="birincil" data-tarif="' + esc(s.t.i) + '">Tarifi aç</button>' +
+        (havuz.length > 1
+          ? '<button type="button" class="ikincil" id="baskaOner">Başka öner</button>'
+          : '') +
+      '</div>' +
+    '</div>';
 }
 
 function ciz(){
   const sonuclar = eslestir();
   cizModlar(sonuclar);
+  cizHero(sonuclar);
 
   let gosterilecek = sonuclar;
   if (D.mod !== "hepsi") gosterilecek = gosterilecek.filter(s => s.t.zor === Number(D.mod));
@@ -1458,7 +1546,7 @@ function ac(id){
         '<span class="meter" data-lv="' + t.zor + '" aria-hidden="true"><i></i><i></i><i></i></span>' +
         '<span class="pill tag">' + ZOR_AD[t.zor] + '</span>' +
         '<span class="pill tag">' + esc(t.kat) + '</span>' +
-        '<span class="card-meta"><span>' + t.dk + ' dakika</span><span>' + t.kisi + ' kişilik</span></span>' +
+        '<span class="sheet-meta"><span>' + t.dk + ' dakika</span><span>' + t.kisi + ' kişilik</span></span>' +
       '</div>' +
     '</div>' +
     '<div class="sheet-bd">' +
@@ -1561,6 +1649,30 @@ el.liste.addEventListener("click", e => {
   if (b) ac(b.dataset.tarif);
 });
 
+el.hero.addEventListener("click", e => {
+  const b = e.target.closest("button[data-tarif]");
+  if (b){ ac(b.dataset.tarif); return; }
+  if (e.target.closest("#baskaOner")){
+    const havuz = heroHavuzu(eslestir());
+    const digerleri = havuz.filter(s => s.t.i !== heroSecim);
+    if (digerleri.length) heroSecim = digerleri[Math.floor(Math.random() * digerleri.length)].t.i;
+    cizHero(eslestir());
+  }
+});
+
+/* Kiler varsayılan olarak katlı durur; asıl cevap olan tarifler öne çıksın. */
+function kilerCiz(){
+  el.kiler.dataset.acik = D.acik ? "1" : "0";
+  el.kilerIc.hidden = !D.acik;
+  el.kilerAc.setAttribute("aria-expanded", String(D.acik));
+  el.kilerOk.textContent = D.acik ? "Kapat" : "Düzenle";
+}
+el.kilerAc.addEventListener("click", () => {
+  D.acik = !D.acik;
+  yaz("acik", D.acik);
+  kilerCiz();
+});
+
 el.swTemel.addEventListener("change", e => { D.temel = e.target.checked; yaz("temel", D.temel); ciz(); });
 el.swBaharat.addEventListener("change", e => { D.baharat = e.target.checked; yaz("baharat", D.baharat); ciz(); });
 el.swTam.addEventListener("change", e => { D.tam = e.target.checked; yaz("tam", D.tam); ciz(); });
@@ -1625,6 +1737,10 @@ if ("serviceWorker" in navigator && location.protocol.startsWith("http") && !cer
 (function baslat(){
   const tema = oku("tema", null);
   if (tema === "dark" || tema === "light") document.documentElement.setAttribute("data-theme", tema);
+
+  /* Kiler boşsa açık başlasın; yapacak bir şey yoksa kullanıcı ne yapacağını görsün. */
+  if (!D.kiler.length) D.acik = true;
+  kilerCiz();
 
   el.swTemel.checked = D.temel;
   el.swBaharat.checked = D.baharat;
