@@ -42,6 +42,10 @@ tarifler telefonda saklandığı için internet olmadan da çalışır.
   "noodle" yazınca erişte çıkar ve kilere malzemenin asıl adıyla girer.
 - **Evde var sayılanlar** — tuz, yağ, su, un ve baharatlar iki anahtarla açılıp
   kapatılır.
+- **Görünüm** — haki yeşili bir palet üzerine kurulu; renkler `:root` içindeki
+  CSS değişkenlerinde (`--haki`, `--zeytin`, `--ink`, `--line` …) tanımlı, açık
+  ve koyu tema için ayrı ayrı. Tek bir değişkeni değiştirmek arayüzün tamamını
+  döndürür. Metin kontrastları WCAG AA eşiğinin (4.5:1) üzerinde tutuldu.
 
 Telefona özel davranışlar: tarif alttan açılan panelde gelir, geri tuşu
 uygulamadan çıkmak yerine tarifi kapatır, tarif açıkken ekran sönmez.
