@@ -59,15 +59,21 @@ Tarifler `index.html` içindeki `TARIFLER` dizisinde duruyor:
 
 ```js
 {i:"benzersiz-kimlik", ad:"Yemeğin Adı", zor:2, dk:45, kisi:4, kat:"Ana yemek",
- mlz:["zorunlu malzeme","bir diğeri"],
- eks:["isteğe bağlı malzeme"],
+ mlz:[["patlıcan","6 adet"],["kıyma","300 g"]],
+ eks:[["pul biber","1 çay kaşığı"]],
  adim:["Birinci adım.","İkinci adım.","Üçüncü adım."],
  not:"Püf noktası."}
 ```
 
-`zor` alanı 1 (kolay), 2 (orta) veya 3 (zor) olmalı. `mlz` içindeki adları `KAT`
-sözlüğündeki yazımlarla aynı tut ki malzeme öneri listesinde doğru kategoride
-görünsünler.
+`mlz` ve `eks` birer `[malzeme adı, ölçü]` çifti listesidir. Ölçüyü tarifin kaç
+kişilik olduğuna göre yaz; `kisi` alanı bunu söylüyor ve tarif kağıdının
+"Malzemeler · 4 kişilik" başlığında görünüyor. Ölçü serbest metin — "300 g",
+"2 su bardağı", "yarım demet", "kızartmak için 2 su bardağı" hepsi geçerli.
+
+`zor` alanı 1 (kolay), 2 (orta) veya 3 (zor) olmalı. Malzeme adlarını `KAT`
+sözlüğündeki yazımlarla aynı tut ki öneri listesinde doğru kategoride
+görünsünler; eşleştirme de bu adlar üzerinden yapılıyor, ölçü metni
+eşleştirmeye karışmıyor.
 
 Tarif ekledikten sonra `sw.js` içindeki `SURUM` değerini artır (`bnp-v1` →
 `bnp-v2`); kurulu telefonlar güncellemeyi böyle alır.

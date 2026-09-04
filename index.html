@@ -344,8 +344,16 @@ button,input{font-family:inherit;font-size:inherit;color:inherit}
 .sheet-bd{padding:20px 22px 26px;display:flex;flex-direction:column;gap:24px}
 .sheet-bd section > .eyebrow{display:block;margin-bottom:10px}
 
-.mlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:0 20px}
-.mlist li{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px}
+.mlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 26px}
+.mlist li{display:flex;align-items:baseline;gap:9px;padding:7px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px}
+.mlist .mad{flex:1;min-width:0}
+.mlist .ops-not{opacity:.75;font-size:12.5px}
+.mlist .molcu{
+  font-family:var(--mono);font-size:12.5px;color:var(--ink-2);
+  white-space:nowrap;font-variant-numeric:tabular-nums;
+}
+.mlist .yok .molcu{color:var(--bol)}
+.mlist .ops .molcu{color:var(--ink-3)}
 .mlist .tick{flex:none;width:17px;height:17px;display:grid;place-items:center;border-radius:50%;font-size:10px;font-weight:700;line-height:1}
 .mlist .var .tick{background:var(--yesil-soft);color:var(--yesil)}
 .mlist .yok .tick{background:var(--bol-soft);color:var(--bol)}
@@ -583,9 +591,13 @@ const TEMEL = ["tuz","su","sıvı yağ","zeytinyağı","un","şeker","karabiber"
 const BAHARAT = ["pul biber","kimyon","kekik","nane","tarçın","vanilya","karabiber"];
 
 /* zor: 1 kolay · 2 orta · 3 zor */
+/* zor: 1 kolay · 2 orta · 3 zor
+   mlz / eks: [malzeme adı, ölçü] çiftleri. Ölçüler tarifin kaç
+   kişilik olduğuna göre yazıldı; kisi alanı bunu söylüyor. */
 const TARIFLER = [
 {i:"menemen",ad:"Menemen",zor:1,dk:20,kisi:2,kat:"Kahvaltı",
- mlz:["yumurta","domates","yeşil biber","soğan"],eks:["beyaz peynir","sucuk","pul biber"],
+ mlz:[["yumurta","4 adet"],["domates","3 orta boy"],["yeşil biber","2 adet"],["soğan","1 küçük"]],
+ eks:[["beyaz peynir","60 g"],["sucuk","8 dilim"],["pul biber","1 çay kaşığı"]],
  adim:["Soğanı ve biberi ince doğra, tavada yağla 4-5 dakika pembeleştir.",
        "Rendelenmiş domatesi ekle, suyunu salıp çekene kadar orta ateşte pişir.",
        "Tuz ve pul biberi at, yumurtaları kırıp ekle.",
@@ -593,7 +605,8 @@ const TARIFLER = [
  not:"Domatesin suyu tam çekilmeden yumurtayı ekleme, yoksa sulu kalır."},
 
 {i:"sucuklu-yumurta",ad:"Sucuklu Yumurta",zor:1,dk:12,kisi:2,kat:"Kahvaltı",
- mlz:["yumurta","sucuk"],eks:["kaşar peyniri","pul biber"],
+ mlz:[["yumurta","4 adet"],["sucuk","10 dilim"]],
+ eks:[["kaşar peyniri","50 g"],["pul biber","1 çay kaşığı"]],
  adim:["Sucukları ince yuvarlak doğra, yağsız tavaya diz.",
        "Kısık ateşte kendi yağını salıp kenarları kıvrılana kadar çevir.",
        "Yumurtaları aralarına kır, tuzunu serp.",
@@ -601,7 +614,8 @@ const TARIFLER = [
  not:"Sucuk yağlı olduğu için tavaya ayrıca yağ eklemene gerek yok."},
 
 {i:"omlet",ad:"Peynirli Omlet",zor:1,dk:10,kisi:2,kat:"Kahvaltı",
- mlz:["yumurta","süt","kaşar peyniri"],eks:["maydanoz","karabiber"],
+ mlz:[["yumurta","4 adet"],["süt","3 yemek kaşığı"],["kaşar peyniri","60 g"]],
+ eks:[["maydanoz","birkaç dal"],["karabiber","1 çay kaşığı"]],
  adim:["Yumurtaları sütle birlikte köpürene kadar çırp, tuz ve karabiber ekle.",
        "Tereyağını ya da sıvı yağı tavada eritip karışımı dök.",
        "Kısık ateşte alt yüzü tutmaya başlayınca rendelenmiş kaşarı üstüne serp.",
@@ -609,7 +623,8 @@ const TARIFLER = [
  not:"Sütteki hava omleti kabartır; sütü atlamak isteyen yerine bir kaşık soda koyabilir."},
 
 {i:"coban-salata",ad:"Çoban Salata",zor:1,dk:10,kisi:4,kat:"Salata",
- mlz:["domates","salatalık","soğan","maydanoz","limon","zeytinyağı"],eks:["yeşil biber","beyaz peynir"],
+ mlz:[["domates","3 adet"],["salatalık","2 adet"],["soğan","1 adet"],["maydanoz","yarım demet"],["limon","1 adet (suyu)"],["zeytinyağı","3 yemek kaşığı"]],
+ eks:[["yeşil biber","2 adet"],["beyaz peynir","80 g"]],
  adim:["Domates ve salatalığı eşit küçük küpler halinde doğra.",
        "Soğanı yarım ay doğrayıp bir tutam tuzla ovala, acısını al.",
        "Maydanozu ince kıy, hepsini kasede birleştir.",
@@ -617,7 +632,8 @@ const TARIFLER = [
  not:"Sosu erken koyarsan sebzeler su bırakır. En son ekle."},
 
 {i:"cacik",ad:"Cacık",zor:1,dk:10,kisi:4,kat:"Meze",
- mlz:["yoğurt","salatalık","sarımsak","dereotu"],eks:["nane","zeytinyağı"],
+ mlz:[["yoğurt","500 g"],["salatalık","2 adet"],["sarımsak","2 diş"],["dereotu","yarım demet"]],
+ eks:[["nane","1 tatlı kaşığı (kuru)"],["zeytinyağı","1 yemek kaşığı"]],
  adim:["Salatalığı rendele, suyunu hafifçe sık.",
        "Yoğurdu bir miktar soğuk suyla çırparak akışkan hale getir.",
        "Ezilmiş sarımsak, tuz ve ince kıyılmış dereotunu ekle.",
@@ -625,7 +641,8 @@ const TARIFLER = [
  not:"Sarımsağı tuzla birlikte ezersen yoğurdun içinde topaklanmaz."},
 
 {i:"haydari",ad:"Haydari",zor:1,dk:10,kisi:4,kat:"Meze",
- mlz:["yoğurt","beyaz peynir","sarımsak","dereotu"],eks:["nane","zeytinyağı","ceviz"],
+ mlz:[["yoğurt","500 g (süzme)"],["beyaz peynir","100 g"],["sarımsak","2 diş"],["dereotu","yarım demet"]],
+ eks:[["nane","1 tatlı kaşığı"],["zeytinyağı","2 yemek kaşığı"],["ceviz","1 avuç"]],
  adim:["Süzme yoğurdu geniş bir kaseye al.",
        "Beyaz peyniri çatalla iyice ez, yoğurda ekle.",
        "Ezilmiş sarımsak, kıyılmış dereotu ve tuzu karıştır.",
@@ -633,7 +650,8 @@ const TARIFLER = [
  not:"Yoğurt suluysa süzgeçte bir tülbentle 1 saat süz; haydari kıvamını böyle bulur."},
 
 {i:"mercimek-corbasi",ad:"Kırmızı Mercimek Çorbası",zor:1,dk:35,kisi:4,kat:"Çorba",
- mlz:["kırmızı mercimek","soğan","havuç","patates","un","tereyağı","limon"],eks:["pul biber","nane"],
+ mlz:[["kırmızı mercimek","1,5 su bardağı"],["soğan","1 adet"],["havuç","1 adet"],["patates","1 küçük"],["un","1 yemek kaşığı"],["tereyağı","2 yemek kaşığı"],["limon","1 adet"]],
+ eks:[["pul biber","1 çay kaşığı"],["nane","1 çay kaşığı"]],
  adim:["Soğanı, havucu ve patatesi iri doğra; tencerede yağla 5 dakika kavur.",
        "Yıkanmış mercimeği ve unu ekleyip 1 dakika daha çevir.",
        "Üzerini 4 parmak geçecek kadar sıcak su ekle, kaynayınca kısık ateşte 25 dakika pişir.",
@@ -642,7 +660,8 @@ const TARIFLER = [
  not:"Blenderdan geçirdikten sonra 5 dakika daha kaynatmak çorbanın tadını oturtur."},
 
 {i:"domates-corbasi",ad:"Domates Çorbası",zor:1,dk:30,kisi:4,kat:"Çorba",
- mlz:["domates","un","süt","tereyağı","domates salçası"],eks:["kaşar peyniri","kekik"],
+ mlz:[["domates","5 adet"],["un","2 yemek kaşığı"],["süt","1 su bardağı"],["tereyağı","2 yemek kaşığı"],["domates salçası","1 yemek kaşığı"]],
+ eks:[["kaşar peyniri","60 g"],["kekik","1 çay kaşığı"]],
  adim:["Tereyağını erit, unu ekleyip kokusu çıkana kadar 2 dakika kavur.",
        "Salçayı ekle, 1 dakika daha çevir.",
        "Rendelenmiş domatesleri ekleyip 10 dakika pişir.",
@@ -651,7 +670,8 @@ const TARIFLER = [
  not:"Sütü soğuk eklersen kesilir. Ilıtıp azar azar ekle."},
 
 {i:"yayla-corbasi",ad:"Yayla Çorbası",zor:1,dk:35,kisi:4,kat:"Çorba",
- mlz:["yoğurt","pirinç","yumurta","un","nane","tereyağı"],eks:[],
+ mlz:[["yoğurt","500 g"],["pirinç","yarım su bardağı"],["yumurta","1 adet"],["un","1 yemek kaşığı"],["nane","1 tatlı kaşığı"],["tereyağı","2 yemek kaşığı"]],
+ eks:[],
  adim:["Pirinci bol suda 15 dakika haşla.",
        "Ayrı kasede yoğurt, yumurta ve unu topak kalmayana kadar çırp.",
        "Tencereden aldığın sıcak sudan azar azar ekleyerek yoğurdu ılıştır.",
@@ -660,7 +680,8 @@ const TARIFLER = [
  not:"Yoğurdu ılıştırmadan eklersen kesilir; bu adımı atlama."},
 
 {i:"ezogelin",ad:"Ezogelin Çorbası",zor:1,dk:40,kisi:4,kat:"Çorba",
- mlz:["kırmızı mercimek","bulgur","pirinç","soğan","domates salçası","biber salçası","tereyağı","nane"],eks:["pul biber","limon"],
+ mlz:[["kırmızı mercimek","1 su bardağı"],["bulgur","yarım su bardağı"],["pirinç","2 yemek kaşığı"],["soğan","1 adet"],["domates salçası","1 yemek kaşığı"],["biber salçası","1 tatlı kaşığı"],["tereyağı","2 yemek kaşığı"],["nane","1 tatlı kaşığı"]],
+ eks:[["pul biber","1 çay kaşığı"],["limon","1 adet"]],
  adim:["Soğanı ince doğrayıp tereyağında pembeleştir.",
        "Salçaları ekleyip 2 dakika kavur.",
        "Mercimek, bulgur ve pirinci ekle, karıştır.",
@@ -669,7 +690,8 @@ const TARIFLER = [
  not:"Bulgur çorbayı koyulaştırır; sulu sevenler suyu bir bardak fazla koysun."},
 
 {i:"sebze-corbasi",ad:"Sebze Çorbası",zor:1,dk:35,kisi:4,kat:"Çorba",
- mlz:["patates","havuç","kabak","soğan","domates","şehriye"],eks:["maydanoz","limon"],
+ mlz:[["patates","2 adet"],["havuç","1 adet"],["kabak","1 adet"],["soğan","1 adet"],["domates","2 adet"],["şehriye","2 yemek kaşığı"]],
+ eks:[["maydanoz","birkaç dal"],["limon","yarım adet"]],
  adim:["Tüm sebzeleri küçük küpler halinde doğra.",
        "Soğanı yağda kavur, ardından havuç ve patatesi ekle.",
        "Rendelenmiş domatesi ekleyip 5 dakika pişir.",
@@ -678,7 +700,8 @@ const TARIFLER = [
  not:"Çocuklar için blenderdan geçirip püre kıvamına getirebilirsin."},
 
 {i:"bulgur-pilavi",ad:"Tereyağlı Bulgur Pilavı",zor:1,dk:30,kisi:4,kat:"Pilav",
- mlz:["bulgur","soğan","domates salçası","tereyağı"],eks:["yeşil biber","domates","pul biber"],
+ mlz:[["bulgur","2 su bardağı"],["soğan","1 adet"],["domates salçası","1 yemek kaşığı"],["tereyağı","2 yemek kaşığı"]],
+ eks:[["yeşil biber","1 adet"],["domates","1 adet"],["pul biber","1 çay kaşığı"]],
  adim:["Soğanı ince doğrayıp tereyağında camlaşana kadar kavur.",
        "Salçayı ekle, kokusu çıkana kadar 2 dakika çevir.",
        "Bulguru ekleyip yağı çekene kadar kavur.",
@@ -687,7 +710,8 @@ const TARIFLER = [
  not:"Demlenirken tencerenin kapağının altına temiz bir bez koy, pilav diri kalır."},
 
 {i:"pirinc-pilavi",ad:"Şehriyeli Pirinç Pilavı",zor:1,dk:35,kisi:4,kat:"Pilav",
- mlz:["pirinç","şehriye","tereyağı"],eks:[],
+ mlz:[["pirinç","2 su bardağı"],["şehriye","yarım su bardağı"],["tereyağı","2 yemek kaşığı"]],
+ eks:[],
  adim:["Pirinci ılık tuzlu suda 20 dakika beklet, sonra durulayıp süz.",
        "Tereyağında şehriyeyi kızarana kadar kavur.",
        "Süzülmüş pirinci ekle, taneler şeffaflaşana kadar çevir.",
@@ -696,7 +720,8 @@ const TARIFLER = [
  not:"Pirinci bekletmek nişastasını alır; pilavın dağılmasının sırrı bu."},
 
 {i:"patates-kizartmasi",ad:"Patates Kızartması",zor:1,dk:25,kisi:3,kat:"Atıştırmalık",
- mlz:["patates","sıvı yağ"],eks:["kekik","pul biber"],
+ mlz:[["patates","5 adet"],["sıvı yağ","kızartmak için 2 su bardağı"]],
+ eks:[["kekik","1 çay kaşığı"],["pul biber","1 çay kaşığı"]],
  adim:["Patatesleri soyup eşit kalınlıkta doğra.",
        "Soğuk suda 15 dakika beklet, sonra iyice kurula.",
        "Yağı kızdır, patatesleri az az atarak kızart.",
@@ -704,7 +729,8 @@ const TARIFLER = [
  not:"Islak patates yağı sıçratır ve gevrek olmaz. Kurulama adımı şart."},
 
 {i:"yumurtali-ekmek",ad:"Yumurtalı Ekmek",zor:1,dk:12,kisi:2,kat:"Kahvaltı",
- mlz:["yumurta","ekmek","süt"],eks:["kaşar peyniri","karabiber"],
+ mlz:[["yumurta","2 adet"],["ekmek","4 dilim"],["süt","3 yemek kaşığı"]],
+ eks:[["kaşar peyniri","40 g"],["karabiber","1 çay kaşığı"]],
  adim:["Yumurta, süt ve tuzu bir kasede çırp.",
        "Ekmek dilimlerini karışıma iki tarafından da batır.",
        "Tereyağı ya da sıvı yağ kızdırılmış tavaya diz.",
@@ -712,7 +738,8 @@ const TARIFLER = [
  not:"Bayat ekmek karışımı daha iyi emer, bu tarif için ideal."},
 
 {i:"tost",ad:"Kaşarlı Tost",zor:1,dk:10,kisi:2,kat:"Kahvaltı",
- mlz:["ekmek","kaşar peyniri"],eks:["domates","sucuk","tereyağı"],
+ mlz:[["ekmek","4 dilim"],["kaşar peyniri","100 g"]],
+ eks:[["domates","1 adet"],["sucuk","6 dilim"],["tereyağı","1 yemek kaşığı"]],
  adim:["Ekmek dilimlerinin dışını tereyağıyla yağla.",
        "Aralarına rendelenmiş kaşarı ve istersen domates, sucuk koy.",
        "Tost makinesinde ya da tavada ağır bir kapakla bastırarak kızart.",
@@ -720,7 +747,8 @@ const TARIFLER = [
  not:"Tavada yaparken kısık ateş kullan; yüksek ateşte dışı yanar içi erimez."},
 
 {i:"piyaz",ad:"Piyaz",zor:1,dk:20,kisi:4,kat:"Salata",
- mlz:["kuru fasulye","soğan","maydanoz","domates","limon","zeytinyağı","yumurta"],eks:["sirke","pul biber"],
+ mlz:[["kuru fasulye","2 su bardağı (haşlanmış)"],["soğan","1 adet"],["maydanoz","yarım demet"],["domates","1 adet"],["limon","1 adet"],["zeytinyağı","4 yemek kaşığı"],["yumurta","2 adet (haşlanmış)"]],
+ eks:[["sirke","1 yemek kaşığı"],["pul biber","1 çay kaşığı"]],
  adim:["Haşlanmış kuru fasulyeyi süzüp geniş tabağa yay.",
        "Soğanı ince yarım ay doğra, tuzla ovup acısını al.",
        "Domates, maydanoz ve haşlanmış yumurtayı dilimle.",
@@ -729,7 +757,8 @@ const TARIFLER = [
  not:"Konserve fasulye kullanacaksan iyice durula, tuzu fazla olur."},
 
 {i:"patates-salatasi",ad:"Patates Salatası",zor:1,dk:30,kisi:4,kat:"Salata",
- mlz:["patates","soğan","maydanoz","limon","zeytinyağı"],eks:["yeşil biber","yumurta","nar ekşisi"],
+ mlz:[["patates","5 adet"],["soğan","1 adet"],["maydanoz","yarım demet"],["limon","1 adet"],["zeytinyağı","4 yemek kaşığı"]],
+ eks:[["yeşil biber","1 adet"],["yumurta","2 adet (haşlanmış)"],["nar ekşisi","1 yemek kaşığı"]],
  adim:["Patatesleri kabuklu haşla, ılıyınca soyup küp doğra.",
        "Taze soğan ve maydanozu ince kıy.",
        "Limon, zeytinyağı ve tuzu çırp.",
@@ -737,7 +766,8 @@ const TARIFLER = [
  not:"Sosu patates ılıkken eklersen tadı içine çeker; soğuduktan sonra emmez."},
 
 {i:"kisir",ad:"Kısır",zor:1,dk:35,kisi:6,kat:"Salata",
- mlz:["ince bulgur","domates salçası","biber salçası","soğan","maydanoz","limon","nar ekşisi","salatalık"],eks:["taze soğan","pul biber","nane"],
+ mlz:[["ince bulgur","2 su bardağı"],["domates salçası","1 yemek kaşığı"],["biber salçası","1 yemek kaşığı"],["soğan","1 adet"],["maydanoz","1 demet"],["limon","2 adet"],["nar ekşisi","3 yemek kaşığı"],["salatalık","1 adet"]],
+ eks:[["taze soğan","4 dal"],["pul biber","1 tatlı kaşığı"],["nane","1 tatlı kaşığı"]],
  adim:["İnce bulgurun üzerine eşit ölçüde kaynar su dök, kapağını kapatıp 20 dakika beklet.",
        "Soğanı ince doğrayıp zeytinyağında salçalarla kavur, bulgurun üzerine dök.",
        "Ellerinle ovalayarak bulguru salçayla buluştur.",
@@ -746,7 +776,8 @@ const TARIFLER = [
  not:"Bulgur şişerken kapağı açma; buharla pişer, yoksa sert kalır."},
 
 {i:"yogurtlu-makarna",ad:"Yoğurtlu Makarna",zor:1,dk:20,kisi:3,kat:"Makarna",
- mlz:["makarna","yoğurt","sarımsak","tereyağı","pul biber"],eks:["nane"],
+ mlz:[["makarna","300 g"],["yoğurt","400 g"],["sarımsak","2 diş"],["tereyağı","2 yemek kaşığı"],["pul biber","1 çay kaşığı"]],
+ eks:[["nane","1 çay kaşığı"]],
  adim:["Makarnayı tuzlu suda diri kalacak şekilde haşla.",
        "Yoğurdu ezilmiş sarımsak ve tuzla çırp, oda sıcaklığına getir.",
        "Makarnayı süzüp tabağa al, yoğurdu üzerine dök.",
@@ -754,7 +785,8 @@ const TARIFLER = [
  not:"Yoğurt buzdolabından yeni çıkmışsa makarnayı soğutur; önceden dışarı al."},
 
 {i:"cilbir",ad:"Çılbır",zor:1,dk:15,kisi:2,kat:"Kahvaltı",
- mlz:["yumurta","yoğurt","sarımsak","tereyağı","pul biber"],eks:["sirke","nane"],
+ mlz:[["yumurta","2 adet"],["yoğurt","300 g"],["sarımsak","1 diş"],["tereyağı","2 yemek kaşığı"],["pul biber","1 çay kaşığı"]],
+ eks:[["sirke","1 tatlı kaşığı"],["nane","1 çay kaşığı"]],
  adim:["Yoğurdu ezilmiş sarımsak ve tuzla karıştır, tabağa yay.",
        "Geniş tencerede suyu kaynama noktasının hemen altına getir, bir tatlı kaşığı sirke ekle.",
        "Yumurtayı küçük kaseye kırıp suya nazikçe bırak, 3 dakika poşe et.",
@@ -763,7 +795,8 @@ const TARIFLER = [
  not:"Su fokur fokur kaynarsa yumurta dağılır; yüzeyde sadece küçük kabarcıklar olmalı."},
 
 {i:"firinda-sebze",ad:"Fırında Karışık Sebze",zor:1,dk:50,kisi:4,kat:"Sebze",
- mlz:["patates","havuç","kabak","patlıcan","yeşil biber","zeytinyağı","kekik"],eks:["domates","sarımsak","soğan"],
+ mlz:[["patates","3 adet"],["havuç","2 adet"],["kabak","2 adet"],["patlıcan","1 adet"],["yeşil biber","2 adet"],["zeytinyağı","5 yemek kaşığı"],["kekik","1 tatlı kaşığı"]],
+ eks:[["domates","2 adet"],["sarımsak","4 diş"],["soğan","1 adet"]],
  adim:["Fırını 200 dereceye ısıt.",
        "Sebzeleri benzer büyüklükte iri parçalar halinde doğra.",
        "Zeytinyağı, tuz, karabiber ve kekikle harmanla.",
@@ -772,7 +805,8 @@ const TARIFLER = [
  not:"Sebzeleri üst üste yığma; buğulanır, kızarmaz."},
 
 {i:"tavuklu-salata",ad:"Tavuklu Salata",zor:1,dk:25,kisi:2,kat:"Salata",
- mlz:["tavuk göğsü","marul","domates","salatalık","limon","zeytinyağı"],eks:["mısır","kekik","beyaz peynir"],
+ mlz:[["tavuk göğsü","1 adet (250 g)"],["marul","yarım baş"],["domates","2 adet"],["salatalık","1 adet"],["limon","1 adet"],["zeytinyağı","3 yemek kaşığı"]],
+ eks:[["mısır","yarım konserve"],["kekik","1 çay kaşığı"],["beyaz peynir","60 g"]],
  adim:["Tavuk göğsünü tuz, karabiber ve kekikle ovup tavada her yüzünü 5-6 dakika pişir.",
        "Dinlendirip iri şeritler halinde doğra.",
        "Marulu elle yırt, domates ve salatalığı doğra.",
@@ -781,15 +815,18 @@ const TARIFLER = [
  not:"Tavuğu pişer pişmez kesme; 5 dakika dinlendirirsen suyunu kaybetmez."},
 
 {i:"muhallebi",ad:"Muhallebi",zor:1,dk:25,kisi:4,kat:"Tatlı",
- mlz:["süt","şeker","nişasta","un","vanilya"],eks:["tarçın","fındık"],
+ mlz:[["süt","1 litre"],["şeker","yarım su bardağı"],["nişasta","3 yemek kaşığı"],["un","2 yemek kaşığı"],["vanilya","1 paket"]],
+ eks:[["tarçın","1 çay kaşığı"],["fındık","1 avuç"]],
  adim:["Sütün bir kısmını ayırıp nişasta ve unu içinde topak kalmayana kadar ez.",
        "Kalan sütü ve şekeri tencerede ısıt.",
        "Nişastalı sütü tencereye süzerek ekle, sürekli karıştır.",
        "Koyulaşıp fokurdayınca 2 dakika daha pişir, vanilyayı ekle.",
        "Kaselere paylaştır, üzeri soğuyunca buzdolabına al."],
  not:"Karıştırmayı bırakma; tencerenin dibi bir anda tutar."},
+
 {i:"karniyarik",ad:"Karnıyarık",zor:2,dk:70,kisi:4,kat:"Ana yemek",
- mlz:["patlıcan","kıyma","soğan","domates","yeşil biber","sarımsak","domates salçası","maydanoz"],eks:["pul biber"],
+ mlz:[["patlıcan","6 adet"],["kıyma","300 g"],["soğan","2 adet"],["domates","3 adet"],["yeşil biber","4 adet"],["sarımsak","3 diş"],["domates salçası","1 yemek kaşığı"],["maydanoz","yarım demet"]],
+ eks:[["pul biber","1 çay kaşığı"]],
  adim:["Patlıcanları alacalı soy, tuzlu suda 20 dakika beklet, kurula.",
        "Yağda her yanını çevirerek kızart ya da fırında 200 derecede 25 dakika pişir.",
        "İç harç için soğanı kavur, kıymayı ekleyip suyunu salıp çekene kadar pişir.",
@@ -799,7 +836,8 @@ const TARIFLER = [
  not:"Patlıcanı tuzlu suda bekletmek acısını alır ve yağ çekmesini azaltır."},
 
 {i:"imam-bayildi",ad:"İmam Bayıldı",zor:2,dk:75,kisi:4,kat:"Zeytinyağlı",
- mlz:["patlıcan","soğan","domates","yeşil biber","sarımsak","maydanoz","zeytinyağı"],eks:["şeker","limon"],
+ mlz:[["patlıcan","6 adet"],["soğan","3 adet"],["domates","3 adet"],["yeşil biber","3 adet"],["sarımsak","8 diş"],["maydanoz","yarım demet"],["zeytinyağı","1 su bardağı"]],
+ eks:[["şeker","1 tatlı kaşığı"],["limon","1 adet"]],
  adim:["Patlıcanları alacalı soyup tuzlu suda beklet, kurulayıp kızart.",
        "Soğanı yarım ay doğrayıp bol zeytinyağında yumuşayana kadar kavur.",
        "Bütün sarımsak dişleri, doğranmış domates, biber ve maydanozu ekle.",
@@ -809,7 +847,8 @@ const TARIFLER = [
  not:"Kıymasız olması tesadüf değil; zeytinyağlı yemek soğuk yenir, bu yüzden bol zeytinyağı gerekir."},
 
 {i:"kuru-fasulye",ad:"Kuru Fasulye",zor:2,dk:90,kisi:4,kat:"Ana yemek",
- mlz:["kuru fasulye","soğan","domates salçası","biber salçası","sıvı yağ"],eks:["kuşbaşı et","yeşil biber","pul biber"],
+ mlz:[["kuru fasulye","2 su bardağı"],["soğan","1 adet"],["domates salçası","1 yemek kaşığı"],["biber salçası","1 tatlı kaşığı"],["sıvı yağ","3 yemek kaşığı"]],
+ eks:[["kuşbaşı et","250 g"],["yeşil biber","1 adet"],["pul biber","1 çay kaşığı"]],
  adim:["Fasulyeyi bir gece önceden bol suda ıslat, ertesi gün suyunu dök.",
        "Soğanı yağda kavur, istersen kuşbaşı eti ekleyip mühürle.",
        "Salçaları ekleyip 2 dakika çevir.",
@@ -819,7 +858,8 @@ const TARIFLER = [
  not:"Tuzu başta atarsan fasulyenin kabuğu sertleşir ve geç pişer."},
 
 {i:"nohut-yemegi",ad:"Nohut Yemeği",zor:2,dk:80,kisi:4,kat:"Ana yemek",
- mlz:["nohut","soğan","domates","domates salçası","sıvı yağ"],eks:["kuşbaşı et","yeşil biber","kimyon"],
+ mlz:[["nohut","2 su bardağı"],["soğan","1 adet"],["domates","2 adet"],["domates salçası","1 yemek kaşığı"],["sıvı yağ","3 yemek kaşığı"]],
+ eks:[["kuşbaşı et","250 g"],["yeşil biber","1 adet"],["kimyon","1 çay kaşığı"]],
  adim:["Nohudu bir gece ıslat, suyunu dök.",
        "Soğanı yağda kavur, salçayı ekleyip çevir.",
        "Rendelenmiş domatesi ilave edip 5 dakika pişir.",
@@ -828,7 +868,8 @@ const TARIFLER = [
  not:"Düdüklü tencerede 20 dakika yeterli; suyu yarıya indir."},
 
 {i:"tavuk-sote",ad:"Tavuk Sote",zor:2,dk:35,kisi:4,kat:"Ana yemek",
- mlz:["tavuk göğsü","soğan","yeşil biber","domates","sarımsak","domates salçası"],eks:["mantar","kekik","pul biber"],
+ mlz:[["tavuk göğsü","2 adet (500 g)"],["soğan","1 adet"],["yeşil biber","3 adet"],["domates","2 adet"],["sarımsak","2 diş"],["domates salçası","1 yemek kaşığı"]],
+ eks:[["mantar","200 g"],["kekik","1 çay kaşığı"],["pul biber","1 çay kaşığı"]],
  adim:["Tavuğu kuşbaşı doğra, yüksek ateşte yağda suyunu salıp çekene kadar mühürle.",
        "Soğan ve biberi ekleyip 5 dakika kavur.",
        "Sarımsak ve salçayı ekle, 1 dakika çevir.",
@@ -837,7 +878,8 @@ const TARIFLER = [
  not:"Tavuğu az az at; tavayı doldurursan haşlanır, kızarmaz."},
 
 {i:"etli-turlu",ad:"Etli Türlü",zor:2,dk:80,kisi:5,kat:"Ana yemek",
- mlz:["kuşbaşı et","patates","patlıcan","kabak","havuç","domates","yeşil biber","soğan","domates salçası"],eks:["taze fasulye","sarımsak"],
+ mlz:[["kuşbaşı et","500 g"],["patates","2 adet"],["patlıcan","2 adet"],["kabak","2 adet"],["havuç","1 adet"],["domates","3 adet"],["yeşil biber","2 adet"],["soğan","1 adet"],["domates salçası","1 yemek kaşığı"]],
+ eks:[["taze fasulye","200 g"],["sarımsak","2 diş"]],
  adim:["Eti yağda mühürle, üzerine az su ekleyip yumuşayana kadar 45 dakika pişir.",
        "Soğanı ekleyip kavur, salçayı ilave et.",
        "Tüm sebzeleri iri doğrayıp tencereye ekle.",
@@ -846,7 +888,8 @@ const TARIFLER = [
  not:"Sebzeleri iri doğra; küçük doğranırsa uzun pişirmede dağılır."},
 
 {i:"taze-fasulye",ad:"Zeytinyağlı Taze Fasulye",zor:2,dk:60,kisi:4,kat:"Zeytinyağlı",
- mlz:["taze fasulye","soğan","domates","zeytinyağı","şeker"],eks:["sarımsak","limon"],
+ mlz:[["taze fasulye","750 g"],["soğan","1 adet"],["domates","2 adet"],["zeytinyağı","yarım su bardağı"],["şeker","1 tatlı kaşığı"]],
+ eks:[["sarımsak","2 diş"],["limon","1 adet"]],
  adim:["Fasulyelerin uçlarını ve kılçığını temizle, ikiye böl.",
        "Soğanı zeytinyağında yumuşayana kadar kavur.",
        "Rendelenmiş domatesi ekleyip 5 dakika pişir.",
@@ -856,7 +899,8 @@ const TARIFLER = [
  not:"Şeker tatlandırmak için değil, fasulyenin yeşil rengini korumak için."},
 
 {i:"sebzeli-bulgur",ad:"Sebzeli Bulgur Pilavı",zor:2,dk:40,kisi:4,kat:"Pilav",
- mlz:["bulgur","soğan","havuç","yeşil biber","domates","domates salçası","tereyağı"],eks:["nohut","pul biber"],
+ mlz:[["bulgur","2 su bardağı"],["soğan","1 adet"],["havuç","1 adet"],["yeşil biber","2 adet"],["domates","2 adet"],["domates salçası","1 yemek kaşığı"],["tereyağı","2 yemek kaşığı"]],
+ eks:[["nohut","yarım su bardağı (haşlanmış)"],["pul biber","1 çay kaşığı"]],
  adim:["Soğan, havuç ve biberi küçük doğrayıp tereyağında 6-7 dakika kavur.",
        "Salçayı ekle, kokusu çıkana kadar çevir.",
        "Rendelenmiş domatesi ekleyip suyunu çektir.",
@@ -866,7 +910,8 @@ const TARIFLER = [
  not:"Sebzeleri bulgurla aynı boyda doğrarsan her kaşıkta hepsinden olur."},
 
 {i:"tavuklu-pilav",ad:"Tavuklu Pilav",zor:2,dk:55,kisi:4,kat:"Pilav",
- mlz:["pirinç","tavuk göğsü","tereyağı","soğan","şehriye"],eks:["havuç","bezelye","karabiber"],
+ mlz:[["pirinç","2 su bardağı"],["tavuk göğsü","1 adet (250 g)"],["tereyağı","3 yemek kaşığı"],["soğan","1 adet"],["şehriye","yarım su bardağı"]],
+ eks:[["havuç","1 adet"],["bezelye","yarım su bardağı"],["karabiber","1 çay kaşığı"]],
  adim:["Tavuğu tuzlu suda 25 dakika haşla, suyunu ayır, etini didikle.",
        "Pirinci ılık tuzlu suda 20 dakika beklet, durula.",
        "Tereyağında şehriyeyi kızart, didiklenmiş tavuğu ekleyip çevir.",
@@ -876,7 +921,8 @@ const TARIFLER = [
  not:"Suyu yerine tavuk haşlama suyunu kullanmak pilavın tadını iki katına çıkarır."},
 
 {i:"firin-tavuk",ad:"Fırında Tavuk But",zor:2,dk:70,kisi:4,kat:"Ana yemek",
- mlz:["tavuk but","patates","sarımsak","yoğurt","domates salçası","kekik","zeytinyağı"],eks:["havuç","pul biber","limon"],
+ mlz:[["tavuk but","4 adet"],["patates","4 adet"],["sarımsak","4 diş"],["yoğurt","3 yemek kaşığı"],["domates salçası","1 yemek kaşığı"],["kekik","1 tatlı kaşığı"],["zeytinyağı","3 yemek kaşığı"]],
+ eks:[["havuç","2 adet"],["pul biber","1 çay kaşığı"],["limon","yarım adet"]],
  adim:["Yoğurt, salça, ezilmiş sarımsak, zeytinyağı, kekik, tuz ve karabiberi karıştırıp sos yap.",
        "Tavuk butları sosla iyice ovala, mümkünse 1 saat buzdolabında beklet.",
        "Patatesleri iri doğrayıp tepsiye yay, üzerine tavukları diz.",
@@ -885,7 +931,8 @@ const TARIFLER = [
  not:"Son 20 dakikayı folyosuz pişirmek deriyi çıtır yapar."},
 
 {i:"kofte",ad:"Ev Köftesi",zor:2,dk:45,kisi:4,kat:"Ana yemek",
- mlz:["kıyma","soğan","galeta unu","yumurta","sarımsak","kimyon","maydanoz"],eks:["karabiber","pul biber"],
+ mlz:[["kıyma","500 g"],["soğan","1 adet"],["galeta unu","3 yemek kaşığı"],["yumurta","1 adet"],["sarımsak","2 diş"],["kimyon","1 tatlı kaşığı"],["maydanoz","yarım demet"]],
+ eks:[["karabiber","1 çay kaşığı"],["pul biber","1 çay kaşığı"]],
  adim:["Soğanı rendele, suyunu hafifçe sık.",
        "Kıyma, soğan, galeta unu, yumurta, ezilmiş sarımsak, kıyılmış maydanoz ve baharatları yoğur.",
        "Harcı en az 10 dakika, iyice birleşene kadar yoğurmaya devam et.",
@@ -895,7 +942,8 @@ const TARIFLER = [
  not:"Dinlendirmeden pişirirsen köfteler tavada dağılır. Bu adım şart."},
 
 {i:"musakka",ad:"Patlıcan Musakka",zor:2,dk:70,kisi:4,kat:"Ana yemek",
- mlz:["patlıcan","kıyma","soğan","domates","yeşil biber","domates salçası","sarımsak"],eks:["maydanoz","kaşar peyniri"],
+ mlz:[["patlıcan","4 adet"],["kıyma","300 g"],["soğan","1 adet"],["domates","3 adet"],["yeşil biber","2 adet"],["domates salçası","1 yemek kaşığı"],["sarımsak","2 diş"]],
+ eks:[["maydanoz","yarım demet"],["kaşar peyniri","100 g"]],
  adim:["Patlıcanları yuvarlak dilimle, tuzlu suda beklet, kurulayıp kızart.",
        "Soğanı kavur, kıymayı ekleyip suyunu çektir.",
        "Sarımsak, salça ve doğranmış domates, biberi ekleyip 10 dakika pişir.",
@@ -904,7 +952,8 @@ const TARIFLER = [
  not:"Patlıcanı fırında pişirmek yağ tüketimini yarıya indirir, tadı bozmaz."},
 
 {i:"ispanakli-borek",ad:"Ispanaklı Börek",zor:2,dk:60,kisi:6,kat:"Börek",
- mlz:["yufka","ıspanak","soğan","beyaz peynir","yumurta","süt","sıvı yağ"],eks:["maydanoz","susam"],
+ mlz:[["yufka","4 yaprak"],["ıspanak","1 kg"],["soğan","1 adet"],["beyaz peynir","200 g"],["yumurta","2 adet"],["süt","1 su bardağı"],["sıvı yağ","yarım su bardağı"]],
+ eks:[["maydanoz","yarım demet"],["susam","1 yemek kaşığı"]],
  adim:["Ispanağı yıkayıp doğra, soğanla birlikte yağda kavur, suyunu tamamen çektir.",
        "Ilıyınca ezilmiş beyaz peyniri ve karabiberi ekle.",
        "Süt, sıvı yağ ve bir yumurtayı çırparak ıslatma sosunu hazırla.",
@@ -914,7 +963,8 @@ const TARIFLER = [
  not:"Ispanağın suyunu tam çektirmezsen böreğin altı hamur kalır."},
 
 {i:"sigara-boregi",ad:"Sigara Böreği",zor:2,dk:40,kisi:5,kat:"Börek",
- mlz:["yufka","beyaz peynir","maydanoz","sıvı yağ"],eks:["yumurta","dereotu"],
+ mlz:[["yufka","3 yaprak"],["beyaz peynir","250 g"],["maydanoz","yarım demet"],["sıvı yağ","kızartmak için 2 su bardağı"]],
+ eks:[["yumurta","1 adet"],["dereotu","birkaç dal"]],
  adim:["Peyniri çatalla ez, ince kıyılmış maydanozla karıştır.",
        "Yufkayı üçgen dilimlere ayır.",
        "Geniş kenara harçtan koy, kenarları içe katlayarak sıkıca sar.",
@@ -923,7 +973,8 @@ const TARIFLER = [
  not:"Sarımı gevşek yaparsan yağda açılır. Sıkı sar, ucunu mutlaka ıslat."},
 
 {i:"mercimek-koftesi",ad:"Mercimek Köftesi",zor:2,dk:50,kisi:6,kat:"Meze",
- mlz:["kırmızı mercimek","ince bulgur","soğan","domates salçası","biber salçası","maydanoz","taze soğan","limon"],eks:["pul biber","kimyon","marul"],
+ mlz:[["kırmızı mercimek","1 su bardağı"],["ince bulgur","1 su bardağı"],["soğan","1 adet"],["domates salçası","1 yemek kaşığı"],["biber salçası","1 yemek kaşığı"],["maydanoz","1 demet"],["taze soğan","5 dal"],["limon","1 adet"]],
+ eks:[["pul biber","1 tatlı kaşığı"],["kimyon","1 çay kaşığı"],["marul","1 baş"]],
  adim:["Mercimeği 2 ölçü suyla suyunu çekene kadar haşla.",
        "Sıcakken ince bulguru ekle, karıştırıp kapağını kapat, 20 dakika beklet.",
        "Soğanı zeytinyağında salçalarla kavur, karışıma ekle.",
@@ -932,7 +983,8 @@ const TARIFLER = [
  not:"Harç sıcakken şekil verme; elini yakar ve köfte dağılır."},
 
 {i:"tavuk-sis",ad:"Tavuk Şiş",zor:2,dk:45,kisi:4,kat:"Ana yemek",
- mlz:["tavuk göğsü","yoğurt","domates salçası","sarımsak","zeytinyağı","kekik","yeşil biber"],eks:["soğan","domates","pul biber"],
+ mlz:[["tavuk göğsü","3 adet (700 g)"],["yoğurt","3 yemek kaşığı"],["domates salçası","1 yemek kaşığı"],["sarımsak","3 diş"],["zeytinyağı","3 yemek kaşığı"],["kekik","1 tatlı kaşığı"],["yeşil biber","3 adet"]],
+ eks:[["soğan","1 adet"],["domates","2 adet"],["pul biber","1 çay kaşığı"]],
  adim:["Tavuğu eşit kuşbaşı parçalara doğra.",
        "Yoğurt, salça, ezilmiş sarımsak, zeytinyağı, kekik, tuz ve karabiberi karıştır.",
        "Tavukları sosla harmanlayıp en az 2 saat, tercihen bir gece buzdolabında beklet.",
@@ -941,7 +993,8 @@ const TARIFLER = [
  not:"Marinasyondaki yoğurt tavuğu yumuşatır; süreyi kısaltma."},
 
 {i:"firin-makarna",ad:"Fırın Makarna",zor:2,dk:55,kisi:5,kat:"Makarna",
- mlz:["makarna","süt","un","tereyağı","kaşar peyniri","yumurta"],eks:["karabiber","sucuk"],
+ mlz:[["makarna","500 g"],["süt","750 ml"],["un","3 yemek kaşığı"],["tereyağı","3 yemek kaşığı"],["kaşar peyniri","200 g"],["yumurta","1 adet"]],
+ eks:[["karabiber","1 çay kaşığı"],["sucuk","10 dilim"]],
  adim:["Makarnayı tuzlu suda diri kalacak şekilde haşla, süz.",
        "Beşamel için tereyağını erit, unu ekleyip 2 dakika kavur.",
        "Sıcak sütü azar azar, çırparak ekle; koyulaşınca tuz ve karabiber at.",
@@ -951,7 +1004,8 @@ const TARIFLER = [
  not:"Makarnayı tam haşlarsan fırında dağılır; paket süresinden 2 dakika eksik pişir."},
 
 {i:"tavuk-corbasi",ad:"Şehriyeli Tavuk Çorbası",zor:2,dk:50,kisi:4,kat:"Çorba",
- mlz:["tavuk göğsü","şehriye","havuç","tereyağı","limon","un"],eks:["maydanoz","karabiber"],
+ mlz:[["tavuk göğsü","1 adet (250 g)"],["şehriye","yarım su bardağı"],["havuç","1 adet"],["tereyağı","2 yemek kaşığı"],["limon","1 adet"],["un","1 yemek kaşığı"]],
+ eks:[["maydanoz","birkaç dal"],["karabiber","1 çay kaşığı"]],
  adim:["Tavuğu havuçla birlikte tuzlu suda 30 dakika haşla.",
        "Tavuğu çıkarıp didikle, suyu süz.",
        "Tencerede tereyağını erit, unu 2 dakika kavur.",
@@ -961,7 +1015,8 @@ const TARIFLER = [
  not:"Tavuk suyunu süzmek çorbayı berrak yapar."},
 
 {i:"mucver",ad:"Kabak Mücveri",zor:2,dk:35,kisi:4,kat:"Sebze",
- mlz:["kabak","yumurta","un","soğan","dereotu","beyaz peynir","maydanoz"],eks:["kabartma tozu","karabiber"],
+ mlz:[["kabak","3 adet"],["yumurta","3 adet"],["un","1 su bardağı"],["soğan","1 adet"],["dereotu","yarım demet"],["beyaz peynir","100 g"],["maydanoz","yarım demet"]],
+ eks:[["kabartma tozu","1 çay kaşığı"],["karabiber","1 çay kaşığı"]],
  adim:["Kabakları rendele, tuzlayıp 10 dakika beklet, suyunu iyice sık.",
        "Rendelenmiş soğan, yumurta, ezilmiş peynir, kıyılmış dereotu ve maydanozu ekle.",
        "Unu azar azar ilave et, akıcı ama dökülmeyen bir kıvam tuttur.",
@@ -970,7 +1025,8 @@ const TARIFLER = [
  not:"Kabağın suyunu sıkmazsan un tutmaz ve mücver yağ çeker."},
 
 {i:"biber-dolma",ad:"Etli Biber Dolması",zor:2,dk:75,kisi:4,kat:"Dolma",
- mlz:["dolmalık biber","kıyma","pirinç","soğan","domates salçası","maydanoz","nane","domates"],eks:["pul biber","karabiber"],
+ mlz:[["dolmalık biber","10 adet"],["kıyma","250 g"],["pirinç","1 su bardağı"],["soğan","1 adet"],["domates salçası","1 yemek kaşığı"],["maydanoz","yarım demet"],["nane","1 tatlı kaşığı"],["domates","2 adet"]],
+ eks:[["pul biber","1 çay kaşığı"],["karabiber","1 çay kaşığı"]],
  adim:["Biberlerin sapını kesip içini temizle.",
        "İç harç için soğanı yağda kavur, kıymayı ekleyip suyunu çektir.",
        "Yıkanmış pirinç, salça, kıyılmış maydanoz, nane, tuz ve baharatları ekleyip 2 dakika çevir.",
@@ -980,7 +1036,8 @@ const TARIFLER = [
  not:"Pirinç pişerken şişer; biberi ağzına kadar doldurma."},
 
 {i:"lahana-sarma",ad:"Lahana Sarma",zor:2,dk:90,kisi:5,kat:"Dolma",
- mlz:["lahana","kıyma","pirinç","soğan","domates salçası","nane"],eks:["biber salçası","pul biber","limon"],
+ mlz:[["lahana","1 orta boy"],["kıyma","300 g"],["pirinç","1 su bardağı"],["soğan","2 adet"],["domates salçası","2 yemek kaşığı"],["nane","1 tatlı kaşığı"]],
+ eks:[["biber salçası","1 tatlı kaşığı"],["pul biber","1 çay kaşığı"],["limon","1 adet"]],
  adim:["Lahananın yapraklarını ayırıp kaynar suda 5 dakika haşla, yumuşat.",
        "Kalın damarlarını inceltip sarılacak boyda kes.",
        "Soğanı kavur, kıyma, yıkanmış pirinç, salça, nane ve baharatları karıştır.",
@@ -990,7 +1047,8 @@ const TARIFLER = [
  not:"Üstüne tabak koymak sarmaların kaynarken açılmasını engeller."},
 
 {i:"tavuk-guvec",ad:"Fırında Tavuk Güveç",zor:2,dk:60,kisi:4,kat:"Ana yemek",
- mlz:["tavuk göğsü","mantar","yeşil biber","domates","soğan","kaşar peyniri","domates salçası"],eks:["sarımsak","kekik","krema"],
+ mlz:[["tavuk göğsü","2 adet (500 g)"],["mantar","250 g"],["yeşil biber","2 adet"],["domates","2 adet"],["soğan","1 adet"],["kaşar peyniri","150 g"],["domates salçası","1 yemek kaşığı"]],
+ eks:[["sarımsak","2 diş"],["kekik","1 çay kaşığı"],["krema","100 ml"]],
  adim:["Tavuğu kuşbaşı doğrayıp yağda mühürle.",
        "Soğan, biber ve mantarı ekleyip 5 dakika kavur.",
        "Salça ve rendelenmiş domatesi ekle, tuz ve karabiberi at.",
@@ -1000,7 +1058,8 @@ const TARIFLER = [
  not:"Mantarı en son ekle ve tuzu geciktir; erken tuzlarsan suyunu salar."},
 
 {i:"sutlac",ad:"Fırın Sütlaç",zor:2,dk:70,kisi:6,kat:"Tatlı",
- mlz:["pirinç","süt","şeker","nişasta"],eks:["vanilya","tarçın","fındık"],
+ mlz:[["pirinç","yarım su bardağı"],["süt","1,5 litre"],["şeker","1 su bardağı"],["nişasta","2 yemek kaşığı"]],
+ eks:[["vanilya","1 paket"],["tarçın","1 çay kaşığı"],["fındık","1 avuç"]],
  adim:["Pirinci 2 bardak suda, suyunu çekene kadar haşla.",
        "Sütü ekleyip kaynamaya bırak, ara ara karıştır.",
        "Şekeri ilave et, 10 dakika daha pişir.",
@@ -1010,15 +1069,18 @@ const TARIFLER = [
  not:"Fırında kızartırken başından ayrılma; üst kısım 2 dakikada yanabilir."},
 
 {i:"krep",ad:"Krep",zor:2,dk:30,kisi:4,kat:"Tatlı",
- mlz:["un","yumurta","süt","şeker","tereyağı"],eks:["vanilya","kakao","bal"],
+ mlz:[["un","1,5 su bardağı"],["yumurta","2 adet"],["süt","2 su bardağı"],["şeker","1 yemek kaşığı"],["tereyağı","1 yemek kaşığı"]],
+ eks:[["vanilya","1 paket"],["kakao","1 yemek kaşığı"],["bal","servis için 2 yemek kaşığı"]],
  adim:["Un, yumurta, süt, şeker ve bir tutam tuzu blenderdan geçir.",
        "Karışımı 20 dakika dinlendir.",
        "Yapışmaz tavayı ısıtıp ince bir tabaka tereyağı sür.",
        "Bir kepçe harcı dökerek tavayı çevir, ince yay.",
        "Kenarları kalkınca çevir, 30 saniye daha pişir."],
  not:"Hamuru dinlendirmek unun sıvıyı emmesini sağlar, krepler yırtılmaz."},
+
 {i:"manti",ad:"Kayseri Mantısı",zor:3,dk:150,kisi:5,kat:"Hamur işi",
- mlz:["un","yumurta","kıyma","soğan","yoğurt","sarımsak","tereyağı","domates salçası","pul biber","nane"],eks:["karabiber"],
+ mlz:[["un","3 su bardağı"],["yumurta","1 adet"],["kıyma","250 g"],["soğan","1 adet"],["yoğurt","500 g"],["sarımsak","3 diş"],["tereyağı","3 yemek kaşığı"],["domates salçası","1 yemek kaşığı"],["pul biber","1 tatlı kaşığı"],["nane","1 tatlı kaşığı"]],
+ eks:[["karabiber","1 çay kaşığı"]],
  adim:["Un, yumurta, tuz ve ılık suyla kulak memesi yumuşaklığında hamur yoğur, 30 dakika dinlendir.",
        "İç harç için kıymayı rendelenmiş soğan, tuz ve karabiberle yoğur.",
        "Hamuru bezelere ayırıp çok ince aç, 2 cm'lik kareler kes.",
@@ -1028,7 +1090,8 @@ const TARIFLER = [
  not:"Hamuru ne kadar ince açarsan mantı o kadar makbul. Açarken altına un serp ki yapışmasın."},
 
 {i:"yaprak-sarma",ad:"Zeytinyağlı Yaprak Sarma",zor:3,dk:120,kisi:6,kat:"Zeytinyağlı",
- mlz:["asma yaprağı","pirinç","soğan","dereotu","nane","kuş üzümü","çam fıstığı","limon","zeytinyağı"],eks:["tarçın","karabiber"],
+ mlz:[["asma yaprağı","50 yaprak (salamura)"],["pirinç","2 su bardağı"],["soğan","3 adet"],["dereotu","1 demet"],["nane","1 tatlı kaşığı"],["kuş üzümü","2 yemek kaşığı"],["çam fıstığı","2 yemek kaşığı"],["limon","2 adet"],["zeytinyağı","1 su bardağı"]],
+ eks:[["tarçın","1 çay kaşığı"],["karabiber","1 çay kaşığı"]],
  adim:["Salamura yaprakları sıcak suda bekletip tuzunu al, damarlarını kes.",
        "Soğanı zeytinyağında pembeleşene kadar kavur, çam fıstığını ekle.",
        "Yıkanmış pirinç, kuş üzümü, tuz ve baharatları ekleyip 5 dakika çevir.",
@@ -1039,7 +1102,8 @@ const TARIFLER = [
  not:"İnce sarmanın sırrı az harç. Bir yaprağa bir tatlı kaşığından fazla koyma."},
 
 {i:"icli-kofte",ad:"İçli Köfte",zor:3,dk:180,kisi:6,kat:"Hamur işi",
- mlz:["ince bulgur","irmik","kıyma","soğan","ceviz","un","nişasta","biber salçası"],eks:["pul biber","karabiber","maydanoz"],
+ mlz:[["ince bulgur","3 su bardağı"],["irmik","yarım su bardağı"],["kıyma","400 g"],["soğan","2 adet"],["ceviz","1 su bardağı"],["un","2 yemek kaşığı"],["nişasta","2 yemek kaşığı"],["biber salçası","1 yemek kaşığı"]],
+ eks:[["pul biber","1 tatlı kaşığı"],["karabiber","1 çay kaşığı"],["maydanoz","yarım demet"]],
  adim:["İnce bulguru ve irmiği ılık suyla ıslatıp 30 dakika şişmeye bırak.",
        "Un, nişasta, tuz ve salçayı ekleyip en az 20 dakika, kulak memesi kıvamına gelene kadar yoğur.",
        "İç harç için soğanı kavur, kıymayı ekleyip suyunu çektir, ceviz ve baharatları karıştır.",
@@ -1049,7 +1113,8 @@ const TARIFLER = [
  not:"Hamuru oyarken elini ıslak tut; çatlarsa köfte suda dağılır."},
 
 {i:"lahmacun",ad:"Lahmacun",zor:3,dk:120,kisi:6,kat:"Hamur işi",
- mlz:["un","maya","kıyma","soğan","domates","yeşil biber","maydanoz","domates salçası","sarımsak"],eks:["pul biber","limon","nar ekşisi"],
+ mlz:[["un","4 su bardağı"],["maya","1 paket (10 g)"],["kıyma","400 g"],["soğan","2 adet"],["domates","3 adet"],["yeşil biber","3 adet"],["maydanoz","1 demet"],["domates salçası","1 yemek kaşığı"],["sarımsak","3 diş"]],
+ eks:[["pul biber","1 tatlı kaşığı"],["limon","2 adet"],["nar ekşisi","1 yemek kaşığı"]],
  adim:["Un, maya, tuz ve ılık suyla hamur yoğur, üzerini örtüp 1 saat mayalandır.",
        "Harç için soğan, biber, domates, maydanoz ve sarımsağı rondodan geçir ya da çok ince kıy.",
        "Suyunu süzüp kıyma, salça, tuz ve baharatlarla karıştır.",
@@ -1059,7 +1124,8 @@ const TARIFLER = [
  not:"Harcın suyunu süzmezsen lahmacun hamur kalır. Süzgeçte 10 dakika beklet."},
 
 {i:"kiymali-pide",ad:"Kıymalı Pide",zor:3,dk:120,kisi:4,kat:"Hamur işi",
- mlz:["un","maya","kıyma","soğan","domates","yeşil biber","maydanoz","yumurta","domates salçası"],eks:["kaşar peyniri","tereyağı"],
+ mlz:[["un","3 su bardağı"],["maya","1 paket (10 g)"],["kıyma","300 g"],["soğan","1 adet"],["domates","2 adet"],["yeşil biber","2 adet"],["maydanoz","yarım demet"],["yumurta","1 adet"],["domates salçası","1 yemek kaşığı"]],
+ eks:[["kaşar peyniri","100 g"],["tereyağı","2 yemek kaşığı"]],
  adim:["Un, maya, tuz, şeker ve ılık suyla yumuşak bir hamur yoğur, 1 saat mayalandır.",
        "Kıymayı ince doğranmış soğan, biber, domates, maydanoz, salça ve baharatlarla karıştır.",
        "Hamuru dört beze ayır, uzun oval şekilde aç.",
@@ -1069,7 +1135,8 @@ const TARIFLER = [
  not:"Fırını önceden iyice ısıt; pide yüksek sıcaklıkta hızlı pişerse yumuşak kalır."},
 
 {i:"su-boregi",ad:"Su Böreği",zor:3,dk:150,kisi:8,kat:"Börek",
- mlz:["un","yumurta","nişasta","beyaz peynir","maydanoz","tereyağı","süt","sıvı yağ"],eks:[],
+ mlz:[["un","5 su bardağı"],["yumurta","4 adet"],["nişasta","1 su bardağı"],["beyaz peynir","400 g"],["maydanoz","1 demet"],["tereyağı","200 g"],["süt","1 su bardağı"],["sıvı yağ","yarım su bardağı"]],
+ eks:[],
  adim:["Un, yumurta, tuz ve suyla sert bir hamur yoğur, 8 beze yapıp 30 dakika dinlendir.",
        "Her bezeyi nişasta serperek çok ince aç.",
        "Yaprakları kaynar tuzlu suda 1-2 dakika haşla, hemen soğuk suya al, süz.",
@@ -1080,7 +1147,8 @@ const TARIFLER = [
  not:"Haşlanan yaprakları soğuk suya almazsan birbirine yapışır ve yırtılır."},
 
 {i:"hunkar-begendi",ad:"Hünkar Beğendi",zor:3,dk:100,kisi:4,kat:"Ana yemek",
- mlz:["kuşbaşı et","patlıcan","süt","un","tereyağı","kaşar peyniri","domates salçası","soğan"],eks:["domates","yeşil biber","karabiber"],
+ mlz:[["kuşbaşı et","600 g"],["patlıcan","5 adet"],["süt","3 su bardağı"],["un","3 yemek kaşığı"],["tereyağı","3 yemek kaşığı"],["kaşar peyniri","150 g"],["domates salçası","1 yemek kaşığı"],["soğan","1 adet"]],
+ eks:[["domates","2 adet"],["yeşil biber","2 adet"],["karabiber","1 çay kaşığı"]],
  adim:["Eti yağda mühürle, soğan ve salçayı ekleyip kavur.",
        "Sıcak su ilave edip et yumuşayana kadar 60 dakika pişir.",
        "Patlıcanları ocakta ya da fırında kabukları kararana kadar közle.",
@@ -1091,7 +1159,8 @@ const TARIFLER = [
  not:"Patlıcanı gerçekten közlemek gerekir; fırında pişirilmiş patlıcan o dumanlı tadı vermez."},
 
 {i:"ali-nazik",ad:"Ali Nazik",zor:3,dk:80,kisi:4,kat:"Ana yemek",
- mlz:["patlıcan","kıyma","yoğurt","sarımsak","tereyağı","domates salçası"],eks:["yeşil biber","domates","pul biber"],
+ mlz:[["patlıcan","5 adet"],["kıyma","400 g"],["yoğurt","500 g (süzme)"],["sarımsak","3 diş"],["tereyağı","3 yemek kaşığı"],["domates salçası","1 yemek kaşığı"]],
+ eks:[["yeşil biber","2 adet"],["domates","1 adet"],["pul biber","1 çay kaşığı"]],
  adim:["Patlıcanları ocak üzerinde kabukları siyahlaşana kadar közle.",
        "Kabuğunu soyup közü bıçakla ince doğra.",
        "Süzme yoğurdu ezilmiş sarımsak ve tuzla çırp, közle karıştır.",
@@ -1101,7 +1170,8 @@ const TARIFLER = [
  not:"Yoğurt karışımını ılık tut; buzdolabından çıkmış soğuk yoğurt kıymanın yağını dondurur."},
 
 {i:"iskender",ad:"İskender",zor:3,dk:70,kisi:4,kat:"Ana yemek",
- mlz:["pide ekmeği","kuşbaşı et","domates salçası","tereyağı","yoğurt","domates","yeşil biber"],eks:["sarımsak","kekik"],
+ mlz:[["pide ekmeği","2 adet"],["kuşbaşı et","600 g"],["domates salçası","2 yemek kaşığı"],["tereyağı","100 g"],["yoğurt","400 g"],["domates","3 adet"],["yeşil biber","4 adet"]],
+ eks:[["sarımsak","2 diş"],["kekik","1 tatlı kaşığı"]],
  adim:["Eti çok ince şeritler halinde doğrayıp kekik, tuz ve karabiberle ovala.",
        "Kızgın tavada, suyunu salmadan yüksek ateşte hızlıca mühürle.",
        "Salçayı rendelenmiş domates ve az suyla kaynatıp sosu hazırla.",
@@ -1112,7 +1182,8 @@ const TARIFLER = [
  not:"Tereyağını servis anında, cızırdayacak kadar kızgın dök. Ayırt eden detay bu."},
 
 {i:"beyti-sarma",ad:"Beyti Sarma",zor:3,dk:90,kisi:4,kat:"Ana yemek",
- mlz:["lavaş","kıyma","kaşar peyniri","domates salçası","yoğurt","tereyağı","sarımsak","maydanoz"],eks:["soğan","pul biber"],
+ mlz:[["lavaş","4 adet"],["kıyma","500 g"],["kaşar peyniri","150 g"],["domates salçası","2 yemek kaşığı"],["yoğurt","400 g"],["tereyağı","3 yemek kaşığı"],["sarımsak","2 diş"],["maydanoz","yarım demet"]],
+ eks:[["soğan","1 adet"],["pul biber","1 çay kaşığı"]],
  adim:["Kıymayı rendelenmiş soğan, kıyılmış maydanoz, tuz ve baharatlarla yoğur.",
        "Harcı uzun ince köfteler halinde şekillendirip tavada ya da ızgarada pişir.",
        "Lavaşın içine köfteyi ve rendelenmiş kaşarı koyup sıkıca sar.",
@@ -1123,7 +1194,8 @@ const TARIFLER = [
  not:"Lavaşı çok sıkı sar, yoksa dilimlerken açılır."},
 
 {i:"kuru-dolma",ad:"Kuru Biber Dolması",zor:3,dk:110,kisi:4,kat:"Dolma",
- mlz:["kuru biber","pirinç","kıyma","soğan","domates salçası","nane","karabiber"],eks:["pul biber","limon"],
+ mlz:[["kuru biber","20 adet"],["pirinç","1,5 su bardağı"],["kıyma","250 g"],["soğan","2 adet"],["domates salçası","2 yemek kaşığı"],["nane","1 tatlı kaşığı"],["karabiber","1 çay kaşığı"]],
+ eks:[["pul biber","1 çay kaşığı"],["limon","1 adet"]],
  adim:["Kuru biberleri ılık suda 20 dakika bekletip yumuşat, dikkatlice yıka.",
        "Soğanı yağda kavur, kıymayı ekleyip suyunu çektir.",
        "Yıkanmış pirinç, salça, nane, tuz ve baharatları ekleyip 2 dakika çevir.",
@@ -1133,7 +1205,8 @@ const TARIFLER = [
  not:"Kuru biberler kolay yırtılır; bekletirken suyu kaynar değil ılık olsun."},
 
 {i:"kuzu-incik",ad:"Fırında Kuzu İncik",zor:3,dk:210,kisi:4,kat:"Ana yemek",
- mlz:["kuzu incik","soğan","sarımsak","havuç","domates salçası","kekik","patates"],eks:["karabiber","defne yaprağı"],
+ mlz:[["kuzu incik","4 adet"],["soğan","2 adet"],["sarımsak","1 baş"],["havuç","2 adet"],["domates salçası","2 yemek kaşığı"],["kekik","1 tatlı kaşığı"],["patates","4 adet"]],
+ eks:[["karabiber","1 çay kaşığı"],["defne yaprağı","2 adet"]],
  adim:["İncikleri tuz, karabiber ve kekikle ovala.",
        "Geniş tavada her yüzünü kızgın yağda mühürle.",
        "Soğan, havuç ve sarımsağı fırın kabına yay, incikleri üzerine yerleştir.",
@@ -1143,7 +1216,8 @@ const TARIFLER = [
  not:"Düşük derecede uzun pişirme etin kemikten ayrılmasını sağlar. Süreyi kısaltıp dereceyi yükseltme."},
 
 {i:"baklava",ad:"Cevizli Baklava",zor:3,dk:180,kisi:10,kat:"Tatlı",
- mlz:["un","yumurta","nişasta","tereyağı","ceviz","şeker","limon"],eks:["irmik"],
+ mlz:[["un","4 su bardağı"],["yumurta","1 adet"],["nişasta","1,5 su bardağı"],["tereyağı","300 g"],["ceviz","2,5 su bardağı"],["şeker","4 su bardağı"],["limon","yarım adet"]],
+ eks:[["irmik","2 yemek kaşığı"]],
  adim:["Un, yumurta, tuz, sirke ve suyla sert bir hamur yoğur, 20 beze yapıp 45 dakika dinlendir.",
        "Şerbet için şeker ve suyu 15 dakika kaynat, limon sıkıp soğumaya bırak.",
        "Bezeleri nişasta serperek tek tek çok ince aç.",
@@ -1154,7 +1228,8 @@ const TARIFLER = [
  not:"Sıcak baklavaya soğuk şerbet ya da soğuk baklavaya sıcak şerbet. İkisi de sıcak olursa baklava vıcık olur."},
 
 {i:"kunefe",ad:"Künefe",zor:3,dk:60,kisi:4,kat:"Tatlı",
- mlz:["kadayıf","lor peyniri","tereyağı","şeker","limon"],eks:["ceviz","fındık"],
+ mlz:[["kadayıf","400 g"],["lor peyniri","400 g"],["tereyağı","200 g"],["şeker","2,5 su bardağı"],["limon","yarım adet"]],
+ eks:[["ceviz","yarım su bardağı"],["fındık","yarım su bardağı"]],
  adim:["Şeker ve suyu 12 dakika kaynatıp limon sık, şerbeti soğut.",
        "Kadayıfı elinle didikleyip eritilmiş tereyağıyla iyice ovala.",
        "Künefe tepsisinin altına kadayıfın yarısını bastırarak yay.",
@@ -1165,7 +1240,8 @@ const TARIFLER = [
  not:"Peynirin tuzu alınmazsa tatlı yenmez. Dilimleyip 1 saat suda beklet, suyunu birkaç kez değiştir."},
 
 {i:"perde-pilavi",ad:"Perde Pilavı",zor:3,dk:120,kisi:6,kat:"Pilav",
- mlz:["pirinç","tavuk göğsü","badem","kuş üzümü","tereyağı","yufka","yumurta","un"],eks:["karabiber","tarçın"],
+ mlz:[["pirinç","3 su bardağı"],["tavuk göğsü","2 adet (500 g)"],["badem","yarım su bardağı"],["kuş üzümü","3 yemek kaşığı"],["tereyağı","100 g"],["yufka","2 yaprak"],["yumurta","1 adet"],["un","1 yemek kaşığı"]],
+ eks:[["karabiber","1 çay kaşığı"],["tarçın","1 çay kaşığı"]],
  adim:["Tavuğu haşlayıp didikle, suyunu ayır.",
        "Bademi kavur, kuş üzümünü ılık suda beklet.",
        "Tereyağında pirinci kavur, tavuk suyunu ekleyip pilavı pişir, demlendir.",
@@ -1173,7 +1249,8 @@ const TARIFLER = [
        "Kaseyi bolca yağlayıp yufkayı kenarlardan taşacak şekilde ser.",
        "Pilavı doldurup taşan yufkaları üzerine kapat, yumurta sarısı sür.",
        "180 derecede 35-40 dakika pişir, 10 dakika dinlendirip tabağa ters çevir."],
- not:"Kaseyi çok iyi yağla ve pişince hemen çevirme; 10 dakika beklersen kalıp bozulmadan çıkar."}
+ not:"Kaseyi çok iyi yağla ve pişince hemen çevirme; 10 dakika beklersen kalıp bozulmadan çıkar."},
+
 ];
 
 /* ---------------- yardımcılar ---------------- */
@@ -1201,8 +1278,8 @@ const ZOR_AD = {1:"Kolay", 2:"Orta", 3:"Zor"};
 /* ---------------- malzeme kataloğu ---------------- */
 const sayac = new Map();
 for (const t of TARIFLER){
-  for (const m of t.mlz) sayac.set(m, (sayac.get(m)||0) + 1);
-  for (const m of (t.eks||[])) sayac.set(m, (sayac.get(m)||0) + 0.4);
+  for (const [ad] of t.mlz) sayac.set(ad, (sayac.get(ad)||0) + 1);
+  for (const [ad] of (t.eks||[])) sayac.set(ad, (sayac.get(ad)||0) + 0.4);
 }
 for (const ad of Object.keys(KAT)) if (!sayac.has(ad)) sayac.set(ad, 0);
 
@@ -1261,7 +1338,7 @@ function etkinKume(){
 function eslestir(){
   const kume = etkinKume();
   return TARIFLER.map(t => {
-    const eksik = t.mlz.filter(m => !kume.has(canon(m)));
+    const eksik = t.mlz.filter(([ad]) => !kume.has(canon(ad))).map(([ad]) => ad);
     const varOlan = t.mlz.length - eksik.length;
     return {
       t,
@@ -1529,12 +1606,17 @@ function ac(id){
   const t = TARIFLER.find(x => x.i === id);
   if (!t) return;
   const kume = etkinKume();
-  const satir = (m, ops) => {
-    const v = kume.has(canon(m));
+  const satir = ([ad, olcu], ops) => {
+    const v = kume.has(canon(ad));
     const sinif = ops ? "ops" : (v ? "var" : "yok");
     const im = ops ? "+" : (v ? "✓" : "✕");
-    return '<li class="' + sinif + '"><span class="tick">' + im + '</span>' + esc(m) +
-           (ops ? ' <span style="opacity:.7">(isteğe bağlı)</span>' : '') + '</li>';
+    return '<li class="' + sinif + '">' +
+             '<span class="tick">' + im + '</span>' +
+             '<span class="mad">' + esc(ad) +
+               (ops ? ' <span class="ops-not">(isteğe bağlı)</span>' : '') +
+             '</span>' +
+             '<span class="molcu">' + esc(olcu) + '</span>' +
+           '</li>';
   };
 
   el.kagit.innerHTML =
@@ -1550,7 +1632,7 @@ function ac(id){
       '</div>' +
     '</div>' +
     '<div class="sheet-bd">' +
-      '<section><span class="eyebrow">Malzemeler</span><ul class="mlist">' +
+      '<section><span class="eyebrow">Malzemeler · ' + t.kisi + ' kişilik</span><ul class="mlist">' +
         t.mlz.map(m => satir(m, false)).join("") +
         (t.eks || []).map(m => satir(m, true)).join("") +
       '</ul></section>' +
