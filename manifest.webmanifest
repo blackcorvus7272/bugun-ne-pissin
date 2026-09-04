@@ -1,0 +1,20 @@
+{
+  "name": "Bugün Ne Pişsin",
+  "short_name": "Ne Pişsin",
+  "description": "Evdeki malzemeleri gir, kolay-orta-zor modlarında ne pişirebileceğini gör.",
+  "lang": "tr",
+  "dir": "ltr",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EEF1F5",
+  "theme_color": "#1B4E9B",
+  "categories": ["food", "lifestyle", "utilities"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

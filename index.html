@@ -1,0 +1,1649 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Evdeki malzemeleri gir, kolay-orta-zor modlarında ne pişirebileceğini gör.">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#EEF1F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D151E" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Ne Pişsin">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
+<title>Bugün Ne Pişsin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400..700;1,400&display=swap">
+<style>
+:root{
+  --ground:#EEF1F5;
+  --surface:#FFFFFF;
+  --surface-2:#F7F9FB;
+  --ink:#131E2B;
+  --ink-2:#4C6076;
+  --ink-3:#7A8CA0;
+  --line:#D5DEE7;
+  --line-soft:#E4EAF0;
+  --kobalt:#1B4E9B;
+  --kobalt-soft:#E3EBF7;
+  --turkuaz:#17838F;
+  --turkuaz-soft:#DDF0F1;
+  --bol:#AE372B;
+  --bol-soft:#F7E3E0;
+  --yesil:#2A7355;
+  --yesil-soft:#DFEEE7;
+  --amber:#8A6408;
+  --amber-soft:#F7EBCE;
+  --shadow:0 1px 2px rgba(19,30,43,.06), 0 8px 24px -12px rgba(19,30,43,.18);
+  --shadow-lift:0 2px 6px rgba(19,30,43,.08), 0 24px 48px -20px rgba(19,30,43,.32);
+  --r:10px;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Public Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D151E;
+    --surface:#141F2B;
+    --surface-2:#1A2734;
+    --ink:#E5ECF3;
+    --ink-2:#A0B2C4;
+    --ink-3:#74899E;
+    --line:#28394A;
+    --line-soft:#1F2E3D;
+    --kobalt:#79A8EC;
+    --kobalt-soft:#1A2B44;
+    --turkuaz:#41BECB;
+    --turkuaz-soft:#123138;
+    --bol:#E5806E;
+    --bol-soft:#39201C;
+    --yesil:#5DBF95;
+    --yesil-soft:#14301F;
+    --amber:#D9AE4C;
+    --amber-soft:#33280F;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    --shadow-lift:0 2px 6px rgba(0,0,0,.5), 0 24px 48px -20px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D151E;
+  --surface:#141F2B;
+  --surface-2:#1A2734;
+  --ink:#E5ECF3;
+  --ink-2:#A0B2C4;
+  --ink-3:#74899E;
+  --line:#28394A;
+  --line-soft:#1F2E3D;
+  --kobalt:#79A8EC;
+  --kobalt-soft:#1A2B44;
+  --turkuaz:#41BECB;
+  --turkuaz-soft:#123138;
+  --bol:#E5806E;
+  --bol-soft:#39201C;
+  --yesil:#5DBF95;
+  --yesil-soft:#14301F;
+  --amber:#D9AE4C;
+  --amber-soft:#33280F;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  --shadow-lift:0 2px 6px rgba(0,0,0,.5), 0 24px 48px -20px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:15px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+button,input{font-family:inherit;font-size:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--kobalt);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.wrap{max-width:940px;margin:0 auto;padding:0 18px 72px}
+
+/* ---------- header ---------- */
+.top{
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:30;
+}
+.top-in{
+  max-width:940px;margin:0 auto;padding:12px 18px;
+  display:flex;align-items:center;gap:12px;
+}
+.mark{flex:none;width:34px;height:34px;display:block}
+.brand{display:flex;flex-direction:column;gap:1px;margin-right:auto;min-width:0}
+.brand h1{font-size:19px;font-weight:700;line-height:1.1}
+.brand .sub{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);
+}
+.icon-btn{
+  flex:none;width:34px;height:34px;display:grid;place-items:center;
+  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);
+  cursor:pointer;color:var(--ink-2);
+}
+.icon-btn:hover{border-color:var(--kobalt);color:var(--kobalt)}
+
+/* ---------- panels ---------- */
+.panel{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);
+}
+.eyebrow{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+}
+
+/* ---------- pantry ---------- */
+.kiler{margin-top:20px;padding:18px}
+.kiler-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.kiler-head h2{font-size:16px;font-weight:700}
+.kiler-head .n{
+  font-family:var(--mono);font-size:12px;color:var(--kobalt);
+  background:var(--kobalt-soft);padding:1px 7px;border-radius:20px;font-variant-numeric:tabular-nums;
+}
+.kiler-head .clear{
+  margin-left:auto;background:none;border:none;cursor:pointer;
+  font-size:12.5px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px;padding:0;
+}
+.kiler-head .clear:hover{color:var(--bol)}
+
+.searchbox{position:relative}
+.searchbox input{
+  width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:var(--r);
+  background:var(--surface-2);
+}
+.searchbox input:focus{outline:none;border-color:var(--kobalt);background:var(--surface)}
+.searchbox input::placeholder{color:var(--ink-3)}
+.suggest{
+  position:absolute;top:calc(100% + 5px);left:0;right:0;z-index:20;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow-lift);max-height:250px;overflow-y:auto;padding:4px;
+}
+.suggest button{
+  display:flex;width:100%;align-items:center;gap:8px;text-align:left;
+  background:none;border:none;padding:7px 9px;border-radius:6px;cursor:pointer;
+}
+.suggest button:hover,.suggest button[aria-selected="true"]{background:var(--kobalt-soft);color:var(--kobalt)}
+.suggest .kat{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em}
+
+.tray{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.tray:empty{display:none}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--kobalt-soft);color:var(--kobalt);
+  border:1px solid transparent;border-radius:20px;padding:4px 6px 4px 12px;
+  font-size:13.5px;font-weight:600;
+}
+.chip button{
+  background:none;border:none;cursor:pointer;color:inherit;opacity:.55;
+  width:18px;height:18px;display:grid;place-items:center;border-radius:50%;padding:0;line-height:1;
+}
+.chip button:hover{opacity:1;background:rgba(174,55,43,.16);color:var(--bol)}
+
+.picks{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:14px}
+.picks .eyebrow{display:block;margin-bottom:9px}
+.pickrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.pickrow .lbl{
+  font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);width:100%;margin-bottom:1px;
+}
+.pick{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:20px;
+  padding:4px 11px;font-size:13px;cursor:pointer;color:var(--ink-2);
+  transition:border-color .12s,color .12s;
+}
+.pick:hover{border-color:var(--kobalt);color:var(--kobalt)}
+.pick[data-on="1"]{background:var(--kobalt);border-color:var(--kobalt);color:#fff;font-weight:600}
+
+.basics{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line-soft)}
+.sw{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);cursor:pointer}
+.sw input{appearance:none;width:34px;height:19px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;flex:none;margin:0;transition:background .15s}
+.sw input::after{content:"";position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;background:var(--surface);transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.sw input:checked{background:var(--turkuaz)}
+.sw input:checked::after{transform:translateX(15px)}
+</style>
+<style>
+/* ---------- mode / filter bar ---------- */
+.modebar{margin-top:22px;display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.modes{display:flex;gap:6px;flex-wrap:wrap}
+.mode{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:8px 13px;cursor:pointer;display:flex;align-items:center;gap:9px;
+  transition:border-color .12s,box-shadow .12s;
+}
+.mode:hover{border-color:var(--ink-3)}
+.mode .nm{font-weight:600;font-size:14px}
+.mode .ct{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.mode[aria-pressed="true"]{border-color:var(--kobalt);box-shadow:inset 0 0 0 1px var(--kobalt);background:var(--kobalt-soft)}
+.mode[aria-pressed="true"] .nm{color:var(--kobalt)}
+.mode[aria-pressed="true"] .ct{color:var(--kobalt);opacity:.75}
+
+/* difficulty meter: 3 bars, filled = level */
+.meter{display:flex;align-items:flex-end;gap:2px;height:13px;flex:none}
+.meter i{display:block;width:3px;background:var(--line);border-radius:1px}
+.meter i:nth-child(1){height:5px}
+.meter i:nth-child(2){height:9px}
+.meter i:nth-child(3){height:13px}
+.meter[data-lv="1"] i:nth-child(-n+1){background:var(--yesil)}
+.meter[data-lv="2"] i:nth-child(-n+2){background:var(--amber)}
+.meter[data-lv="3"] i:nth-child(-n+3){background:var(--bol)}
+
+.onlydo{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);cursor:pointer;padding-bottom:8px}
+.onlydo input{appearance:none;width:34px;height:19px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;flex:none;margin:0;transition:background .15s}
+.onlydo input::after{content:"";position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;background:var(--surface);transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.onlydo input:checked{background:var(--yesil)}
+.onlydo input:checked::after{transform:translateX(15px)}
+
+.tally{
+  margin-top:14px;font-size:13px;color:var(--ink-2);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.tally b{font-family:var(--mono);color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ---------- results ---------- */
+.results{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.group-lbl{
+  display:flex;align-items:center;gap:10px;margin:16px 0 2px;
+}
+.group-lbl .eyebrow{flex:none}
+.group-lbl .rule{flex:1;height:1px;background:var(--line)}
+
+.card{
+  display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center;
+  width:100%;text-align:left;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:13px 15px;transition:border-color .12s,transform .12s,box-shadow .12s;
+}
+.card:hover{border-color:var(--kobalt);transform:translateY(-1px);box-shadow:var(--shadow)}
+.card-main{min-width:0}
+.card-t{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.card-t h3{font-size:16.5px;font-weight:700}
+.card-meta{
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-3);
+  margin-top:3px;display:flex;flex-wrap:wrap;gap:4px 10px;font-variant-numeric:tabular-nums;
+}
+.card-miss{
+  grid-column:1/-1;font-size:13px;color:var(--ink-2);margin-top:3px;
+  padding-top:8px;border-top:1px dashed var(--line-soft);
+}
+.card-miss b{color:var(--bol);font-weight:600}
+.card-side{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none}
+
+.pill{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.03em;
+  padding:3px 9px;border-radius:20px;white-space:nowrap;
+}
+.pill.ok{background:var(--yesil-soft);color:var(--yesil)}
+.pill.near{background:var(--amber-soft);color:var(--amber)}
+.pill.far{background:var(--bol-soft);color:var(--bol)}
+.pill.tag{background:var(--turkuaz-soft);color:var(--turkuaz)}
+
+.bar{width:62px;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:2px}
+.bar[data-s="ok"] i{background:var(--yesil)}
+.bar[data-s="near"] i{background:var(--amber)}
+.bar[data-s="far"] i{background:var(--bol)}
+
+.empty{
+  margin-top:14px;padding:34px 22px;text-align:center;
+  border:1px dashed var(--line);border-radius:14px;background:var(--surface);
+}
+.empty h3{font-size:17px;margin-bottom:6px}
+.empty p{margin:0;color:var(--ink-2);font-size:14px;max-width:44ch;margin-inline:auto}
+
+/* ---------- recipe sheet ---------- */
+.scrim{
+  position:fixed;inset:0;z-index:50;background:rgba(13,21,30,.5);
+  backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;
+  padding:24px 16px;overflow-y:auto;
+}
+.scrim[hidden]{display:none!important}
+.sheet{
+  width:100%;max-width:640px;background:var(--surface);
+  border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lift);
+  overflow:hidden;
+}
+.sheet-hd{padding:20px 22px 16px;border-bottom:1px solid var(--line);position:relative}
+.sheet-hd h2{font-size:24px;font-weight:800;padding-right:40px;line-height:1.15}
+.sheet-hd .row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:9px}
+.sheet-hd .close{
+  position:absolute;top:16px;right:16px;width:30px;height:30px;
+  border:1px solid var(--line);background:var(--surface-2);border-radius:8px;
+  cursor:pointer;color:var(--ink-2);display:grid;place-items:center;line-height:1;font-size:16px;
+}
+.sheet-hd .close:hover{border-color:var(--bol);color:var(--bol)}
+.sheet-bd{padding:18px 22px 24px;display:flex;flex-direction:column;gap:22px}
+.sheet-bd section > .eyebrow{display:block;margin-bottom:9px}
+
+.mlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:2px 18px}
+.mlist li{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
+.mlist .tick{flex:none;width:16px;height:16px;display:grid;place-items:center;border-radius:50%;font-size:10px;font-weight:700;line-height:1}
+.mlist .var .tick{background:var(--yesil-soft);color:var(--yesil)}
+.mlist .yok .tick{background:var(--bol-soft);color:var(--bol)}
+.mlist .yok{color:var(--bol);font-weight:600}
+.mlist .ops .tick{background:var(--line-soft);color:var(--ink-3)}
+.mlist .ops{color:var(--ink-3)}
+
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column;gap:11px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:26px 1fr;gap:11px;align-items:start;font-size:14.5px}
+.steps li::before{
+  content:counter(s,decimal-leading-zero);
+  font-family:var(--mono);font-size:11px;font-weight:600;color:var(--kobalt);
+  background:var(--kobalt-soft);border-radius:6px;text-align:center;padding:3px 0;line-height:1.5;
+}
+.tip{
+  background:var(--turkuaz-soft);border-left:3px solid var(--turkuaz);
+  padding:11px 14px;border-radius:0 8px 8px 0;font-size:14px;color:var(--ink);
+}
+.tip .eyebrow{color:var(--turkuaz);display:block;margin-bottom:3px}
+
+.foot{
+  margin-top:44px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--ink-3);display:flex;gap:6px;flex-wrap:wrap;
+}
+
+@media (max-width:620px){
+  .top-in{padding:10px 14px}
+  .wrap{padding:0 14px 60px}
+  .brand h1{font-size:17px}
+  .card{grid-template-columns:1fr;gap:8px}
+  .card-side{flex-direction:row;align-items:center;gap:9px}
+  .sheet-hd h2{font-size:21px}
+  .onlydo{margin-left:0;padding-bottom:0;width:100%}
+}
+</style>
+<style>
+/* ---------- telefon uygulaması davranışları ---------- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
+button,.chip,.pill,.eyebrow,.card-meta{-webkit-user-select:none;user-select:none}
+.steps,.mlist,.tip,.sheet-hd h2{-webkit-user-select:text;user-select:text}
+
+/* çentik ve ev göstergesi boşlukları */
+.top-in{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right));
+        padding-top:calc(12px + env(safe-area-inset-top))}
+.top{padding-top:0}
+.wrap{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right));
+      padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+
+/* ana ekrana ekleme şeridi */
+.kur{
+  display:flex;align-items:center;gap:12px;margin-top:16px;padding:13px 15px;
+  background:var(--kobalt);color:#fff;border-radius:12px;box-shadow:var(--shadow);
+}
+.kur[hidden]{display:none!important}
+.kur .yazi{flex:1;min-width:0;font-size:13.5px;line-height:1.45}
+.kur .yazi b{display:block;font-family:var(--display);font-size:15px;font-weight:700;margin-bottom:1px}
+.kur button{
+  flex:none;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13.5px;
+  padding:8px 14px;background:#fff;color:var(--kobalt);
+}
+.kur .kapa{background:transparent;color:#fff;opacity:.7;padding:8px 4px;font-size:18px;line-height:1}
+.kur .kapa:hover{opacity:1}
+
+/* panel tutamağı yalnızca telefonda görünür */
+.tut{display:none}
+
+/* alttan açılan tarif paneli — telefon */
+@media (max-width:620px){
+  .scrim{align-items:flex-end;padding:0;overflow:hidden}
+  .sheet{
+    max-width:none;border-radius:20px 20px 0 0;border-bottom:none;
+    max-height:92vh;max-height:92dvh;display:flex;flex-direction:column;
+    animation:kalk .28s cubic-bezier(.32,.72,0,1);
+  }
+  .sheet-hd{flex:none;padding-top:14px}
+  .sheet-bd{
+    overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+    padding-bottom:calc(28px + env(safe-area-inset-bottom));
+  }
+  .tut{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);
+       margin:0 auto 12px;flex:none}
+  .mlist{grid-template-columns:1fr}
+
+  /* parmakla rahat dokunulacak boyutlar */
+  .searchbox input{font-size:16px;padding:13px}
+  .chip{font-size:14px;padding:7px 8px 7px 14px}
+  .chip button{width:22px;height:22px}
+  .pick{padding:9px 14px;font-size:14px;min-height:40px}
+  .mode{padding:10px 14px;flex:1;justify-content:center;min-height:46px}
+  .kur button{min-height:42px}
+  .card{min-height:66px}
+  .modes{width:100%}
+  .card{padding:15px}
+  .icon-btn{width:38px;height:38px}
+}
+@keyframes kalk{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
+/* ana ekrandan açıldığında tarayıcı çubuğu yok, üst boşluğu biraz aç */
+@media (display-mode:standalone){
+  .top-in{padding-top:calc(14px + env(safe-area-inset-top))}
+}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="19" fill="var(--kobalt-soft)"></circle>
+      <g fill="none" stroke="var(--kobalt)" stroke-width="1.4">
+        <ellipse cx="20" cy="20" rx="4.2" ry="13" transform="rotate(0 20 20)"></ellipse>
+        <ellipse cx="20" cy="20" rx="4.2" ry="13" transform="rotate(45 20 20)"></ellipse>
+        <ellipse cx="20" cy="20" rx="4.2" ry="13" transform="rotate(90 20 20)"></ellipse>
+        <ellipse cx="20" cy="20" rx="4.2" ry="13" transform="rotate(135 20 20)"></ellipse>
+      </g>
+      <circle cx="20" cy="20" r="3.6" fill="var(--turkuaz)"></circle>
+    </svg>
+    <div class="brand">
+      <h1>Bugün Ne Pişsin</h1>
+      <span class="sub">Evdekilerle yemek bulucu</span>
+    </div>
+    <button class="icon-btn" id="temaBtn" type="button" title="Açık / koyu tema" aria-label="Açık veya koyu temaya geç">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="kur" id="kurSerit" hidden>
+    <span class="yazi"><b>Ana ekrana ekle</b><span id="kurMetin"></span></span>
+    <button type="button" id="kurBtn">Ekle</button>
+    <button type="button" class="kapa" id="kurKapa" aria-label="Kapat">&times;</button>
+  </div>
+
+  <section class="panel kiler" aria-labelledby="kilerBaslik">
+    <div class="kiler-head">
+      <h2 id="kilerBaslik">Elimde neler var</h2>
+      <span class="n" id="kilerSayi">0 malzeme</span>
+      <button class="clear" id="temizle" type="button">hepsini temizle</button>
+    </div>
+
+    <div class="searchbox">
+      <input id="ara" type="text" autocomplete="off" spellcheck="false"
+             placeholder="Malzeme yaz ve Enter'a bas — örn. patlıcan, kıyma, yoğurt"
+             aria-label="Malzeme ekle" role="combobox" aria-expanded="false" aria-controls="oneri">
+      <div class="suggest" id="oneri" role="listbox" hidden></div>
+    </div>
+
+    <div class="tray" id="tepsi"></div>
+
+    <div class="picks">
+      <span class="eyebrow">Sık kullanılanlar — dokunup ekle</span>
+      <div id="hizli"></div>
+    </div>
+
+    <div class="basics">
+      <label class="sw"><input type="checkbox" id="swTemel" checked>
+        <span>Tuz, yağ, su, un evde var say</span></label>
+      <label class="sw"><input type="checkbox" id="swBaharat" checked>
+        <span>Baharatlar evde var say</span></label>
+    </div>
+  </section>
+
+  <section class="modebar" aria-label="Zorluk modu">
+    <div class="modes" id="modlar" role="group"></div>
+    <label class="onlydo"><input type="checkbox" id="swTam">
+      <span>Sadece eksiksiz yapabileceklerim</span></label>
+  </section>
+
+  <p class="tally" id="ozet"></p>
+
+  <div class="results" id="liste"></div>
+
+  <footer class="foot">
+    <span id="dbSayi"></span>
+    <span>·</span>
+    <span>Kiler tarayıcıda saklanır, hiçbir yere gönderilmez.</span>
+  </footer>
+</main>
+
+<div class="scrim" id="perde" hidden role="dialog" aria-modal="true" aria-labelledby="tarifAd">
+  <article class="sheet" id="kagit"></article>
+</div>
+<script>
+"use strict";
+
+/* Malzeme kategorileri — öneri listesini ve hızlı seçimi gruplamak için. */
+const KAT = {
+  "domates":"Sebze","salatalık":"Sebze","soğan":"Sebze","yeşil biber":"Sebze","kırmızı biber":"Sebze",
+  "patates":"Sebze","patlıcan":"Sebze","kabak":"Sebze","havuç":"Sebze","sarımsak":"Sebze",
+  "maydanoz":"Sebze","dereotu":"Sebze","nane":"Sebze","ıspanak":"Sebze","taze fasulye":"Sebze",
+  "lahana":"Sebze","marul":"Sebze","semizotu":"Sebze","taze soğan":"Sebze","mantar":"Sebze",
+  "kuru biber":"Sebze","asma yaprağı":"Sebze","limon":"Sebze","dolmalık biber":"Sebze",
+  "bezelye":"Sebze","mısır":"Sebze",
+
+  "kıyma":"Et & tavuk","kuşbaşı et":"Et & tavuk","tavuk göğsü":"Et & tavuk","tavuk but":"Et & tavuk",
+  "sucuk":"Et & tavuk","kuzu incik":"Et & tavuk","pastırma":"Et & tavuk",
+
+  "yumurta":"Süt & kahvaltı","süt":"Süt & kahvaltı","yoğurt":"Süt & kahvaltı",
+  "beyaz peynir":"Süt & kahvaltı","kaşar peyniri":"Süt & kahvaltı","lor peyniri":"Süt & kahvaltı",
+  "tereyağı":"Süt & kahvaltı","krema":"Süt & kahvaltı",
+
+  "pirinç":"Kiler","bulgur":"Kiler","ince bulgur":"Kiler","makarna":"Kiler","şehriye":"Kiler",
+  "un":"Kiler","kırmızı mercimek":"Kiler","yeşil mercimek":"Kiler","nohut":"Kiler","kuru fasulye":"Kiler",
+  "irmik":"Kiler","nişasta":"Kiler","ekmek":"Kiler","yufka":"Kiler","lavaş":"Kiler","kadayıf":"Kiler",
+  "galeta unu":"Kiler","maya":"Kiler","kabartma tozu":"Kiler","pide ekmeği":"Kiler",
+
+  "zeytinyağı":"Yağ & sos","sıvı yağ":"Yağ & sos","domates salçası":"Yağ & sos","biber salçası":"Yağ & sos",
+  "sirke":"Yağ & sos","nar ekşisi":"Yağ & sos","tahin":"Yağ & sos","pekmez":"Yağ & sos",
+
+  "tuz":"Baharat","karabiber":"Baharat","pul biber":"Baharat","kimyon":"Baharat","kekik":"Baharat",
+  "tarçın":"Baharat","vanilya":"Baharat","su":"Baharat","defne yaprağı":"Baharat",
+
+  "şeker":"Tatlı & kuruyemiş","ceviz":"Tatlı & kuruyemiş","fındık":"Tatlı & kuruyemiş",
+  "badem":"Tatlı & kuruyemiş","çam fıstığı":"Tatlı & kuruyemiş","kuş üzümü":"Tatlı & kuruyemiş",
+  "bal":"Tatlı & kuruyemiş","kakao":"Tatlı & kuruyemiş","susam":"Tatlı & kuruyemiş"
+};
+
+/* Aynı sayılan malzemeler — kullanıcı hangisini yazarsa yazsın eşleşsin. */
+const ESLER = [
+  ["soğan","kuru soğan"],
+  ["yeşil biber","sivri biber","çarliston biber","dolmalık biber","biber"],
+  ["domates salçası","salça"],
+  ["sıvı yağ","ayçiçek yağı","ayçiçek yağ"],
+  ["kaşar peyniri","kaşar"],
+  ["beyaz peynir","peynir","ezine"],
+  ["tavuk göğsü","tavuk","tavuk eti"],
+  ["kuşbaşı et","dana eti","et","kuzu eti"],
+  ["ince bulgur","köftelik bulgur"],
+  ["bulgur","pilavlık bulgur"],
+  ["kırmızı mercimek","mercimek"],
+  ["ekmek","bayat ekmek"],
+  ["lor peyniri","lor"],
+  ["tereyağı","tereyağ"],
+  ["pide ekmeği","pide"]
+];
+
+/* Mutfakta zaten var sayılan şeyler (üstteki anahtarlarla açılıp kapanır). */
+const TEMEL = ["tuz","su","sıvı yağ","zeytinyağı","un","şeker","karabiber"];
+const BAHARAT = ["pul biber","kimyon","kekik","nane","tarçın","vanilya","karabiber"];
+
+/* zor: 1 kolay · 2 orta · 3 zor */
+const TARIFLER = [
+{i:"menemen",ad:"Menemen",zor:1,dk:20,kisi:2,kat:"Kahvaltı",
+ mlz:["yumurta","domates","yeşil biber","soğan"],eks:["beyaz peynir","sucuk","pul biber"],
+ adim:["Soğanı ve biberi ince doğra, tavada yağla 4-5 dakika pembeleştir.",
+       "Rendelenmiş domatesi ekle, suyunu salıp çekene kadar orta ateşte pişir.",
+       "Tuz ve pul biberi at, yumurtaları kırıp ekle.",
+       "Kısık ateşte, spatulayla yavaşça karıştırarak yumurtalar tutana kadar pişir. Fazla karıştırma."],
+ not:"Domatesin suyu tam çekilmeden yumurtayı ekleme, yoksa sulu kalır."},
+
+{i:"sucuklu-yumurta",ad:"Sucuklu Yumurta",zor:1,dk:12,kisi:2,kat:"Kahvaltı",
+ mlz:["yumurta","sucuk"],eks:["kaşar peyniri","pul biber"],
+ adim:["Sucukları ince yuvarlak doğra, yağsız tavaya diz.",
+       "Kısık ateşte kendi yağını salıp kenarları kıvrılana kadar çevir.",
+       "Yumurtaları aralarına kır, tuzunu serp.",
+       "Kapağı kapatıp beyazlar tutana kadar 3-4 dakika pişir."],
+ not:"Sucuk yağlı olduğu için tavaya ayrıca yağ eklemene gerek yok."},
+
+{i:"omlet",ad:"Peynirli Omlet",zor:1,dk:10,kisi:2,kat:"Kahvaltı",
+ mlz:["yumurta","süt","kaşar peyniri"],eks:["maydanoz","karabiber"],
+ adim:["Yumurtaları sütle birlikte köpürene kadar çırp, tuz ve karabiber ekle.",
+       "Tereyağını ya da sıvı yağı tavada eritip karışımı dök.",
+       "Kısık ateşte alt yüzü tutmaya başlayınca rendelenmiş kaşarı üstüne serp.",
+       "İkiye katlayıp 1-2 dakika daha pişir."],
+ not:"Sütteki hava omleti kabartır; sütü atlamak isteyen yerine bir kaşık soda koyabilir."},
+
+{i:"coban-salata",ad:"Çoban Salata",zor:1,dk:10,kisi:4,kat:"Salata",
+ mlz:["domates","salatalık","soğan","maydanoz","limon","zeytinyağı"],eks:["yeşil biber","beyaz peynir"],
+ adim:["Domates ve salatalığı eşit küçük küpler halinde doğra.",
+       "Soğanı yarım ay doğrayıp bir tutam tuzla ovala, acısını al.",
+       "Maydanozu ince kıy, hepsini kasede birleştir.",
+       "Limon, zeytinyağı ve tuzu servisten hemen önce ekleyip karıştır."],
+ not:"Sosu erken koyarsan sebzeler su bırakır. En son ekle."},
+
+{i:"cacik",ad:"Cacık",zor:1,dk:10,kisi:4,kat:"Meze",
+ mlz:["yoğurt","salatalık","sarımsak","dereotu"],eks:["nane","zeytinyağı"],
+ adim:["Salatalığı rendele, suyunu hafifçe sık.",
+       "Yoğurdu bir miktar soğuk suyla çırparak akışkan hale getir.",
+       "Ezilmiş sarımsak, tuz ve ince kıyılmış dereotunu ekle.",
+       "Salatalığı karıştır, üzerine zeytinyağı gezdirip soğuk servis et."],
+ not:"Sarımsağı tuzla birlikte ezersen yoğurdun içinde topaklanmaz."},
+
+{i:"haydari",ad:"Haydari",zor:1,dk:10,kisi:4,kat:"Meze",
+ mlz:["yoğurt","beyaz peynir","sarımsak","dereotu"],eks:["nane","zeytinyağı","ceviz"],
+ adim:["Süzme yoğurdu geniş bir kaseye al.",
+       "Beyaz peyniri çatalla iyice ez, yoğurda ekle.",
+       "Ezilmiş sarımsak, kıyılmış dereotu ve tuzu karıştır.",
+       "En az yarım saat buzdolabında dinlendir, üzerine zeytinyağı gezdir."],
+ not:"Yoğurt suluysa süzgeçte bir tülbentle 1 saat süz; haydari kıvamını böyle bulur."},
+
+{i:"mercimek-corbasi",ad:"Kırmızı Mercimek Çorbası",zor:1,dk:35,kisi:4,kat:"Çorba",
+ mlz:["kırmızı mercimek","soğan","havuç","patates","un","tereyağı","limon"],eks:["pul biber","nane"],
+ adim:["Soğanı, havucu ve patatesi iri doğra; tencerede yağla 5 dakika kavur.",
+       "Yıkanmış mercimeği ve unu ekleyip 1 dakika daha çevir.",
+       "Üzerini 4 parmak geçecek kadar sıcak su ekle, kaynayınca kısık ateşte 25 dakika pişir.",
+       "Blenderdan geçirip pürüzsüzleştir, tuzunu ayarla.",
+       "Tereyağında pul biber kızdırıp üzerine gezdir, limonla servis et."],
+ not:"Blenderdan geçirdikten sonra 5 dakika daha kaynatmak çorbanın tadını oturtur."},
+
+{i:"domates-corbasi",ad:"Domates Çorbası",zor:1,dk:30,kisi:4,kat:"Çorba",
+ mlz:["domates","un","süt","tereyağı","domates salçası"],eks:["kaşar peyniri","kekik"],
+ adim:["Tereyağını erit, unu ekleyip kokusu çıkana kadar 2 dakika kavur.",
+       "Salçayı ekle, 1 dakika daha çevir.",
+       "Rendelenmiş domatesleri ekleyip 10 dakika pişir.",
+       "Sıcak süt ve suyu yavaşça, sürekli çırparak ekle.",
+       "Kaynayınca 5 dakika daha pişir; üzerine rendelenmiş kaşarla servis et."],
+ not:"Sütü soğuk eklersen kesilir. Ilıtıp azar azar ekle."},
+
+{i:"yayla-corbasi",ad:"Yayla Çorbası",zor:1,dk:35,kisi:4,kat:"Çorba",
+ mlz:["yoğurt","pirinç","yumurta","un","nane","tereyağı"],eks:[],
+ adim:["Pirinci bol suda 15 dakika haşla.",
+       "Ayrı kasede yoğurt, yumurta ve unu topak kalmayana kadar çırp.",
+       "Tencereden aldığın sıcak sudan azar azar ekleyerek yoğurdu ılıştır.",
+       "Karışımı tencereye dök, sürekli karıştırarak kaynat.",
+       "Tereyağında nane kızdırıp üzerine gezdir."],
+ not:"Yoğurdu ılıştırmadan eklersen kesilir; bu adımı atlama."},
+
+{i:"ezogelin",ad:"Ezogelin Çorbası",zor:1,dk:40,kisi:4,kat:"Çorba",
+ mlz:["kırmızı mercimek","bulgur","pirinç","soğan","domates salçası","biber salçası","tereyağı","nane"],eks:["pul biber","limon"],
+ adim:["Soğanı ince doğrayıp tereyağında pembeleştir.",
+       "Salçaları ekleyip 2 dakika kavur.",
+       "Mercimek, bulgur ve pirinci ekle, karıştır.",
+       "Sıcak suyu ilave et, kısık ateşte 30 dakika pişir.",
+       "Kuru nane ve pul biberi tereyağında kızdırıp üzerine dök."],
+ not:"Bulgur çorbayı koyulaştırır; sulu sevenler suyu bir bardak fazla koysun."},
+
+{i:"sebze-corbasi",ad:"Sebze Çorbası",zor:1,dk:35,kisi:4,kat:"Çorba",
+ mlz:["patates","havuç","kabak","soğan","domates","şehriye"],eks:["maydanoz","limon"],
+ adim:["Tüm sebzeleri küçük küpler halinde doğra.",
+       "Soğanı yağda kavur, ardından havuç ve patatesi ekle.",
+       "Rendelenmiş domatesi ekleyip 5 dakika pişir.",
+       "Sıcak su ilave et, sebzeler yumuşayana kadar 20 dakika kaynat.",
+       "Şehriyeyi ekle, 8 dakika daha pişirip tuzunu ayarla."],
+ not:"Çocuklar için blenderdan geçirip püre kıvamına getirebilirsin."},
+
+{i:"bulgur-pilavi",ad:"Tereyağlı Bulgur Pilavı",zor:1,dk:30,kisi:4,kat:"Pilav",
+ mlz:["bulgur","soğan","domates salçası","tereyağı"],eks:["yeşil biber","domates","pul biber"],
+ adim:["Soğanı ince doğrayıp tereyağında camlaşana kadar kavur.",
+       "Salçayı ekle, kokusu çıkana kadar 2 dakika çevir.",
+       "Bulguru ekleyip yağı çekene kadar kavur.",
+       "1 ölçü bulgura 2 ölçü sıcak su ekle, tuzunu at.",
+       "Suyunu çekene kadar kısık ateşte pişir, 10 dakika kapalı demlendir."],
+ not:"Demlenirken tencerenin kapağının altına temiz bir bez koy, pilav diri kalır."},
+
+{i:"pirinc-pilavi",ad:"Şehriyeli Pirinç Pilavı",zor:1,dk:35,kisi:4,kat:"Pilav",
+ mlz:["pirinç","şehriye","tereyağı"],eks:[],
+ adim:["Pirinci ılık tuzlu suda 20 dakika beklet, sonra durulayıp süz.",
+       "Tereyağında şehriyeyi kızarana kadar kavur.",
+       "Süzülmüş pirinci ekle, taneler şeffaflaşana kadar çevir.",
+       "1 ölçü pirince 1,5 ölçü sıcak su ekle, tuzunu at.",
+       "Suyunu çekene kadar kısık ateşte pişir, 15 dakika demlendir."],
+ not:"Pirinci bekletmek nişastasını alır; pilavın dağılmasının sırrı bu."},
+
+{i:"patates-kizartmasi",ad:"Patates Kızartması",zor:1,dk:25,kisi:3,kat:"Atıştırmalık",
+ mlz:["patates","sıvı yağ"],eks:["kekik","pul biber"],
+ adim:["Patatesleri soyup eşit kalınlıkta doğra.",
+       "Soğuk suda 15 dakika beklet, sonra iyice kurula.",
+       "Yağı kızdır, patatesleri az az atarak kızart.",
+       "Havlu kağıda al, sıcakken tuzunu serp."],
+ not:"Islak patates yağı sıçratır ve gevrek olmaz. Kurulama adımı şart."},
+
+{i:"yumurtali-ekmek",ad:"Yumurtalı Ekmek",zor:1,dk:12,kisi:2,kat:"Kahvaltı",
+ mlz:["yumurta","ekmek","süt"],eks:["kaşar peyniri","karabiber"],
+ adim:["Yumurta, süt ve tuzu bir kasede çırp.",
+       "Ekmek dilimlerini karışıma iki tarafından da batır.",
+       "Tereyağı ya da sıvı yağ kızdırılmış tavaya diz.",
+       "Her iki yüzünü altın rengi olana kadar kızart."],
+ not:"Bayat ekmek karışımı daha iyi emer, bu tarif için ideal."},
+
+{i:"tost",ad:"Kaşarlı Tost",zor:1,dk:10,kisi:2,kat:"Kahvaltı",
+ mlz:["ekmek","kaşar peyniri"],eks:["domates","sucuk","tereyağı"],
+ adim:["Ekmek dilimlerinin dışını tereyağıyla yağla.",
+       "Aralarına rendelenmiş kaşarı ve istersen domates, sucuk koy.",
+       "Tost makinesinde ya da tavada ağır bir kapakla bastırarak kızart.",
+       "Peynir eriyip dışı çıtırlayınca çıkar."],
+ not:"Tavada yaparken kısık ateş kullan; yüksek ateşte dışı yanar içi erimez."},
+
+{i:"piyaz",ad:"Piyaz",zor:1,dk:20,kisi:4,kat:"Salata",
+ mlz:["kuru fasulye","soğan","maydanoz","domates","limon","zeytinyağı","yumurta"],eks:["sirke","pul biber"],
+ adim:["Haşlanmış kuru fasulyeyi süzüp geniş tabağa yay.",
+       "Soğanı ince yarım ay doğra, tuzla ovup acısını al.",
+       "Domates, maydanoz ve haşlanmış yumurtayı dilimle.",
+       "Limon, zeytinyağı ve tuzu çırpıp sosu hazırla.",
+       "Hepsini tabakta birleştirip sosu gezdir."],
+ not:"Konserve fasulye kullanacaksan iyice durula, tuzu fazla olur."},
+
+{i:"patates-salatasi",ad:"Patates Salatası",zor:1,dk:30,kisi:4,kat:"Salata",
+ mlz:["patates","soğan","maydanoz","limon","zeytinyağı"],eks:["yeşil biber","yumurta","nar ekşisi"],
+ adim:["Patatesleri kabuklu haşla, ılıyınca soyup küp doğra.",
+       "Taze soğan ve maydanozu ince kıy.",
+       "Limon, zeytinyağı ve tuzu çırp.",
+       "Patatesler ılıkken sosu ekle, nazikçe karıştır."],
+ not:"Sosu patates ılıkken eklersen tadı içine çeker; soğuduktan sonra emmez."},
+
+{i:"kisir",ad:"Kısır",zor:1,dk:35,kisi:6,kat:"Salata",
+ mlz:["ince bulgur","domates salçası","biber salçası","soğan","maydanoz","limon","nar ekşisi","salatalık"],eks:["taze soğan","pul biber","nane"],
+ adim:["İnce bulgurun üzerine eşit ölçüde kaynar su dök, kapağını kapatıp 20 dakika beklet.",
+       "Soğanı ince doğrayıp zeytinyağında salçalarla kavur, bulgurun üzerine dök.",
+       "Ellerinle ovalayarak bulguru salçayla buluştur.",
+       "Kıyılmış maydanoz, taze soğan ve doğranmış salatalığı ekle.",
+       "Limon, nar ekşisi, tuz ve pul biberle tadını ayarla."],
+ not:"Bulgur şişerken kapağı açma; buharla pişer, yoksa sert kalır."},
+
+{i:"yogurtlu-makarna",ad:"Yoğurtlu Makarna",zor:1,dk:20,kisi:3,kat:"Makarna",
+ mlz:["makarna","yoğurt","sarımsak","tereyağı","pul biber"],eks:["nane"],
+ adim:["Makarnayı tuzlu suda diri kalacak şekilde haşla.",
+       "Yoğurdu ezilmiş sarımsak ve tuzla çırp, oda sıcaklığına getir.",
+       "Makarnayı süzüp tabağa al, yoğurdu üzerine dök.",
+       "Tereyağında pul biberi kızdırıp gezdir."],
+ not:"Yoğurt buzdolabından yeni çıkmışsa makarnayı soğutur; önceden dışarı al."},
+
+{i:"cilbir",ad:"Çılbır",zor:1,dk:15,kisi:2,kat:"Kahvaltı",
+ mlz:["yumurta","yoğurt","sarımsak","tereyağı","pul biber"],eks:["sirke","nane"],
+ adim:["Yoğurdu ezilmiş sarımsak ve tuzla karıştır, tabağa yay.",
+       "Geniş tencerede suyu kaynama noktasının hemen altına getir, bir tatlı kaşığı sirke ekle.",
+       "Yumurtayı küçük kaseye kırıp suya nazikçe bırak, 3 dakika poşe et.",
+       "Delikli kaşıkla alıp yoğurdun üzerine koy.",
+       "Tereyağında pul biber kızdırıp üzerine dök."],
+ not:"Su fokur fokur kaynarsa yumurta dağılır; yüzeyde sadece küçük kabarcıklar olmalı."},
+
+{i:"firinda-sebze",ad:"Fırında Karışık Sebze",zor:1,dk:50,kisi:4,kat:"Sebze",
+ mlz:["patates","havuç","kabak","patlıcan","yeşil biber","zeytinyağı","kekik"],eks:["domates","sarımsak","soğan"],
+ adim:["Fırını 200 dereceye ısıt.",
+       "Sebzeleri benzer büyüklükte iri parçalar halinde doğra.",
+       "Zeytinyağı, tuz, karabiber ve kekikle harmanla.",
+       "Yağlı kağıt serili tepsiye tek sıra halinde yay.",
+       "40-45 dakika, ortasında bir kez çevirerek pişir."],
+ not:"Sebzeleri üst üste yığma; buğulanır, kızarmaz."},
+
+{i:"tavuklu-salata",ad:"Tavuklu Salata",zor:1,dk:25,kisi:2,kat:"Salata",
+ mlz:["tavuk göğsü","marul","domates","salatalık","limon","zeytinyağı"],eks:["mısır","kekik","beyaz peynir"],
+ adim:["Tavuk göğsünü tuz, karabiber ve kekikle ovup tavada her yüzünü 5-6 dakika pişir.",
+       "Dinlendirip iri şeritler halinde doğra.",
+       "Marulu elle yırt, domates ve salatalığı doğra.",
+       "Limon, zeytinyağı ve tuzu çırpıp sos yap.",
+       "Tavuğu salatanın üzerine yerleştirip sosu gezdir."],
+ not:"Tavuğu pişer pişmez kesme; 5 dakika dinlendirirsen suyunu kaybetmez."},
+
+{i:"muhallebi",ad:"Muhallebi",zor:1,dk:25,kisi:4,kat:"Tatlı",
+ mlz:["süt","şeker","nişasta","un","vanilya"],eks:["tarçın","fındık"],
+ adim:["Sütün bir kısmını ayırıp nişasta ve unu içinde topak kalmayana kadar ez.",
+       "Kalan sütü ve şekeri tencerede ısıt.",
+       "Nişastalı sütü tencereye süzerek ekle, sürekli karıştır.",
+       "Koyulaşıp fokurdayınca 2 dakika daha pişir, vanilyayı ekle.",
+       "Kaselere paylaştır, üzeri soğuyunca buzdolabına al."],
+ not:"Karıştırmayı bırakma; tencerenin dibi bir anda tutar."},
+{i:"karniyarik",ad:"Karnıyarık",zor:2,dk:70,kisi:4,kat:"Ana yemek",
+ mlz:["patlıcan","kıyma","soğan","domates","yeşil biber","sarımsak","domates salçası","maydanoz"],eks:["pul biber"],
+ adim:["Patlıcanları alacalı soy, tuzlu suda 20 dakika beklet, kurula.",
+       "Yağda her yanını çevirerek kızart ya da fırında 200 derecede 25 dakika pişir.",
+       "İç harç için soğanı kavur, kıymayı ekleyip suyunu salıp çekene kadar pişir.",
+       "Sarımsak, doğranmış domates, biber, salça, tuz ve maydanozu ekleyip 5 dakika daha pişir.",
+       "Patlıcanları tepsiye diz, ortadan yararak harcı doldur, üzerine domates ve biber koy.",
+       "1 su bardağı sıcak salçalı su ekleyip 180 derecede 25 dakika pişir."],
+ not:"Patlıcanı tuzlu suda bekletmek acısını alır ve yağ çekmesini azaltır."},
+
+{i:"imam-bayildi",ad:"İmam Bayıldı",zor:2,dk:75,kisi:4,kat:"Zeytinyağlı",
+ mlz:["patlıcan","soğan","domates","yeşil biber","sarımsak","maydanoz","zeytinyağı"],eks:["şeker","limon"],
+ adim:["Patlıcanları alacalı soyup tuzlu suda beklet, kurulayıp kızart.",
+       "Soğanı yarım ay doğrayıp bol zeytinyağında yumuşayana kadar kavur.",
+       "Bütün sarımsak dişleri, doğranmış domates, biber ve maydanozu ekle.",
+       "Tuz ve bir tutam şeker atıp 10 dakika pişir.",
+       "Patlıcanları yararak harcı doldur, tencereye diz.",
+       "Yarım bardak sıcak su ekleyip kısık ateşte 30 dakika pişir, ılık ya da soğuk servis et."],
+ not:"Kıymasız olması tesadüf değil; zeytinyağlı yemek soğuk yenir, bu yüzden bol zeytinyağı gerekir."},
+
+{i:"kuru-fasulye",ad:"Kuru Fasulye",zor:2,dk:90,kisi:4,kat:"Ana yemek",
+ mlz:["kuru fasulye","soğan","domates salçası","biber salçası","sıvı yağ"],eks:["kuşbaşı et","yeşil biber","pul biber"],
+ adim:["Fasulyeyi bir gece önceden bol suda ıslat, ertesi gün suyunu dök.",
+       "Soğanı yağda kavur, istersen kuşbaşı eti ekleyip mühürle.",
+       "Salçaları ekleyip 2 dakika çevir.",
+       "Fasulyeyi ekle, üzerini geçecek kadar sıcak su koy.",
+       "Kısık ateşte 60-75 dakika, taneler yumuşayana kadar pişir.",
+       "Tuzu en sonda ekle."],
+ not:"Tuzu başta atarsan fasulyenin kabuğu sertleşir ve geç pişer."},
+
+{i:"nohut-yemegi",ad:"Nohut Yemeği",zor:2,dk:80,kisi:4,kat:"Ana yemek",
+ mlz:["nohut","soğan","domates","domates salçası","sıvı yağ"],eks:["kuşbaşı et","yeşil biber","kimyon"],
+ adim:["Nohudu bir gece ıslat, suyunu dök.",
+       "Soğanı yağda kavur, salçayı ekleyip çevir.",
+       "Rendelenmiş domatesi ilave edip 5 dakika pişir.",
+       "Nohudu ve sıcak suyu ekle, kısık ateşte 50-60 dakika pişir.",
+       "Yumuşayınca tuzunu ayarla, pilavla servis et."],
+ not:"Düdüklü tencerede 20 dakika yeterli; suyu yarıya indir."},
+
+{i:"tavuk-sote",ad:"Tavuk Sote",zor:2,dk:35,kisi:4,kat:"Ana yemek",
+ mlz:["tavuk göğsü","soğan","yeşil biber","domates","sarımsak","domates salçası"],eks:["mantar","kekik","pul biber"],
+ adim:["Tavuğu kuşbaşı doğra, yüksek ateşte yağda suyunu salıp çekene kadar mühürle.",
+       "Soğan ve biberi ekleyip 5 dakika kavur.",
+       "Sarımsak ve salçayı ekle, 1 dakika çevir.",
+       "Doğranmış domatesi ekle, tuz ve karabiberi at.",
+       "Kısık ateşte kapağı kapalı 15 dakika pişir."],
+ not:"Tavuğu az az at; tavayı doldurursan haşlanır, kızarmaz."},
+
+{i:"etli-turlu",ad:"Etli Türlü",zor:2,dk:80,kisi:5,kat:"Ana yemek",
+ mlz:["kuşbaşı et","patates","patlıcan","kabak","havuç","domates","yeşil biber","soğan","domates salçası"],eks:["taze fasulye","sarımsak"],
+ adim:["Eti yağda mühürle, üzerine az su ekleyip yumuşayana kadar 45 dakika pişir.",
+       "Soğanı ekleyip kavur, salçayı ilave et.",
+       "Tüm sebzeleri iri doğrayıp tencereye ekle.",
+       "Rendelenmiş domates, tuz ve sıcak suyu ekle.",
+       "Kısık ateşte sebzeler yumuşayana kadar 30 dakika pişir."],
+ not:"Sebzeleri iri doğra; küçük doğranırsa uzun pişirmede dağılır."},
+
+{i:"taze-fasulye",ad:"Zeytinyağlı Taze Fasulye",zor:2,dk:60,kisi:4,kat:"Zeytinyağlı",
+ mlz:["taze fasulye","soğan","domates","zeytinyağı","şeker"],eks:["sarımsak","limon"],
+ adim:["Fasulyelerin uçlarını ve kılçığını temizle, ikiye böl.",
+       "Soğanı zeytinyağında yumuşayana kadar kavur.",
+       "Rendelenmiş domatesi ekleyip 5 dakika pişir.",
+       "Fasulyeleri, tuzu ve bir tatlı kaşığı şekeri ekle.",
+       "Yarım bardak sıcak su koyup kapağı kapalı, kısık ateşte 40 dakika pişir.",
+       "Ocaktan alıp soğumaya bırak, ılık servis et."],
+ not:"Şeker tatlandırmak için değil, fasulyenin yeşil rengini korumak için."},
+
+{i:"sebzeli-bulgur",ad:"Sebzeli Bulgur Pilavı",zor:2,dk:40,kisi:4,kat:"Pilav",
+ mlz:["bulgur","soğan","havuç","yeşil biber","domates","domates salçası","tereyağı"],eks:["nohut","pul biber"],
+ adim:["Soğan, havuç ve biberi küçük doğrayıp tereyağında 6-7 dakika kavur.",
+       "Salçayı ekle, kokusu çıkana kadar çevir.",
+       "Rendelenmiş domatesi ekleyip suyunu çektir.",
+       "Bulguru ekleyip 2 dakika kavur.",
+       "2 ölçü sıcak su ve tuzu ekle, suyunu çekene kadar pişir.",
+       "10 dakika demlendirip karıştır."],
+ not:"Sebzeleri bulgurla aynı boyda doğrarsan her kaşıkta hepsinden olur."},
+
+{i:"tavuklu-pilav",ad:"Tavuklu Pilav",zor:2,dk:55,kisi:4,kat:"Pilav",
+ mlz:["pirinç","tavuk göğsü","tereyağı","soğan","şehriye"],eks:["havuç","bezelye","karabiber"],
+ adim:["Tavuğu tuzlu suda 25 dakika haşla, suyunu ayır, etini didikle.",
+       "Pirinci ılık tuzlu suda 20 dakika beklet, durula.",
+       "Tereyağında şehriyeyi kızart, didiklenmiş tavuğu ekleyip çevir.",
+       "Pirinci ekle, taneler şeffaflaşana kadar kavur.",
+       "1,5 ölçü sıcak tavuk suyu ekle, suyunu çekene kadar pişir.",
+       "15 dakika demlendir."],
+ not:"Suyu yerine tavuk haşlama suyunu kullanmak pilavın tadını iki katına çıkarır."},
+
+{i:"firin-tavuk",ad:"Fırında Tavuk But",zor:2,dk:70,kisi:4,kat:"Ana yemek",
+ mlz:["tavuk but","patates","sarımsak","yoğurt","domates salçası","kekik","zeytinyağı"],eks:["havuç","pul biber","limon"],
+ adim:["Yoğurt, salça, ezilmiş sarımsak, zeytinyağı, kekik, tuz ve karabiberi karıştırıp sos yap.",
+       "Tavuk butları sosla iyice ovala, mümkünse 1 saat buzdolabında beklet.",
+       "Patatesleri iri doğrayıp tepsiye yay, üzerine tavukları diz.",
+       "Yarım bardak su ekleyip fırını 190 dereceye ayarla.",
+       "Üzerini folyoyla kapatıp 40 dakika, folyoyu açıp 20 dakika daha pişir."],
+ not:"Son 20 dakikayı folyosuz pişirmek deriyi çıtır yapar."},
+
+{i:"kofte",ad:"Ev Köftesi",zor:2,dk:45,kisi:4,kat:"Ana yemek",
+ mlz:["kıyma","soğan","galeta unu","yumurta","sarımsak","kimyon","maydanoz"],eks:["karabiber","pul biber"],
+ adim:["Soğanı rendele, suyunu hafifçe sık.",
+       "Kıyma, soğan, galeta unu, yumurta, ezilmiş sarımsak, kıyılmış maydanoz ve baharatları yoğur.",
+       "Harcı en az 10 dakika, iyice birleşene kadar yoğurmaya devam et.",
+       "Streçleyip buzdolabında 1 saat dinlendir.",
+       "Ceviz büyüklüğünde parçalar alıp şekil ver.",
+       "Kızgın tavada ya da ızgarada her yüzünü 3-4 dakika pişir."],
+ not:"Dinlendirmeden pişirirsen köfteler tavada dağılır. Bu adım şart."},
+
+{i:"musakka",ad:"Patlıcan Musakka",zor:2,dk:70,kisi:4,kat:"Ana yemek",
+ mlz:["patlıcan","kıyma","soğan","domates","yeşil biber","domates salçası","sarımsak"],eks:["maydanoz","kaşar peyniri"],
+ adim:["Patlıcanları yuvarlak dilimle, tuzlu suda beklet, kurulayıp kızart.",
+       "Soğanı kavur, kıymayı ekleyip suyunu çektir.",
+       "Sarımsak, salça ve doğranmış domates, biberi ekleyip 10 dakika pişir.",
+       "Patlıcanları tencereye ya da tepsiye yay, üzerine kıymalı harcı dök.",
+       "Yarım bardak sıcak su ekleyip 20 dakika kısık ateşte pişir."],
+ not:"Patlıcanı fırında pişirmek yağ tüketimini yarıya indirir, tadı bozmaz."},
+
+{i:"ispanakli-borek",ad:"Ispanaklı Börek",zor:2,dk:60,kisi:6,kat:"Börek",
+ mlz:["yufka","ıspanak","soğan","beyaz peynir","yumurta","süt","sıvı yağ"],eks:["maydanoz","susam"],
+ adim:["Ispanağı yıkayıp doğra, soğanla birlikte yağda kavur, suyunu tamamen çektir.",
+       "Ilıyınca ezilmiş beyaz peyniri ve karabiberi ekle.",
+       "Süt, sıvı yağ ve bir yumurtayı çırparak ıslatma sosunu hazırla.",
+       "Tepsiye bir yufka ser, sosla ıslat; bunu iki kat yap.",
+       "Harcı yay, kalan yufkaları sosla ıslatarak üzerine kapat.",
+       "Üzerine yumurta sarısı sür, susam serp, 180 derecede 35-40 dakika pişir."],
+ not:"Ispanağın suyunu tam çektirmezsen böreğin altı hamur kalır."},
+
+{i:"sigara-boregi",ad:"Sigara Böreği",zor:2,dk:40,kisi:5,kat:"Börek",
+ mlz:["yufka","beyaz peynir","maydanoz","sıvı yağ"],eks:["yumurta","dereotu"],
+ adim:["Peyniri çatalla ez, ince kıyılmış maydanozla karıştır.",
+       "Yufkayı üçgen dilimlere ayır.",
+       "Geniş kenara harçtan koy, kenarları içe katlayarak sıkıca sar.",
+       "Ucunu suyla ıslatıp yapıştır.",
+       "Kızgın yağda, orta ateşte her yüzünü altın rengi olana kadar kızart."],
+ not:"Sarımı gevşek yaparsan yağda açılır. Sıkı sar, ucunu mutlaka ıslat."},
+
+{i:"mercimek-koftesi",ad:"Mercimek Köftesi",zor:2,dk:50,kisi:6,kat:"Meze",
+ mlz:["kırmızı mercimek","ince bulgur","soğan","domates salçası","biber salçası","maydanoz","taze soğan","limon"],eks:["pul biber","kimyon","marul"],
+ adim:["Mercimeği 2 ölçü suyla suyunu çekene kadar haşla.",
+       "Sıcakken ince bulguru ekle, karıştırıp kapağını kapat, 20 dakika beklet.",
+       "Soğanı zeytinyağında salçalarla kavur, karışıma ekle.",
+       "Ilıyınca kıyılmış maydanoz, taze soğan, limon, tuz ve baharatları ekle.",
+       "Avuç içinde sıkarak köfte şekli ver, marul yaprağıyla servis et."],
+ not:"Harç sıcakken şekil verme; elini yakar ve köfte dağılır."},
+
+{i:"tavuk-sis",ad:"Tavuk Şiş",zor:2,dk:45,kisi:4,kat:"Ana yemek",
+ mlz:["tavuk göğsü","yoğurt","domates salçası","sarımsak","zeytinyağı","kekik","yeşil biber"],eks:["soğan","domates","pul biber"],
+ adim:["Tavuğu eşit kuşbaşı parçalara doğra.",
+       "Yoğurt, salça, ezilmiş sarımsak, zeytinyağı, kekik, tuz ve karabiberi karıştır.",
+       "Tavukları sosla harmanlayıp en az 2 saat, tercihen bir gece buzdolabında beklet.",
+       "Şişlere biber ve domates parçalarıyla dönüşümlü diz.",
+       "Izgarada ya da fırında 200 derecede, çevirerek 20-25 dakika pişir."],
+ not:"Marinasyondaki yoğurt tavuğu yumuşatır; süreyi kısaltma."},
+
+{i:"firin-makarna",ad:"Fırın Makarna",zor:2,dk:55,kisi:5,kat:"Makarna",
+ mlz:["makarna","süt","un","tereyağı","kaşar peyniri","yumurta"],eks:["karabiber","sucuk"],
+ adim:["Makarnayı tuzlu suda diri kalacak şekilde haşla, süz.",
+       "Beşamel için tereyağını erit, unu ekleyip 2 dakika kavur.",
+       "Sıcak sütü azar azar, çırparak ekle; koyulaşınca tuz ve karabiber at.",
+       "Makarnayı beşamelin yarısıyla karıştır, fırın kabına yay.",
+       "Üzerine kalan beşameli dök, çırpılmış yumurtayı gezdir, kaşarı serp.",
+       "180 derecede üstü kızarana kadar 25-30 dakika pişir."],
+ not:"Makarnayı tam haşlarsan fırında dağılır; paket süresinden 2 dakika eksik pişir."},
+
+{i:"tavuk-corbasi",ad:"Şehriyeli Tavuk Çorbası",zor:2,dk:50,kisi:4,kat:"Çorba",
+ mlz:["tavuk göğsü","şehriye","havuç","tereyağı","limon","un"],eks:["maydanoz","karabiber"],
+ adim:["Tavuğu havuçla birlikte tuzlu suda 30 dakika haşla.",
+       "Tavuğu çıkarıp didikle, suyu süz.",
+       "Tencerede tereyağını erit, unu 2 dakika kavur.",
+       "Süzülmüş tavuk suyunu azar azar, çırparak ekle.",
+       "Şehriye ve didiklenmiş tavuğu ilave et, 10 dakika pişir.",
+       "Limon sıkıp servis et."],
+ not:"Tavuk suyunu süzmek çorbayı berrak yapar."},
+
+{i:"mucver",ad:"Kabak Mücveri",zor:2,dk:35,kisi:4,kat:"Sebze",
+ mlz:["kabak","yumurta","un","soğan","dereotu","beyaz peynir","maydanoz"],eks:["kabartma tozu","karabiber"],
+ adim:["Kabakları rendele, tuzlayıp 10 dakika beklet, suyunu iyice sık.",
+       "Rendelenmiş soğan, yumurta, ezilmiş peynir, kıyılmış dereotu ve maydanozu ekle.",
+       "Unu azar azar ilave et, akıcı ama dökülmeyen bir kıvam tuttur.",
+       "Kızgın yağa kaşıkla harçtan al, hafifçe yay.",
+       "Her iki yüzünü orta ateşte 3-4 dakika kızart."],
+ not:"Kabağın suyunu sıkmazsan un tutmaz ve mücver yağ çeker."},
+
+{i:"biber-dolma",ad:"Etli Biber Dolması",zor:2,dk:75,kisi:4,kat:"Dolma",
+ mlz:["dolmalık biber","kıyma","pirinç","soğan","domates salçası","maydanoz","nane","domates"],eks:["pul biber","karabiber"],
+ adim:["Biberlerin sapını kesip içini temizle.",
+       "İç harç için soğanı yağda kavur, kıymayı ekleyip suyunu çektir.",
+       "Yıkanmış pirinç, salça, kıyılmış maydanoz, nane, tuz ve baharatları ekleyip 2 dakika çevir.",
+       "Biberleri harçla dörtte üçüne kadar doldur, ağzını domates parçasıyla kapat.",
+       "Tencereye dik diz, üzerine 1,5 bardak sıcak salçalı su ekle.",
+       "Kapağı kapalı, kısık ateşte 45 dakika pişir."],
+ not:"Pirinç pişerken şişer; biberi ağzına kadar doldurma."},
+
+{i:"lahana-sarma",ad:"Lahana Sarma",zor:2,dk:90,kisi:5,kat:"Dolma",
+ mlz:["lahana","kıyma","pirinç","soğan","domates salçası","nane"],eks:["biber salçası","pul biber","limon"],
+ adim:["Lahananın yapraklarını ayırıp kaynar suda 5 dakika haşla, yumuşat.",
+       "Kalın damarlarını inceltip sarılacak boyda kes.",
+       "Soğanı kavur, kıyma, yıkanmış pirinç, salça, nane ve baharatları karıştır.",
+       "Her yaprağa harçtan koyup parmak kalınlığında sar.",
+       "Tencereye sıkıca diz, üzerine tabak kapat.",
+       "Sıcak salçalı suyu ekleyip kısık ateşte 50-60 dakika pişir."],
+ not:"Üstüne tabak koymak sarmaların kaynarken açılmasını engeller."},
+
+{i:"tavuk-guvec",ad:"Fırında Tavuk Güveç",zor:2,dk:60,kisi:4,kat:"Ana yemek",
+ mlz:["tavuk göğsü","mantar","yeşil biber","domates","soğan","kaşar peyniri","domates salçası"],eks:["sarımsak","kekik","krema"],
+ adim:["Tavuğu kuşbaşı doğrayıp yağda mühürle.",
+       "Soğan, biber ve mantarı ekleyip 5 dakika kavur.",
+       "Salça ve rendelenmiş domatesi ekle, tuz ve karabiberi at.",
+       "Güveç kaplarına ya da fırın kabına paylaştır.",
+       "Üzerine bol kaşar rendesi serp.",
+       "200 derecede peynir eriyip kızarana kadar 20 dakika pişir."],
+ not:"Mantarı en son ekle ve tuzu geciktir; erken tuzlarsan suyunu salar."},
+
+{i:"sutlac",ad:"Fırın Sütlaç",zor:2,dk:70,kisi:6,kat:"Tatlı",
+ mlz:["pirinç","süt","şeker","nişasta"],eks:["vanilya","tarçın","fındık"],
+ adim:["Pirinci 2 bardak suda, suyunu çekene kadar haşla.",
+       "Sütü ekleyip kaynamaya bırak, ara ara karıştır.",
+       "Şekeri ilave et, 10 dakika daha pişir.",
+       "Nişastayı az sütle ezip tencereye süzerek ekle, koyulaşana kadar karıştır.",
+       "Güveç kaplarına paylaştır, fırının üst ızgarasında üstü kızarana kadar 15 dakika pişir.",
+       "Soğuduktan sonra buzdolabında beklet."],
+ not:"Fırında kızartırken başından ayrılma; üst kısım 2 dakikada yanabilir."},
+
+{i:"krep",ad:"Krep",zor:2,dk:30,kisi:4,kat:"Tatlı",
+ mlz:["un","yumurta","süt","şeker","tereyağı"],eks:["vanilya","kakao","bal"],
+ adim:["Un, yumurta, süt, şeker ve bir tutam tuzu blenderdan geçir.",
+       "Karışımı 20 dakika dinlendir.",
+       "Yapışmaz tavayı ısıtıp ince bir tabaka tereyağı sür.",
+       "Bir kepçe harcı dökerek tavayı çevir, ince yay.",
+       "Kenarları kalkınca çevir, 30 saniye daha pişir."],
+ not:"Hamuru dinlendirmek unun sıvıyı emmesini sağlar, krepler yırtılmaz."},
+{i:"manti",ad:"Kayseri Mantısı",zor:3,dk:150,kisi:5,kat:"Hamur işi",
+ mlz:["un","yumurta","kıyma","soğan","yoğurt","sarımsak","tereyağı","domates salçası","pul biber","nane"],eks:["karabiber"],
+ adim:["Un, yumurta, tuz ve ılık suyla kulak memesi yumuşaklığında hamur yoğur, 30 dakika dinlendir.",
+       "İç harç için kıymayı rendelenmiş soğan, tuz ve karabiberle yoğur.",
+       "Hamuru bezelere ayırıp çok ince aç, 2 cm'lik kareler kes.",
+       "Her karenin ortasına mercimek kadar harç koyup dört köşesini birleştirerek kapat.",
+       "Tuzlu kaynar suda 12-15 dakika haşla, süz.",
+       "Sarımsaklı yoğurdu üzerine dök; tereyağında salça ve pul biber kızdırıp gezdir, kuru nane serp."],
+ not:"Hamuru ne kadar ince açarsan mantı o kadar makbul. Açarken altına un serp ki yapışmasın."},
+
+{i:"yaprak-sarma",ad:"Zeytinyağlı Yaprak Sarma",zor:3,dk:120,kisi:6,kat:"Zeytinyağlı",
+ mlz:["asma yaprağı","pirinç","soğan","dereotu","nane","kuş üzümü","çam fıstığı","limon","zeytinyağı"],eks:["tarçın","karabiber"],
+ adim:["Salamura yaprakları sıcak suda bekletip tuzunu al, damarlarını kes.",
+       "Soğanı zeytinyağında pembeleşene kadar kavur, çam fıstığını ekle.",
+       "Yıkanmış pirinç, kuş üzümü, tuz ve baharatları ekleyip 5 dakika çevir.",
+       "Ilıyınca kıyılmış dereotu ve naneyi karıştır.",
+       "Yaprakları ters çevirip harcı koy, kenarları içe katlayarak ince sar.",
+       "Tencereye sıkıca diz, üzerine tabak kapat, zeytinyağı, limon ve sıcak su ekle.",
+       "Kısık ateşte 45-50 dakika pişir, tencerede soğumaya bırak."],
+ not:"İnce sarmanın sırrı az harç. Bir yaprağa bir tatlı kaşığından fazla koyma."},
+
+{i:"icli-kofte",ad:"İçli Köfte",zor:3,dk:180,kisi:6,kat:"Hamur işi",
+ mlz:["ince bulgur","irmik","kıyma","soğan","ceviz","un","nişasta","biber salçası"],eks:["pul biber","karabiber","maydanoz"],
+ adim:["İnce bulguru ve irmiği ılık suyla ıslatıp 30 dakika şişmeye bırak.",
+       "Un, nişasta, tuz ve salçayı ekleyip en az 20 dakika, kulak memesi kıvamına gelene kadar yoğur.",
+       "İç harç için soğanı kavur, kıymayı ekleyip suyunu çektir, ceviz ve baharatları karıştır.",
+       "Hamurdan ceviz büyüklüğünde parça al, işaret parmağınla oyarak ince bir kase aç.",
+       "Harcı doldurup ağzını kapat, iki ucunu sivrilterek şekil ver.",
+       "Tuzlu kaynar suda 15 dakika haşla ya da kızgın yağda kızart."],
+ not:"Hamuru oyarken elini ıslak tut; çatlarsa köfte suda dağılır."},
+
+{i:"lahmacun",ad:"Lahmacun",zor:3,dk:120,kisi:6,kat:"Hamur işi",
+ mlz:["un","maya","kıyma","soğan","domates","yeşil biber","maydanoz","domates salçası","sarımsak"],eks:["pul biber","limon","nar ekşisi"],
+ adim:["Un, maya, tuz ve ılık suyla hamur yoğur, üzerini örtüp 1 saat mayalandır.",
+       "Harç için soğan, biber, domates, maydanoz ve sarımsağı rondodan geçir ya da çok ince kıy.",
+       "Suyunu süzüp kıyma, salça, tuz ve baharatlarla karıştır.",
+       "Hamuru bezelere ayır, çok ince aç.",
+       "Harçtan ince bir tabaka yay, kenarlara kadar sür.",
+       "En yüksek dereceye ısıtılmış fırında taş ya da ters tepside 6-8 dakika pişir."],
+ not:"Harcın suyunu süzmezsen lahmacun hamur kalır. Süzgeçte 10 dakika beklet."},
+
+{i:"kiymali-pide",ad:"Kıymalı Pide",zor:3,dk:120,kisi:4,kat:"Hamur işi",
+ mlz:["un","maya","kıyma","soğan","domates","yeşil biber","maydanoz","yumurta","domates salçası"],eks:["kaşar peyniri","tereyağı"],
+ adim:["Un, maya, tuz, şeker ve ılık suyla yumuşak bir hamur yoğur, 1 saat mayalandır.",
+       "Kıymayı ince doğranmış soğan, biber, domates, maydanoz, salça ve baharatlarla karıştır.",
+       "Hamuru dört beze ayır, uzun oval şekilde aç.",
+       "Harcı ortaya yay, kenarları kıvırıp uçlarını birleştir.",
+       "Üzerine yumurta sarısı sür.",
+       "220 derece fırında 15-18 dakika pişir, çıkınca tereyağı gezdir."],
+ not:"Fırını önceden iyice ısıt; pide yüksek sıcaklıkta hızlı pişerse yumuşak kalır."},
+
+{i:"su-boregi",ad:"Su Böreği",zor:3,dk:150,kisi:8,kat:"Börek",
+ mlz:["un","yumurta","nişasta","beyaz peynir","maydanoz","tereyağı","süt","sıvı yağ"],eks:[],
+ adim:["Un, yumurta, tuz ve suyla sert bir hamur yoğur, 8 beze yapıp 30 dakika dinlendir.",
+       "Her bezeyi nişasta serperek çok ince aç.",
+       "Yaprakları kaynar tuzlu suda 1-2 dakika haşla, hemen soğuk suya al, süz.",
+       "Tereyağı, sıvı yağ ve sütü karıştırıp sos yap.",
+       "Tepsiye yaprakları sosla ıslatarak sırayla diz, ortaya peynirli maydanozlu harcı koy.",
+       "Kalan yaprakları üzerine kapat, üstünü bolca yağla.",
+       "180 derecede 40-45 dakika, üstü kızarana kadar pişir."],
+ not:"Haşlanan yaprakları soğuk suya almazsan birbirine yapışır ve yırtılır."},
+
+{i:"hunkar-begendi",ad:"Hünkar Beğendi",zor:3,dk:100,kisi:4,kat:"Ana yemek",
+ mlz:["kuşbaşı et","patlıcan","süt","un","tereyağı","kaşar peyniri","domates salçası","soğan"],eks:["domates","yeşil biber","karabiber"],
+ adim:["Eti yağda mühürle, soğan ve salçayı ekleyip kavur.",
+       "Sıcak su ilave edip et yumuşayana kadar 60 dakika pişir.",
+       "Patlıcanları ocakta ya da fırında kabukları kararana kadar közle.",
+       "Kabuğunu soyup közü doğra, limonlu suda bekletip kararmasını önle.",
+       "Tereyağında unu kavur, sıcak sütü çırparak ekle, beşamel yap.",
+       "Közlenmiş patlıcanı beşamele ekleyip ezerek pişir, rendelenmiş kaşarı karıştır.",
+       "Beğendiyi tabağa yay, etli sosu ortasına koy."],
+ not:"Patlıcanı gerçekten közlemek gerekir; fırında pişirilmiş patlıcan o dumanlı tadı vermez."},
+
+{i:"ali-nazik",ad:"Ali Nazik",zor:3,dk:80,kisi:4,kat:"Ana yemek",
+ mlz:["patlıcan","kıyma","yoğurt","sarımsak","tereyağı","domates salçası"],eks:["yeşil biber","domates","pul biber"],
+ adim:["Patlıcanları ocak üzerinde kabukları siyahlaşana kadar közle.",
+       "Kabuğunu soyup közü bıçakla ince doğra.",
+       "Süzme yoğurdu ezilmiş sarımsak ve tuzla çırp, közle karıştır.",
+       "Kıymayı tavada suyunu salıp çekene kadar kavur, salça ve baharatları ekle.",
+       "Közlü yoğurdu tabağa yay, kıymayı ortasına koy.",
+       "Tereyağında pul biber kızdırıp üzerine gezdir."],
+ not:"Yoğurt karışımını ılık tut; buzdolabından çıkmış soğuk yoğurt kıymanın yağını dondurur."},
+
+{i:"iskender",ad:"İskender",zor:3,dk:70,kisi:4,kat:"Ana yemek",
+ mlz:["pide ekmeği","kuşbaşı et","domates salçası","tereyağı","yoğurt","domates","yeşil biber"],eks:["sarımsak","kekik"],
+ adim:["Eti çok ince şeritler halinde doğrayıp kekik, tuz ve karabiberle ovala.",
+       "Kızgın tavada, suyunu salmadan yüksek ateşte hızlıca mühürle.",
+       "Salçayı rendelenmiş domates ve az suyla kaynatıp sosu hazırla.",
+       "Pide ekmeğini küp doğrayıp tavada ya da fırında kızart.",
+       "Ekmekleri tabağa yay, eti üzerine diz, sosu gezdir.",
+       "Kenarına süzme yoğurt koy, eritilmiş kızgın tereyağını en son üzerine dök.",
+       "Közlenmiş domates ve biberle servis et."],
+ not:"Tereyağını servis anında, cızırdayacak kadar kızgın dök. Ayırt eden detay bu."},
+
+{i:"beyti-sarma",ad:"Beyti Sarma",zor:3,dk:90,kisi:4,kat:"Ana yemek",
+ mlz:["lavaş","kıyma","kaşar peyniri","domates salçası","yoğurt","tereyağı","sarımsak","maydanoz"],eks:["soğan","pul biber"],
+ adim:["Kıymayı rendelenmiş soğan, kıyılmış maydanoz, tuz ve baharatlarla yoğur.",
+       "Harcı uzun ince köfteler halinde şekillendirip tavada ya da ızgarada pişir.",
+       "Lavaşın içine köfteyi ve rendelenmiş kaşarı koyup sıkıca sar.",
+       "Ruloları 3-4 cm'lik dilimler halinde kes, fırın kabına diz.",
+       "Salçayı domates ve suyla kaynatıp sosu hazırla, üzerine dök.",
+       "200 derecede 15 dakika pişir.",
+       "Sarımsaklı yoğurt ve kızdırılmış tereyağıyla servis et."],
+ not:"Lavaşı çok sıkı sar, yoksa dilimlerken açılır."},
+
+{i:"kuru-dolma",ad:"Kuru Biber Dolması",zor:3,dk:110,kisi:4,kat:"Dolma",
+ mlz:["kuru biber","pirinç","kıyma","soğan","domates salçası","nane","karabiber"],eks:["pul biber","limon"],
+ adim:["Kuru biberleri ılık suda 20 dakika bekletip yumuşat, dikkatlice yıka.",
+       "Soğanı yağda kavur, kıymayı ekleyip suyunu çektir.",
+       "Yıkanmış pirinç, salça, nane, tuz ve baharatları ekleyip 2 dakika çevir.",
+       "Biberleri üçte ikisine kadar doldur, ağzını kapatmadan bırak.",
+       "Tencereye dik diz, üzerine tabak kapat.",
+       "Sıcak salçalı su ekleyip kısık ateşte 50 dakika pişir."],
+ not:"Kuru biberler kolay yırtılır; bekletirken suyu kaynar değil ılık olsun."},
+
+{i:"kuzu-incik",ad:"Fırında Kuzu İncik",zor:3,dk:210,kisi:4,kat:"Ana yemek",
+ mlz:["kuzu incik","soğan","sarımsak","havuç","domates salçası","kekik","patates"],eks:["karabiber","defne yaprağı"],
+ adim:["İncikleri tuz, karabiber ve kekikle ovala.",
+       "Geniş tavada her yüzünü kızgın yağda mühürle.",
+       "Soğan, havuç ve sarımsağı fırın kabına yay, incikleri üzerine yerleştir.",
+       "Salçayı sıcak suda ezip kaba dök, sıvı incikleri yarılayacak kadar olsun.",
+       "Üzerini folyoyla sıkıca kapat, 160 derecede 2,5 saat pişir.",
+       "Son 30 dakikada patatesleri ekleyip folyoyu aç, üstü kızarsın."],
+ not:"Düşük derecede uzun pişirme etin kemikten ayrılmasını sağlar. Süreyi kısaltıp dereceyi yükseltme."},
+
+{i:"baklava",ad:"Cevizli Baklava",zor:3,dk:180,kisi:10,kat:"Tatlı",
+ mlz:["un","yumurta","nişasta","tereyağı","ceviz","şeker","limon"],eks:["irmik"],
+ adim:["Un, yumurta, tuz, sirke ve suyla sert bir hamur yoğur, 20 beze yapıp 45 dakika dinlendir.",
+       "Şerbet için şeker ve suyu 15 dakika kaynat, limon sıkıp soğumaya bırak.",
+       "Bezeleri nişasta serperek tek tek çok ince aç.",
+       "Tepsiye 10 yaprağı eritilmiş tereyağı sürerek diz, cevizi yay, kalan 10 yaprağı üzerine kapat.",
+       "Baklava dilimi şeklinde kes, üzerine kızdırılmış tereyağını gezdir.",
+       "180 derecede 45 dakika, üstü altın rengi olana kadar pişir.",
+       "Fırından çıkar çıkmaz soğuk şerbeti üzerine dök."],
+ not:"Sıcak baklavaya soğuk şerbet ya da soğuk baklavaya sıcak şerbet. İkisi de sıcak olursa baklava vıcık olur."},
+
+{i:"kunefe",ad:"Künefe",zor:3,dk:60,kisi:4,kat:"Tatlı",
+ mlz:["kadayıf","lor peyniri","tereyağı","şeker","limon"],eks:["ceviz","fındık"],
+ adim:["Şeker ve suyu 12 dakika kaynatıp limon sık, şerbeti soğut.",
+       "Kadayıfı elinle didikleyip eritilmiş tereyağıyla iyice ovala.",
+       "Künefe tepsisinin altına kadayıfın yarısını bastırarak yay.",
+       "Tuzu alınmış lor peynirini ortaya yay, kenarlara 1 cm boşluk bırak.",
+       "Kalan kadayıfı üzerine kapatıp bastır.",
+       "Ocakta kısık ateşte alt yüzü kızarana kadar 12 dakika pişir, ters çevirip diğer yüzünü pişir.",
+       "Sıcakken soğuk şerbeti üzerine dök, hemen servis et."],
+ not:"Peynirin tuzu alınmazsa tatlı yenmez. Dilimleyip 1 saat suda beklet, suyunu birkaç kez değiştir."},
+
+{i:"perde-pilavi",ad:"Perde Pilavı",zor:3,dk:120,kisi:6,kat:"Pilav",
+ mlz:["pirinç","tavuk göğsü","badem","kuş üzümü","tereyağı","yufka","yumurta","un"],eks:["karabiber","tarçın"],
+ adim:["Tavuğu haşlayıp didikle, suyunu ayır.",
+       "Bademi kavur, kuş üzümünü ılık suda beklet.",
+       "Tereyağında pirinci kavur, tavuk suyunu ekleyip pilavı pişir, demlendir.",
+       "Badem, kuş üzümü ve didiklenmiş tavuğu pilava karıştır.",
+       "Kaseyi bolca yağlayıp yufkayı kenarlardan taşacak şekilde ser.",
+       "Pilavı doldurup taşan yufkaları üzerine kapat, yumurta sarısı sür.",
+       "180 derecede 35-40 dakika pişir, 10 dakika dinlendirip tabağa ters çevir."],
+ not:"Kaseyi çok iyi yağla ve pişince hemen çevirme; 10 dakika beklersen kalıp bozulmadan çıkar."}
+];
+
+/* ---------------- yardımcılar ---------------- */
+const TR = {"ı":"i","İ":"i","I":"i","ğ":"g","Ğ":"g","ü":"u","Ü":"u",
+            "ş":"s","Ş":"s","ö":"o","Ö":"o","ç":"c","Ç":"c"};
+function fold(s){
+  return String(s).replace(/[ıİIğĞüÜşŞöÖçÇ]/g, c => TR[c])
+                  .toLowerCase().replace(/\s+/g," ").trim();
+}
+function esc(s){
+  return String(s).replace(/[&<>"']/g, c =>
+    ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+/* Eş anlamlı malzemeleri tek bir anahtara indirger. */
+const ESLESME = new Map();
+for (const grup of ESLER){
+  const anahtar = fold(grup[0]);
+  for (const ad of grup) ESLESME.set(fold(ad), anahtar);
+}
+const canon = ad => ESLESME.get(fold(ad)) || fold(ad);
+
+const ZOR_AD = {1:"Kolay", 2:"Orta", 3:"Zor"};
+
+/* ---------------- malzeme kataloğu ---------------- */
+const sayac = new Map();
+for (const t of TARIFLER){
+  for (const m of t.mlz) sayac.set(m, (sayac.get(m)||0) + 1);
+  for (const m of (t.eks||[])) sayac.set(m, (sayac.get(m)||0) + 0.4);
+}
+for (const ad of Object.keys(KAT)) if (!sayac.has(ad)) sayac.set(ad, 0);
+
+const KATALOG = [...sayac.keys()]
+  .map(ad => ({ad, kat: KAT[ad] || "Diğer", n: sayac.get(ad)}))
+  .sort((a,b) => a.ad.localeCompare(b.ad,"tr"));
+
+const HIZLI_KATLAR = ["Sebze","Et & tavuk","Süt & kahvaltı","Kiler","Yağ & sos"];
+
+/* ---------------- durum ---------------- */
+const BASLANGIC = ["yumurta","domates","soğan","yeşil biber","patates","yoğurt",
+                   "makarna","süt","tereyağı","beyaz peynir","kaşar peyniri","sarımsak",
+                   "maydanoz","pirinç","limon","kıyma","domates salçası","patlıcan",
+                   "havuç","bulgur","şehriye","ekmek","salatalık"];
+
+function oku(k, varsayilan){
+  try{
+    const v = localStorage.getItem("bnp." + k);
+    return v === null ? varsayilan : JSON.parse(v);
+  }catch(e){ return varsayilan; }
+}
+function yaz(k, v){
+  try{ localStorage.setItem("bnp." + k, JSON.stringify(v)); }catch(e){}
+}
+
+const D = {
+  kiler:   oku("kiler", BASLANGIC),
+  temel:   oku("temel", true),
+  baharat: oku("baharat", true),
+  mod:     oku("mod", "hepsi"),
+  tam:     oku("tam", false)
+};
+if (!Array.isArray(D.kiler)) D.kiler = BASLANGIC.slice();
+
+const $ = s => document.querySelector(s);
+const el = {
+  ara:$("#ara"), oneri:$("#oneri"), tepsi:$("#tepsi"), hizli:$("#hizli"),
+  sayi:$("#kilerSayi"), temizle:$("#temizle"), modlar:$("#modlar"),
+  ozet:$("#ozet"), liste:$("#liste"), perde:$("#perde"), kagit:$("#kagit"),
+  swTemel:$("#swTemel"), swBaharat:$("#swBaharat"), swTam:$("#swTam"),
+  dbSayi:$("#dbSayi"), temaBtn:$("#temaBtn"),
+  kurSerit:$("#kurSerit"), kurBtn:$("#kurBtn"), kurKapa:$("#kurKapa"), kurMetin:$("#kurMetin")
+};
+
+/* Kilerdeki + "evde var sayılan" malzemelerin tekilleştirilmiş anahtar kümesi. */
+function etkinKume(){
+  const s = new Set(D.kiler.map(canon));
+  if (D.temel)   for (const m of TEMEL)   s.add(canon(m));
+  if (D.baharat) for (const m of BAHARAT) s.add(canon(m));
+  return s;
+}
+
+function eslestir(){
+  const kume = etkinKume();
+  return TARIFLER.map(t => {
+    const eksik = t.mlz.filter(m => !kume.has(canon(m)));
+    const varOlan = t.mlz.length - eksik.length;
+    return {
+      t,
+      eksik,
+      varOlan,
+      oran: t.mlz.length ? varOlan / t.mlz.length : 0,
+      durum: eksik.length === 0 ? "ok" : (eksik.length <= 2 ? "near" : "far")
+    };
+  });
+}
+
+const SIRA = {ok:0, near:1, far:2};
+function sirala(a, b){
+  return SIRA[a.durum] - SIRA[b.durum]
+      || a.eksik.length - b.eksik.length
+      || b.oran - a.oran
+      || a.t.zor - b.t.zor
+      || a.t.ad.localeCompare(b.t.ad,"tr");
+}
+
+/* ---------------- kiler arayüzü ---------------- */
+function kilerdeVar(ad){
+  const c = canon(ad);
+  return D.kiler.some(x => canon(x) === c);
+}
+function ekle(ad){
+  ad = String(ad).replace(/\s+/g," ").trim();
+  if (!ad || kilerdeVar(ad)) return false;
+  const bilinen = KATALOG.find(k => canon(k.ad) === canon(ad));
+  D.kiler.push(bilinen ? bilinen.ad : ad.toLocaleLowerCase("tr"));
+  yaz("kiler", D.kiler);
+  return true;
+}
+function cikar(ad){
+  const c = canon(ad);
+  D.kiler = D.kiler.filter(x => canon(x) !== c);
+  yaz("kiler", D.kiler);
+}
+
+function cizTepsi(){
+  el.sayi.textContent = D.kiler.length + " malzeme";
+  el.tepsi.innerHTML = D.kiler
+    .slice()
+    .sort((a,b) => a.localeCompare(b,"tr"))
+    .map(ad => '<span class="chip">' + esc(ad) +
+      '<button type="button" data-cik="' + esc(ad) + '" aria-label="' +
+      esc(ad) + ' malzemesini çıkar">&times;</button></span>').join("");
+}
+
+function cizHizli(){
+  const parcalar = [];
+  for (const kat of HIZLI_KATLAR){
+    const en = KATALOG.filter(k => k.kat === kat)
+                      .sort((a,b) => b.n - a.n || a.ad.localeCompare(b.ad,"tr"))
+                      .slice(0, 11);
+    if (!en.length) continue;
+    parcalar.push('<div class="pickrow"><span class="lbl">' + esc(kat) + '</span>' +
+      en.map(k => '<button type="button" class="pick" data-ekle="' + esc(k.ad) + '"' +
+        (kilerdeVar(k.ad) ? ' data-on="1"' : '') + '>' + esc(k.ad) + '</button>').join("") +
+      '</div>');
+  }
+  el.hizli.innerHTML = parcalar.join("");
+}
+
+/* ---------------- öneri kutusu ---------------- */
+let secili = -1, oneriler = [];
+
+function cizOneri(){
+  const q = fold(el.ara.value);
+  if (!q){ kapatOneri(); return; }
+  oneriler = KATALOG
+    .filter(k => !kilerdeVar(k.ad))
+    .map(k => ({k, p: fold(k.ad).indexOf(q)}))
+    .filter(o => o.p !== -1)
+    .sort((a,b) => a.p - b.p || b.k.n - a.k.n || a.k.ad.localeCompare(b.k.ad,"tr"))
+    .slice(0, 8)
+    .map(o => o.k);
+
+  if (!oneriler.length){ kapatOneri(); return; }
+  secili = 0;
+  el.oneri.innerHTML = oneriler.map((k, idx) =>
+    '<button type="button" role="option" data-idx="' + idx + '"' +
+    (idx === secili ? ' aria-selected="true"' : ' aria-selected="false"') + '>' +
+    '<span>' + esc(k.ad) + '</span><span class="kat">' + esc(k.kat) + '</span></button>').join("");
+  el.oneri.hidden = false;
+  el.ara.setAttribute("aria-expanded", "true");
+}
+function kapatOneri(){
+  el.oneri.hidden = true;
+  el.oneri.innerHTML = "";
+  el.ara.setAttribute("aria-expanded", "false");
+  oneriler = []; secili = -1;
+}
+function vurgula(yeni){
+  if (!oneriler.length) return;
+  secili = (yeni + oneriler.length) % oneriler.length;
+  [...el.oneri.children].forEach((b, i) =>
+    b.setAttribute("aria-selected", i === secili ? "true" : "false"));
+}
+
+/* ---------------- mod düğmeleri ---------------- */
+function cizModlar(sonuclar){
+  const yapilabilir = z => sonuclar.filter(s =>
+    s.durum === "ok" && (z === "hepsi" || s.t.zor === z)).length;
+
+  const tanim = [
+    {k:"hepsi", ad:"Hepsi", lv:0},
+    {k:1, ad:"Kolay", lv:1},
+    {k:2, ad:"Orta", lv:2},
+    {k:3, ad:"Zor", lv:3}
+  ];
+  el.modlar.innerHTML = tanim.map(m =>
+    '<button type="button" class="mode" data-mod="' + m.k + '" aria-pressed="' +
+    (String(D.mod) === String(m.k)) + '">' +
+    (m.lv ? '<span class="meter" data-lv="' + m.lv + '" aria-hidden="true"><i></i><i></i><i></i></span>' : '') +
+    '<span class="nm">' + m.ad + '</span>' +
+    '<span class="ct">' + yapilabilir(m.k) + ' hazır</span></button>').join("");
+}
+
+/* ---------------- sonuç listesi ---------------- */
+function kartHTML(s){
+  const t = s.t;
+  const yuzde = Math.round(s.oran * 100);
+  const rozet = s.durum === "ok"
+    ? '<span class="pill ok">Malzemen tam</span>'
+    : '<span class="pill ' + s.durum + '">' + s.eksik.length + ' eksik</span>';
+  const eksikSatir = s.eksik.length
+    ? '<div class="card-miss">Eksik: <b>' + s.eksik.map(esc).join("</b>, <b>") + '</b></div>'
+    : '';
+  return '<button type="button" class="card" data-tarif="' + esc(t.i) + '">' +
+    '<span class="card-main">' +
+      '<span class="card-t">' +
+        '<span class="meter" data-lv="' + t.zor + '" aria-hidden="true"><i></i><i></i><i></i></span>' +
+        '<h3>' + esc(t.ad) + '</h3>' +
+        '<span class="pill tag">' + esc(t.kat) + '</span>' +
+      '</span>' +
+      '<span class="card-meta"><span>' + ZOR_AD[t.zor] + '</span><span>' + t.dk +
+      ' dakika</span><span>' + t.kisi + ' kişilik</span><span>' + t.mlz.length +
+      ' malzeme</span></span>' +
+    '</span>' +
+    '<span class="card-side">' + rozet +
+      (s.durum === "ok" ? '' :
+        '<span class="bar" data-s="' + s.durum + '" role="img" aria-label="Malzemelerin yüzde ' +
+        yuzde + '\'i elinde"><i style="width:' + yuzde + '%"></i></span>') +
+    '</span>' + eksikSatir + '</button>';
+}
+
+function ciz(){
+  const sonuclar = eslestir();
+  cizModlar(sonuclar);
+
+  let gosterilecek = sonuclar;
+  if (D.mod !== "hepsi") gosterilecek = gosterilecek.filter(s => s.t.zor === Number(D.mod));
+  if (D.tam) gosterilecek = gosterilecek.filter(s => s.durum === "ok");
+  gosterilecek.sort(sirala);
+
+  const hazir = gosterilecek.filter(s => s.durum === "ok");
+  const yakin = gosterilecek.filter(s => s.durum === "near");
+  const uzak  = gosterilecek.filter(s => s.durum === "far").slice(0, 8);
+
+  el.ozet.innerHTML = D.kiler.length === 0
+    ? 'Kilerin boş. Yukarıdan birkaç malzeme ekle, alt tarafta ne pişirebileceğini göreyim.'
+    : '<b>' + hazir.length + '</b> tarifi şu an eksiksiz yapabilirsin, <b>' + yakin.length +
+      '</b> tarif için en fazla iki malzeme eksik.';
+
+  if (!hazir.length && !yakin.length && !uzak.length){
+    el.liste.innerHTML = '<div class="empty"><h3>Bu filtreyle sonuç yok</h3>' +
+      '<p>' + (D.tam
+        ? 'Eksiksiz yapabileceğin bir tarif çıkmadı. Üstteki anahtarı kapatıp az eksikli tarifleri de görebilirsin.'
+        : 'Birkaç malzeme daha ekle ya da başka bir zorluk moduna geç.') + '</p></div>';
+    return;
+  }
+
+  const bolum = (baslik, dizi) => dizi.length
+    ? '<div class="group-lbl"><span class="eyebrow">' + baslik + ' · ' + dizi.length +
+      '</span><span class="rule"></span></div>' + dizi.map(kartHTML).join("")
+    : '';
+
+  el.liste.innerHTML =
+    bolum("Bugün pişebilir", hazir) +
+    bolum("Bir iki malzeme eksik", yakin) +
+    bolum("Alışverişe çıkarsan", uzak);
+}
+
+/* ---------------- tarif kağıdı ---------------- */
+let sonOdak = null;
+
+function ac(id){
+  const t = TARIFLER.find(x => x.i === id);
+  if (!t) return;
+  const kume = etkinKume();
+  const satir = (m, ops) => {
+    const v = kume.has(canon(m));
+    const sinif = ops ? "ops" : (v ? "var" : "yok");
+    const im = ops ? "+" : (v ? "✓" : "✕");
+    return '<li class="' + sinif + '"><span class="tick">' + im + '</span>' + esc(m) +
+           (ops ? ' <span style="opacity:.7">(isteğe bağlı)</span>' : '') + '</li>';
+  };
+
+  el.kagit.innerHTML =
+    '<div class="sheet-hd">' +
+      '<span class="tut" aria-hidden="true"></span>' +
+      '<button type="button" class="close" id="kapat" aria-label="Kapat">&times;</button>' +
+      '<h2 id="tarifAd">' + esc(t.ad) + '</h2>' +
+      '<div class="row">' +
+        '<span class="meter" data-lv="' + t.zor + '" aria-hidden="true"><i></i><i></i><i></i></span>' +
+        '<span class="pill tag">' + ZOR_AD[t.zor] + '</span>' +
+        '<span class="pill tag">' + esc(t.kat) + '</span>' +
+        '<span class="card-meta"><span>' + t.dk + ' dakika</span><span>' + t.kisi + ' kişilik</span></span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="sheet-bd">' +
+      '<section><span class="eyebrow">Malzemeler</span><ul class="mlist">' +
+        t.mlz.map(m => satir(m, false)).join("") +
+        (t.eks || []).map(m => satir(m, true)).join("") +
+      '</ul></section>' +
+      '<section><span class="eyebrow">Yapılışı</span><ol class="steps">' +
+        t.adim.map(a => '<li>' + esc(a) + '</li>').join("") +
+      '</ol></section>' +
+      (t.not ? '<div class="tip"><span class="eyebrow">Püf noktası</span>' + esc(t.not) + '</div>' : '') +
+    '</div>';
+
+  sonOdak = document.activeElement;
+  el.perde.hidden = false;
+  document.body.style.overflow = "hidden";
+  el.kagit.querySelector("#kapat").focus();
+
+  /* Telefonun geri tuşu uygulamadan çıkmak yerine tarifi kapatsın. */
+  try{ history.pushState({tarif:1}, ""); }catch(e){}
+  uyanikTut();
+}
+
+/* Tarif açıkken ekran sönmesin — mutfakta elin doluyken işe yarıyor. */
+let uyanik = null;
+async function uyanikTut(){
+  try{
+    if ("wakeLock" in navigator && !uyanik)
+      uyanik = await navigator.wakeLock.request("screen");
+  }catch(e){}
+}
+function uyanikBirak(){
+  try{ if (uyanik) uyanik.release(); }catch(e){}
+  uyanik = null;
+}
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && !el.perde.hidden) uyanikTut();
+});
+
+function kapat(geriDen){
+  el.perde.hidden = true;
+  el.kagit.innerHTML = "";
+  document.body.style.overflow = "";
+  uyanikBirak();
+  if (sonOdak && sonOdak.isConnected) sonOdak.focus();
+  if (!geriDen && history.state && history.state.tarif){
+    try{ history.back(); }catch(e){}
+  }
+}
+window.addEventListener("popstate", () => { if (!el.perde.hidden) kapat(true); });
+
+/* ---------------- olaylar ---------------- */
+el.ara.addEventListener("input", cizOneri);
+el.ara.addEventListener("keydown", e => {
+  if (e.key === "ArrowDown"){ e.preventDefault(); vurgula(secili + 1); }
+  else if (e.key === "ArrowUp"){ e.preventDefault(); vurgula(secili - 1); }
+  else if (e.key === "Escape"){ kapatOneri(); }
+  else if (e.key === "Enter"){
+    e.preventDefault();
+    const ad = (secili >= 0 && oneriler[secili]) ? oneriler[secili].ad : el.ara.value;
+    if (ekle(ad)){ el.ara.value = ""; kapatOneri(); cizTepsi(); cizHizli(); ciz(); }
+  }
+});
+el.oneri.addEventListener("mousedown", e => {
+  const b = e.target.closest("button[data-idx]");
+  if (!b) return;
+  e.preventDefault();
+  if (ekle(oneriler[Number(b.dataset.idx)].ad)){
+    el.ara.value = ""; kapatOneri(); cizTepsi(); cizHizli(); ciz();
+  }
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest(".searchbox")) kapatOneri();
+});
+
+el.tepsi.addEventListener("click", e => {
+  const b = e.target.closest("button[data-cik]");
+  if (!b) return;
+  cikar(b.dataset.cik); cizTepsi(); cizHizli(); ciz();
+});
+el.hizli.addEventListener("click", e => {
+  const b = e.target.closest("button[data-ekle]");
+  if (!b) return;
+  const ad = b.dataset.ekle;
+  if (kilerdeVar(ad)) cikar(ad); else ekle(ad);
+  cizTepsi(); cizHizli(); ciz();
+});
+el.temizle.addEventListener("click", () => {
+  D.kiler = []; yaz("kiler", D.kiler);
+  cizTepsi(); cizHizli(); ciz();
+});
+el.modlar.addEventListener("click", e => {
+  const b = e.target.closest("button[data-mod]");
+  if (!b) return;
+  D.mod = b.dataset.mod === "hepsi" ? "hepsi" : Number(b.dataset.mod);
+  yaz("mod", D.mod); ciz();
+});
+el.liste.addEventListener("click", e => {
+  const b = e.target.closest("button[data-tarif]");
+  if (b) ac(b.dataset.tarif);
+});
+
+el.swTemel.addEventListener("change", e => { D.temel = e.target.checked; yaz("temel", D.temel); ciz(); });
+el.swBaharat.addEventListener("change", e => { D.baharat = e.target.checked; yaz("baharat", D.baharat); ciz(); });
+el.swTam.addEventListener("change", e => { D.tam = e.target.checked; yaz("tam", D.tam); ciz(); });
+
+el.perde.addEventListener("click", e => {
+  if (e.target === el.perde || e.target.closest("#kapat")) kapat();
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !el.perde.hidden) kapat();
+});
+
+el.temaBtn.addEventListener("click", () => {
+  const suan = document.documentElement.getAttribute("data-theme")
+    || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const yeni = suan === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", yeni);
+  yaz("tema", yeni);
+});
+
+/* ---------------- ana ekrana kurulum ---------------- */
+const cerceveIcinde = (() => { try{ return window.top !== window.self; }catch(e){ return true; } })();
+const ekranaEkli = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const iOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+            (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const kurulabilir = () => !ekranaEkli && !cerceveIcinde && !oku("kurGizle", false);
+
+let kurOlayi = null;
+
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  kurOlayi = e;
+  if (!kurulabilir()) return;
+  el.kurMetin.textContent = "Tarayıcı açmadan, ev ekranından tek dokunuşla aç. Çevrimdışı da çalışır.";
+  el.kurBtn.hidden = false;
+  el.kurSerit.hidden = false;
+});
+
+el.kurBtn.addEventListener("click", async () => {
+  if (!kurOlayi) return;
+  kurOlayi.prompt();
+  try{ await kurOlayi.userChoice; }catch(e){}
+  kurOlayi = null;
+  el.kurSerit.hidden = true;
+});
+el.kurKapa.addEventListener("click", () => {
+  el.kurSerit.hidden = true;
+  yaz("kurGizle", true);
+});
+window.addEventListener("appinstalled", () => {
+  el.kurSerit.hidden = true;
+  yaz("kurGizle", true);
+});
+
+/* Çevrimdışı çalışma. Yalnızca gerçek bir adresten açıldığında devreye girer. */
+if ("serviceWorker" in navigator && location.protocol.startsWith("http") && !cerceveIcinde){
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
+}
+
+/* ---------------- açılış ---------------- */
+(function baslat(){
+  const tema = oku("tema", null);
+  if (tema === "dark" || tema === "light") document.documentElement.setAttribute("data-theme", tema);
+
+  el.swTemel.checked = D.temel;
+  el.swBaharat.checked = D.baharat;
+  el.swTam.checked = D.tam;
+
+  const say = {1:0, 2:0, 3:0};
+  for (const t of TARIFLER) say[t.zor]++;
+  el.dbSayi.textContent = TARIFLER.length + " tarif · " + say[1] + " kolay, " +
+                          say[2] + " orta, " + say[3] + " zor";
+
+  /* iPhone'da kurulum düğmesi yok; Safari'nin Paylaş menüsünü tarif et. */
+  if (iOS && kurulabilir()){
+    el.kurMetin.textContent = "Safari'nin alt çubuğundaki Paylaş düğmesine bas, listeden \u201cAna Ekrana Ekle\u201d seç.";
+    el.kurBtn.hidden = true;
+    el.kurSerit.hidden = false;
+  }
+
+  cizTepsi(); cizHizli(); ciz();
+})();
+</script>
+</body>
+</html>
