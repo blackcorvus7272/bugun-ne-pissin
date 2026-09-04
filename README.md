@@ -1,7 +1,7 @@
 # Bugün Ne Pişsin
 
 Evdeki malzemeleri girip ne pişirebileceğini gösteren telefon uygulaması.
-Türkçe arayüz, 63 Türk mutfağı tarifi, kolay / orta / zor olmak üzere üç zorluk modu.
+Türkçe arayüz, 68 Türk mutfağı tarifi, kolay / orta / zor olmak üzere üç zorluk modu.
 
 Kurulabilir bir web uygulaması (PWA). Ana ekrana eklendiğinde tarayıcı çubuğu
 olmadan, tam ekran, kendi ikonuyla açılır ve **internet olmadan da çalışır**.
@@ -27,7 +27,7 @@ tarifler telefonda saklandığı için internet olmadan da çalışır.
 - **Eşleştirme** — her tarifin zorunlu malzemeleri kilerle karşılaştırılır.
   Tarifler önce eksiksiz yapılabilenler, sonra en fazla iki malzemesi eksik
   olanlar, en sonra daha uzak olanlar diye gruplanır.
-- **Zorluk modları** — Kolay (24 tarif), Orta (24), Zor (15). Her düğmede o an
+- **Zorluk modları** — Kolay (26 tarif), Orta (26), Zor (16). Her düğmede o an
   eksiksiz yapılabilen tarif sayısı yazar.
 - **Eş anlamlılar** — "salça" ile "domates salçası", "kaşar" ile "kaşar peyniri"
   aynı sayılır. Türkçe karakterler normalize edilir, "sogan" yazmak da "soğan"
