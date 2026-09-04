@@ -265,6 +265,22 @@ button,input{font-family:inherit;font-size:inherit;color:inherit}
 .mode[aria-pressed="true"]{border-color:var(--kobalt);background:var(--kobalt-soft)}
 .mode[aria-pressed="true"] .nm,.mode[aria-pressed="true"] .ct{color:var(--kobalt)}
 
+/* ---------- yemek türü ---------- */
+.katbar{margin-top:13px}
+.katbar > .eyebrow{display:block;margin-bottom:9px}
+.kats{display:flex;gap:7px;flex-wrap:wrap}
+.katc{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:20px;
+  padding:6px 13px;cursor:pointer;color:var(--ink-2);font-size:13.5px;
+  display:inline-flex;align-items:center;gap:7px;
+  transition:border-color .12s,background .12s,color .12s;
+}
+.katc:hover{border-color:var(--ink-3)}
+.katc .ct{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.katc[aria-pressed="true"]{background:var(--kobalt-soft);border-color:var(--kobalt);color:var(--kobalt);font-weight:700}
+.katc[aria-pressed="true"] .ct{color:var(--kobalt)}
+.katc[data-bos="1"]{opacity:.45}
+
 /* zorluk ölçeği: dolu çubuk sayısı seviyeyi gösterir */
 .meter{display:flex;align-items:flex-end;gap:2px;height:12px;flex:none}
 .meter i{display:block;width:3px;background:var(--line);border-radius:1px}
@@ -424,6 +440,7 @@ button,.chip,.pill,.eyebrow,.meta{-webkit-user-select:none;user-select:none}
   .pick{padding:9px 14px;font-size:14px;min-height:40px}
   .mode{padding:11px 14px;flex:1;justify-content:center;min-height:46px}
   .modes{width:100%}
+  .katc{padding:9px 14px;font-size:14px;min-height:40px}
   .onlydo{margin-left:0;width:100%;padding-top:2px}
   .card{padding:14px;min-height:66px}
   .icon-btn{width:38px;height:38px}
@@ -516,6 +533,11 @@ button,.chip,.pill,.eyebrow,.meta{-webkit-user-select:none;user-select:none}
     <div class="modes" id="modlar" role="group"></div>
     <label class="onlydo"><input type="checkbox" id="swTam">
       <span>Sadece eksiksiz yapabileceklerim</span></label>
+  </section>
+
+  <section class="katbar" aria-label="Yemek türü">
+    <span class="eyebrow">Ne pişirmek istiyorsun</span>
+    <div class="kats" id="katlar" role="group"></div>
   </section>
 
   <p class="tally" id="ozet"></p>
@@ -1457,6 +1479,24 @@ const canon = ad => ESLESME.get(fold(ad)) || fold(ad);
 
 const ZOR_AD = {1:"Kolay", 2:"Orta", 3:"Zor"};
 
+/* Tarif kategorileri 15 başlığa dağılıyor; telefonda seçilebilir olması için
+   bunları ana başlıklar altında topluyoruz. Tarifin kendi kat alanı kartta
+   ve tarif kağıdında olduğu gibi görünmeye devam ediyor. */
+const ANA_KAT = {
+  "Ana yemek":"Ana yemek", "Dolma":"Ana yemek", "Zeytinyağlı":"Ana yemek",
+  "Sebze":"Ana yemek", "Balık":"Ana yemek",
+  "Çorba":"Çorba",
+  "Makarna":"Makarna & pilav", "Pilav":"Makarna & pilav",
+  "Salata":"Salata & meze", "Meze":"Salata & meze",
+  "Kahvaltı":"Kahvaltı",
+  "Börek":"Hamur işi", "Hamur işi":"Hamur işi",
+  "Tatlı":"Tatlı",
+  "Atıştırmalık":"Atıştırmalık"
+};
+const ANA_SIRA = ["Ana yemek","Çorba","Makarna & pilav","Salata & meze",
+                  "Kahvaltı","Hamur işi","Tatlı","Atıştırmalık"];
+const anaKat = t => ANA_KAT[t.kat] || "Diğer";
+
 /* ---------------- malzeme kataloğu ---------------- */
 const sayac = new Map();
 for (const t of TARIFLER){
@@ -1492,15 +1532,17 @@ const D = {
   temel:   oku("temel", true),
   baharat: oku("baharat", true),
   mod:     oku("mod", "hepsi"),
+  kat:     oku("kat", "hepsi"),
   tam:     oku("tam", false),
   acik:    oku("acik", false)
 };
 if (!Array.isArray(D.kiler)) D.kiler = BASLANGIC.slice();
+if (D.kat !== "hepsi" && !ANA_SIRA.includes(D.kat)) D.kat = "hepsi";
 
 const $ = s => document.querySelector(s);
 const el = {
   ara:$("#ara"), oneri:$("#oneri"), tepsi:$("#tepsi"), hizli:$("#hizli"),
-  sayi:$("#kilerSayi"), temizle:$("#temizle"), modlar:$("#modlar"),
+  sayi:$("#kilerSayi"), temizle:$("#temizle"), modlar:$("#modlar"), katlar:$("#katlar"),
   ozet:$("#ozet"), liste:$("#liste"), perde:$("#perde"), kagit:$("#kagit"),
   swTemel:$("#swTemel"), swBaharat:$("#swBaharat"), swTam:$("#swTam"),
   dbSayi:$("#dbSayi"), temaBtn:$("#temaBtn"), hero:$("#hero"),
@@ -1628,9 +1670,14 @@ function vurgula(yeni){
 }
 
 /* ---------------- mod düğmeleri ---------------- */
+/* İki filtre birbirini dışlamıyor: zorluk sayaçları seçili türe,
+   tür sayaçları da seçili zorluğa göre hesaplanıyor. */
+const katUyar = t => D.kat === "hepsi" || anaKat(t) === D.kat;
+const zorUyar = t => D.mod === "hepsi" || t.zor === Number(D.mod);
+
 function cizModlar(sonuclar){
   const yapilabilir = z => sonuclar.filter(s =>
-    s.durum === "ok" && (z === "hepsi" || s.t.zor === z)).length;
+    s.durum === "ok" && (z === "hepsi" || s.t.zor === z) && katUyar(s.t)).length;
 
   const tanim = [
     {k:"hepsi", ad:"Hepsi", lv:0},
@@ -1644,6 +1691,20 @@ function cizModlar(sonuclar){
     (m.lv ? '<span class="meter" data-lv="' + m.lv + '" aria-hidden="true"><i></i><i></i><i></i></span>' : '') +
     '<span class="nm">' + m.ad + '</span>' +
     '<span class="ct">' + yapilabilir(m.k) + ' hazır</span></button>').join("");
+}
+
+/* ---------------- yemek türü ---------------- */
+function cizKatlar(sonuclar){
+  const hazirSay = k => sonuclar.filter(s =>
+    s.durum === "ok" && zorUyar(s.t) && (k === "hepsi" || anaKat(s.t) === k)).length;
+
+  el.katlar.innerHTML = ["hepsi", ...ANA_SIRA].map(k => {
+    const n = hazirSay(k);
+    return '<button type="button" class="katc" data-kat="' + esc(k) + '"' +
+      ' aria-pressed="' + (D.kat === k) + '"' + (n ? '' : ' data-bos="1"') + '>' +
+      '<span class="nm">' + (k === "hepsi" ? "Hepsi" : esc(k)) + '</span>' +
+      '<span class="ct">' + n + '</span></button>';
+  }).join("");
 }
 
 /* ---------------- sonuç listesi ---------------- */
@@ -1674,8 +1735,7 @@ let heroSecim = null;
 
 /* Önce eksiksiz yapılabilenler; hiç yoksa az eksikle yapılabilenler. */
 function heroHavuzu(sonuclar){
-  let h = sonuclar;
-  if (D.mod !== "hepsi") h = h.filter(s => s.t.zor === Number(D.mod));
+  let h = sonuclar.filter(s => zorUyar(s.t) && katUyar(s.t));
   const tam = h.filter(s => s.durum === "ok");
   if (tam.length) return tam;
   return h.filter(s => s.durum === "near");
@@ -1703,7 +1763,7 @@ function cizHero(sonuclar){
         '<span class="eyebrow">Bugünün önerisi</span>' +
         '<h2>Buradan bir şey öneremiyorum</h2>' +
         '<p class="hero-durum">' + (D.kiler.length
-          ? "Bu zorluk seviyesinde en fazla iki malzemeyle yapabileceğin bir tarif çıkmadı. Başka bir moda geç ya da kilerine birkaç malzeme ekle."
+          ? "Bu filtrelerle en fazla iki malzemeyle yapabileceğin bir tarif çıkmadı. Zorluk ya da tür seçimini değiştir, kilerine birkaç malzeme ekle."
           : "Önce kilerine elindeki malzemeleri ekle, sonra sana ne pişirebileceğini söyleyeyim.") +
         '</p>' +
       '</div>';
@@ -1746,10 +1806,10 @@ function cizHero(sonuclar){
 function ciz(){
   const sonuclar = eslestir();
   cizModlar(sonuclar);
+  cizKatlar(sonuclar);
   cizHero(sonuclar);
 
-  let gosterilecek = sonuclar;
-  if (D.mod !== "hepsi") gosterilecek = gosterilecek.filter(s => s.t.zor === Number(D.mod));
+  let gosterilecek = sonuclar.filter(s => zorUyar(s.t) && katUyar(s.t));
   if (D.tam) gosterilecek = gosterilecek.filter(s => s.durum === "ok");
   gosterilecek.sort(sirala);
 
@@ -1766,7 +1826,7 @@ function ciz(){
     el.liste.innerHTML = '<div class="empty"><h3>Bu filtreyle sonuç yok</h3>' +
       '<p>' + (D.tam
         ? 'Eksiksiz yapabileceğin bir tarif çıkmadı. Üstteki anahtarı kapatıp az eksikli tarifleri de görebilirsin.'
-        : 'Birkaç malzeme daha ekle ya da başka bir zorluk moduna geç.') + '</p></div>';
+        : 'Birkaç malzeme daha ekle, başka bir zorluk moduna geç ya da yemek türünü "Hepsi" yap.') + '</p></div>';
     return;
   }
 
@@ -1907,6 +1967,12 @@ el.modlar.addEventListener("click", e => {
   if (!b) return;
   D.mod = b.dataset.mod === "hepsi" ? "hepsi" : Number(b.dataset.mod);
   yaz("mod", D.mod); ciz();
+});
+el.katlar.addEventListener("click", e => {
+  const b = e.target.closest("button[data-kat]");
+  if (!b) return;
+  D.kat = b.dataset.kat;
+  yaz("kat", D.kat); ciz();
 });
 el.liste.addEventListener("click", e => {
   const b = e.target.closest("button[data-tarif]");

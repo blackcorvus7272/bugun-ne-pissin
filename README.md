@@ -29,6 +29,11 @@ tarifler telefonda saklandığı için internet olmadan da çalışır.
   olanlar, en sonra daha uzak olanlar diye gruplanır.
 - **Zorluk modları** — Kolay (30 tarif), Orta (33), Zor (17). Her düğmede o an
   eksiksiz yapılabilen tarif sayısı yazar.
+- **Yemek türü** — tarifler sekiz ana başlıkta toplanır: Ana yemek (27), Çorba
+  (8), Makarna & pilav (12), Salata & meze (11), Kahvaltı (6), Hamur işi (8),
+  Tatlı (6), Atıştırmalık (2). Zorlukla birlikte çalışır: tür rozetindeki sayı
+  seçili zorlukta, zorluk düğmesindeki sayı da seçili türde kaç tarifin hazır
+  olduğunu gösterir. Seçim `localStorage` içinde saklanır.
 - **Eş anlamlılar** — "salça" ile "domates salçası", "kaşar" ile "kaşar peyniri"
   aynı sayılır. Türkçe karakterler normalize edilir, "sogan" yazmak da "soğan"
   ile eşleşir.
@@ -74,6 +79,12 @@ kişilik olduğuna göre yaz; `kisi` alanı bunu söylüyor ve tarif kağıdın�
 sözlüğündeki yazımlarla aynı tut ki öneri listesinde doğru kategoride
 görünsünler; eşleştirme de bu adlar üzerinden yapılıyor, ölçü metni
 eşleştirmeye karışmıyor.
+
+`kat` alanı tarifin kendi başlığı (`Çorba`, `Balık`, `Zeytinyağlı` gibi) ve
+kartta rozet olarak görünüyor. Yeni bir `kat` uydurursan `ANA_KAT` sözlüğüne de
+hangi ana başlığa gireceğini yaz — yoksa tarif "Diğer"e düşer ve tür
+rozetlerinin hiçbirinde çıkmaz. Var olan bir `kat` kullanıyorsan yapacak bir
+şey yok.
 
 Tarif ekledikten sonra `sw.js` içindeki `SURUM` değerini artır (`bnp-v1` →
 `bnp-v2`); kurulu telefonlar güncellemeyi böyle alır.
