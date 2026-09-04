@@ -1,7 +1,7 @@
 /* Bugün Ne Pişsin — çevrimdışı çalışma katmanı.
    Uygulama kabuğu kuruluşta önbelleğe alınır; yazı tipleri kullanıldıkça eklenir. */
 
-const SURUM = "bnp-v6";
+const SURUM = "bnp-v7";
 const KABUK = [
   ".",
   "index.html",

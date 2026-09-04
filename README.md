@@ -1,7 +1,9 @@
 # Bugün Ne Pişsin
 
 Evdeki malzemeleri girip ne pişirebileceğini gösteren telefon uygulaması.
-Türkçe arayüz, 80 Türk mutfağı tarifi, kolay / orta / zor olmak üzere üç zorluk modu.
+Türkçe arayüz, 97 tarif — ağırlık Türk mutfağında, yanında evde sık pişen
+dünya klasikleri (pizza, lazanya, burger, köri, brownie). Kolay / orta / zor
+olmak üzere üç zorluk modu ve sekiz yemek türü.
 
 Kurulabilir bir web uygulaması (PWA). Ana ekrana eklendiğinde tarayıcı çubuğu
 olmadan, tam ekran, kendi ikonuyla açılır ve **internet olmadan da çalışır**.
@@ -27,16 +29,17 @@ tarifler telefonda saklandığı için internet olmadan da çalışır.
 - **Eşleştirme** — her tarifin zorunlu malzemeleri kilerle karşılaştırılır.
   Tarifler önce eksiksiz yapılabilenler, sonra en fazla iki malzemesi eksik
   olanlar, en sonra daha uzak olanlar diye gruplanır.
-- **Zorluk modları** — Kolay (30 tarif), Orta (33), Zor (17). Her düğmede o an
+- **Zorluk modları** — Kolay (35 tarif), Orta (43), Zor (19). Her düğmede o an
   eksiksiz yapılabilen tarif sayısı yazar.
-- **Yemek türü** — tarifler sekiz ana başlıkta toplanır: Ana yemek (27), Çorba
-  (8), Makarna & pilav (12), Salata & meze (11), Kahvaltı (6), Hamur işi (8),
-  Tatlı (6), Atıştırmalık (2). Zorlukla birlikte çalışır: tür rozetindeki sayı
+- **Yemek türü** — tarifler sekiz ana başlıkta toplanır: Ana yemek (29), Çorba
+  (8), Makarna & pilav (15), Salata & meze (14), Kahvaltı (7), Hamur işi (9),
+  Tatlı (9), Atıştırmalık (6). Zorlukla birlikte çalışır: tür rozetindeki sayı
   seçili zorlukta, zorluk düğmesindeki sayı da seçili türde kaç tarifin hazır
   olduğunu gösterir. Seçim `localStorage` içinde saklanır.
 - **Eş anlamlılar** — "salça" ile "domates salçası", "kaşar" ile "kaşar peyniri"
   aynı sayılır. Türkçe karakterler normalize edilir, "sogan" yazmak da "soğan"
-  ile eşleşir.
+  ile eşleşir. Öneri kutusu da bu listeyi arar: "labne" yazınca krem peynir,
+  "noodle" yazınca erişte çıkar ve kilere malzemenin asıl adıyla girer.
 - **Evde var sayılanlar** — tuz, yağ, su, un ve baharatlar iki anahtarla açılıp
   kapatılır.
 
